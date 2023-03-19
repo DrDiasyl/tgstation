@@ -381,16 +381,9 @@
 			if(picture in GLOB.status_display_state_pictures)
 				post_status(picture)
 			else
-				if(picture == "currentalert") // Tell me how to do this using "return" and I surely will. Using this we can make it so players cannot set Delta code display during for example code Blue
-					switch(SSsecurity_level.get_current_level_as_number())
-						if(SEC_LEVEL_DELTA)
-							post_status("alert", "deltaalert")
-						if(SEC_LEVEL_RED)
-							post_status("alert", "redalert")
-						if(SEC_LEVEL_BLUE)
-							post_status("alert", "bluealert")
-						if(SEC_LEVEL_GREEN)
-							post_status("alert", "greenalert")
+				if(picture == "currentalert")
+					current_alert = SSsecurity_level.get_current_level_as_text()
+					post_status("alert", "[current_alert]alert")
 				else
 					post_status("alert", picture)
 			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
