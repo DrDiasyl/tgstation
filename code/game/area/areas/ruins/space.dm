@@ -574,3 +574,80 @@
 //DERELICT SULACO
 /area/ruin/space/has_grav/derelictsulaco
 	name = "\improper Derelict Sulaco"
+
+// Ruins of the TGMC Typhoon
+/area/ruin/space/has_grav/tgmctyphoon
+	name - "\improper TGMC Typhoon"
+	icon_state = "typhoon"
+
+/area/ruin/space/has_grav/tgmctyphoon/bridge
+	name - "\improper TGMC Typhoon Bridge"
+	icon_state = "typhoon_bridge"
+
+/area/ruin/space/has_grav/tgmctyphoon/bridge/co
+	name - "\improper TGMC Typhoon Commanding Officer's Office"
+	icon_state = "typhoon_co"
+
+/area/ruin/space/has_grav/tgmctyphoon/bridge/corporate
+	name - "\improper TGMC Typhoon Corporate Liasion's Office"
+	icon_state = "typhoon_corporate"
+
+/area/ruin/space/has_grav/tgmctyphoon/bridge/fc
+	name - "\improper TGMC Typhoon Field Commander's Office"
+	icon_state = "typhoon_fc"
+
+/area/ruin/space/has_grav/tgmctyphoon/bowhallway
+	name - "\improper TGMC Typhoon Bow Hallway"
+	icon_state = "typhoon_bowhall"
+
+/area/ruin/space/has_grav/tgmctyphoon/sternhallway
+	name - "\improper TGMC Typhoon Stern Hallway"
+	icon_state = "typhoon_sternhall"
+
+/area/ruin/space/has_grav/tgmctyphoon/alphabravo
+	name - "\improper TGMC Typhoon Alpha & Bravo Prep Room"
+	icon_state = "typhoon_alpbra"
+
+/area/ruin/space/has_grav/tgmctyphoon/charliedelta
+	name - "\improper TGMC Typhoon Charlie & Delta Prep Room"
+	icon_state = "typhoon_chadel"
+
+/area/ruin/space/has_grav/tgmctyphoon/portmaint
+	name - "\improper TGMC Typhoon Port Maintenance"
+	icon_state = "typhoon_portmaint"
+
+/area/ruin/space/has_grav/tgmctyphoon/starboardmaint
+	name - "\improper TGMC Typhoon Starboard Maintenance"
+	icon_state = "typhoon_starmaint"
+
+/area/ruin/space/has_grav/tgmctyphoon/research
+	name - "\improper TGMC Typhoon Research Divison"
+	icon_state = "typhoon_research"
+
+/area/ruin/space/has_grav/tgmctyphoon/medical
+	name - "\improper TGMC Typhoon Medbay"
+	icon_state = "typhoon_med"
+
+/area/ruin/space/has_grav/tgmctyphoon/hangar
+	name - "\improper TGMC Typhoon Hangar"
+	icon_state = "typhoon_hangar"
+
+/area/ruin/space/has_grav/tgmctyphoon/hangar/valhalla
+	name - "\improper TGMC Typhoon Valhalla Dropship"
+	icon_state = "typhoon_valhalla"
+
+/area/ruin/space/has_grav/tgmctyphoon/mess
+	name - "\improper TGMC Typhoon Mess Hall"
+	icon_state = "typhoon_mess"
+
+/area/ruin/space/has_grav/tgmctyphoon/engineering
+	name - "\improper TGMC Typhoon Engineering"
+	icon_state = "typhoon_eng"
+
+/area/ruin/space/has_grav/tgmctyphoon/engineering/atmospherics
+	name - "\improper TGMC Typhoon Atmospherics"
+	icon_state = "typhoon_atmos"
+
+/area/ruin/space/has_grav/tgmctyphoon/engineering/engine
+	name - "\improper TGMC Typhoon Engine Room"
+	icon_state = "typhoon_engine"
