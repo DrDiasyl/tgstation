@@ -1310,6 +1310,18 @@
 "Dm" = (
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/tgmctyphoon/starboardmaint)
+"Dp" = (
+/obj/effect/turf_decal/huge_numbers/two{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/smooth_large,
+/area/ruin/space/has_grav/tgmctyphoon/hangar)
+"Ds" = (
+/obj/effect/turf_decal/huge_numbers/one{
+	pixel_x = -39
+	},
+/turf/open/floor/iron/smooth_large,
+/area/ruin/space/has_grav/tgmctyphoon/hangar)
 "DF" = (
 /obj/machinery/shower/directional/north,
 /obj/structure/curtain,
@@ -10240,7 +10252,7 @@ sO
 aN
 Dg
 Dg
-Dg
+Ds
 RT
 MU
 wT
@@ -10388,7 +10400,7 @@ MU
 aN
 Dg
 Dg
-Dg
+Dp
 RT
 MU
 hF

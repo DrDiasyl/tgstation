@@ -554,10 +554,10 @@
 /obj/effect/turf_decal/tgmc_name/g
 	icon_state = "letter_g"
 
-/obj/effect/turf_decal/tgmc_name/g
+/obj/effect/turf_decal/tgmc_name/m
 	icon_state = "letter_m"
 
-/obj/effect/turf_decal/tgmc_name/g
+/obj/effect/turf_decal/tgmc_name/c
 	icon_state = "letter_c"
 
 //TGMC Typhoon numbers for dropships
