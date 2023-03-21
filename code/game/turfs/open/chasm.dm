@@ -117,6 +117,6 @@
 	icon_state = "cargochasms-255"
 	base_icon_state = "cargochasms"
 	baseturfs = /turf/open/chasm/cargo
-	light_range = 1.5
-	light_power = 0.60
+	light_range = 2
+	light_power = 0.8
 	light_color = LIGHT_COLOR_ORANGE
