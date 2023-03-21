@@ -41,3 +41,84 @@
 		52 SECONDS,
 		54 SECONDS,
 	)
+
+//Clothing for the TGMC Typhoon. Can be used for any other marine needs.
+
+/datum/armor/hats_marine //If you need a normal hat you can have it
+	melee = 40
+	bullet = 30
+	laser = 25
+	energy = 35
+	bomb = 25
+	bio = 10
+	fire = 50
+	acid = 60
+	wound = 10
+
+/datum/armor/hats_marine/decayed //Most of hats found are decayed, as those derelicts are really old
+	melee = 20
+	bullet = 15
+	laser = 12
+	energy = 17
+	bomb = 12
+	bio = 5
+	fire = 25
+	acid = 31
+	wound = 5
+
+//Hats
+/obj/item/clothing/head/beret/marine
+	name = "terragov marine corps beret"
+	desc = "A beret used by the Marine Corps of TerraGov personnel. Offering protection while being in a style."
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#6d8282#f0cc8f"
+	armor_type = /datum/armor/hats_marine
+	strip_delay = 80
+
+/obj/item/clothing/head/beret/marine/decayed
+	name = "old terragov marine corps beret"
+	desc = "A beret used by the Marine Corps of TerraGov personnel. This one has already decayed over time, and lost most of its protective values."
+	armor_type = /datum/armor/hats_marine/decayed
+
+/obj/item/clothing/head/beret/marine/captain
+	name = "terragov marine corps captain beret"
+	desc = "A beret worn by the brave leader of a marine platoon. Offering protection while being in a style."
+	greyscale_colors = "#FFFFFF#2E5EFF"
+
+/obj/item/clothing/head/soft/marine
+	name = "terragov marine corps officer cap"
+	desc = "It's a robust baseball hat in tasteful dark brown color. It's usually given to staff officers of the TerraGov Marine Corps."
+	icon_state = "marinesoft"
+	soft_type = "marine"
+	armor_type = /datum/armor/hats_marine
+	strip_delay = 60
+	dog_fashion = null
+/obj/item/clothing/head/soft/marine/decayed
+	name = "old terragov marine corps officer cap"
+	desc = "It's a robust baseball hat in tasteful dark brown color. It's usually given to staff officers of the TerraGov Marine Corps. This one has already decayed over time, and lost most of its protective values."
+	armor_type = /datum/armor/hats_marine/decayed
+
+//Clothing
+/obj/item/clothing/under/rank/security/head_of_security/formal/marine
+	desc = "Uniform issued to the TerraGov Marine Corps officers."
+	name = "terragov marine corps officer uniform"
+	icon_state = "hostanclothes"
+
+/obj/item/clothing/neck/cloak/cap/marine
+	name = "terragov marine corps captain's cloak"
+	desc = "Worn by the commander of a brave Marine platoon."
+	icon_state = "marinecapcloak"
+
+
+//Misc
+/obj/item/radio/headset/marine //Just an cool looking bowman headset, without any special encryption keys
+	name = "\proper the terragov marine corps bowman headset"
+	desc = "The headset for the TerraGov Marine Corps personnel. Protects ears from flashbangs."
+	icon_state = "marine_headset_alt"
+	worn_icon_state = "marine_headset_alt"
+
+/obj/item/radio/headset/marine/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
