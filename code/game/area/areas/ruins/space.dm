@@ -620,6 +620,10 @@
 	name = "\improper TGMC Typhoon Starboard Maintenance"
 	icon_state = "typhoon_starmaint"
 
+/area/ruin/space/has_grav/tgmctyphoon/starboardmaint_eng
+	name = "\improper TGMC Typhoon Engineering Starboard Maintenance"
+	icon_state = "typhoon_starmaint_eng"
+
 /area/ruin/space/has_grav/tgmctyphoon/research
 	name = "\improper TGMC Typhoon Research Divison"
 	icon_state = "typhoon_research"
@@ -628,9 +632,17 @@
 	name = "\improper TGMC Typhoon Medbay"
 	icon_state = "typhoon_med"
 
+/area/ruin/space/has_grav/tgmctyphoon/cryo
+	name = "\improper TGMC Typhoon Cryogenics"
+	icon_state = "typhoon_cryo"
+
 /area/ruin/space/has_grav/tgmctyphoon/hangar
 	name = "\improper TGMC Typhoon Hangar"
 	icon_state = "typhoon_hangar"
+
+/area/ruin/space/has_grav/tgmctyphoon/cargo
+	name = "\improper TGMC Typhoon Hangar"
+	icon_state = "typhoon_cargo"
 
 /area/ruin/space/has_grav/tgmctyphoon/hangar/valhalla
 	name = "\improper TGMC Typhoon Valhalla Dropship"

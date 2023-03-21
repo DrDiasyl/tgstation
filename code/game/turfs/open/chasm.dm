@@ -109,3 +109,14 @@
 	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "dirt"
 	return TRUE
+
+/turf/open/chasm/cargo
+	icon = 'icons/turf/floors/cargochasms.dmi'
+	name = "Cargo Lift Shaft"
+	desc = "Once this used to be a shaft for a cargo lift, used on most of NT and TerraGov vessels. This one seems to be broken, so this is just a huge hole into your imminent death."
+	icon_state = "cargochasms-255"
+	base_icon_state = "cargochasms"
+	baseturfs = /turf/open/chasm/cargo
+	light_range = 1.5
+	light_power = 0.60
+	light_color = LIGHT_COLOR_ORANGE

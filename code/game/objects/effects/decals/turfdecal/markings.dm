@@ -542,3 +542,32 @@
 
 /obj/effect/turf_decal/board_letter/h
 	icon_state = "board_h"
+
+//TGMC Typhoon letters
+
+/obj/effect/turf_decal/tgmc_name
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "letter_m"
+/obj/effect/turf_decal/tgmc_name/t
+	icon_state = "letter_t"
+
+/obj/effect/turf_decal/tgmc_name/g
+	icon_state = "letter_g"
+
+/obj/effect/turf_decal/tgmc_name/g
+	icon_state = "letter_m"
+
+/obj/effect/turf_decal/tgmc_name/g
+	icon_state = "letter_c"
+
+//TGMC Typhoon numbers for dropships
+
+/obj/effect/turf_decal/huge_numbers
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "number_1"
+
+/obj/effect/turf_decal/huge_numbers/one
+	icon_state = "number_1"
+
+/obj/effect/turf_decal/huge_numbers/two
+	icon_state = "number_2"

@@ -1,8 +1,18 @@
-/obj/item/tape/typhoon_briefing
-	name = "TGV Typhoon Briefing #1"
-	desc = "A dusty old tape."
-	icon_state = "tape_red"
+/obj/item/tape/typhoon
+	name = "TGV Typhoon Tape"
+	desc = "This should not be there."
 	used_capacity = 10 MINUTES // so the tape is full and can't be recorded over
+	storedinfo = list(
+		"\[00:01\]<B>YOU SHOULD NOT HEAR THIS.</B>",
+	)
+	timestamp = list(
+		1 SECONDS,
+	)
+
+/obj/item/tape/typhoon/briefing
+	name = "TGV Typhoon Briefing #1"
+	desc = "A dusty old tape. One of the sides has a recording."
+	icon_state = "tape_red"
 	storedinfo = list(
 		"\[00:01\]<B>Capt. Alexandria:</B> Listen up marines! We got a distress call from a Nanotrasen <I>BUZZ</I> Research Station in this system!",
 		"\[00:06\]<B>Capt. Alexandria:</B> We have responded to it, and now you all will be deploying to it on dropship Bastion!",
@@ -31,7 +41,3 @@
 		52 SECONDS,
 		54 SECONDS,
 	)
-
-/obj/item/tape/typhoon_briefing/Initialize(mapload)
-	. = ..()
-	unspool() // the tape spawns damaged
