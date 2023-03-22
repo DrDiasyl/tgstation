@@ -127,12 +127,12 @@
 /obj/item/card/id/typhoon/bravo_marine
 	name = "TGV Typhoon Bravo Marine ID"
 	desc = "A faded TGV Typhoon ID card. You can make out the rank \"Bravo Squad Marine\"."
-	trim = /datum/id_trim/away/typhoon/bravo_marine
+	trim = /datum/id_trim/away/typhoon/bravo
 
 /obj/item/card/id/typhoon/delta_marine
 	name = "TGV Typhoon Delta Marine ID"
 	desc = "A faded TGV Typhoon ID card. You can make out the rank \"Delta Squad Marine\"."
-	trim = /datum/id_trim/away/typhoon/delta_marine
+	trim = /datum/id_trim/away/typhoon/delta
 
 /obj/item/card/id/typhoon/medical
 	name = "TGV Typhoon Medical Officer ID"
