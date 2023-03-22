@@ -136,3 +136,32 @@
 /datum/id_trim/away/dangerous_research/head_occultist
 	assignment = "Head Occultist"
 	access = list(ACCESS_AWAY_SCIENCE, ACCESS_AWAY_COMMAND)
+
+//Trims for TGMC Typhoon
+/datum/id_trim/away/typhoon
+	assignment = "Squad Marine"
+	access = list(ACCESS_AWAY_GENERAL)
+
+/datum/id_trim/away/typhoon/bravo
+	assignment = "Bravo Squad Marine"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_GENERIC1)
+
+/datum/id_trim/away/typhoon/delta
+	assignment = "Delta Squad Marine"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_GENERIC2)
+
+/datum/id_trim/away/typhoon/staff_officer
+	assignment = "TGV Typhoon Staff Officer"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_COMMAND)
+
+/datum/id_trim/away/typhoon/medical
+	assignment = "TGV Typhoon Medical Officer"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MEDICAL)
+/datum/id_trim/away/typhoon/captain
+	assignment = "TGV Typhoon Commanding Officer"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_COMMAND, ACCESS_AWAY_MEDICAL, ACCESS_AWAY_SUPPLY, ACCESS_AWAY_GENERIC1, ACCESS_AWAY_GENERIC2, ACCESS_AWAY_ENGINEERING)
+
+/datum/id_trim/away/typhoon/cargo
+	assignment = "Requisitions Officer"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_COMMAND, ACCESS_AWAY_SUPPLY)
+

@@ -122,3 +122,69 @@
 /obj/item/radio/headset/marine/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
+//Those are ID cards to be placed around station near remains and such
+/obj/item/card/id/typhoon/bravo_marine
+	name = "TGV Typhoon Bravo Marine ID"
+	desc = "A faded TGV Typhoon ID card. You can make out the rank \"Bravo Squad Marine\"."
+	trim = /datum/id_trim/away/typhoon/bravo_marine
+
+/obj/item/card/id/typhoon/delta_marine
+	name = "TGV Typhoon Delta Marine ID"
+	desc = "A faded TGV Typhoon ID card. You can make out the rank \"Delta Squad Marine\"."
+	trim = /datum/id_trim/away/typhoon/delta_marine
+
+/obj/item/card/id/typhoon/medical
+	name = "TGV Typhoon Medical Officer ID"
+	desc = "A faded TGV Typhoon ID card. You can make out the rank \"Medical Officer\"."
+	trim = /datum/id_trim/away/typhoon/medical
+
+
+//Corpses
+//Making marine corpses would produce too much armor so I won't do that. Let's say the all have rotted, but why captain and staff officers didn't? Because.
+/obj/effect/mob_spawn/corpse/human/typhoon/staffofficer
+	name = "TGMC Staff Officer"
+	outfit = /datum/outfit/typhoon/staffofficer
+
+/datum/outfit/typhoon/staffofficer
+	name = "TGMC Staff Officer"
+	ears = /obj/item/radio/headset/marine
+	uniform = /obj/item/clothing/under/rank/security/head_of_security/formal/marine
+	suit = /obj/item/clothing/suit/armor/bulletproof
+	shoes = /obj/item/clothing/shoes/laceup
+	head = /obj/item/clothing/head/soft/marine/decayed
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/away/typhoon/staff_officer
+
+/obj/effect/mob_spawn/corpse/human/typhoon/captain
+	name = "Capt. Alexandria Sanita"
+	outfit = /datum/outfit/typhoon/captain
+
+/datum/outfit/typhoon/captain
+	name = "TGMC Commanding Officer"
+	ears = /obj/item/radio/headset/marine
+	uniform = /obj/item/clothing/under/rank/security/head_of_security/formal/marine
+	suit = /obj/item/clothing/suit/armor/bulletproof
+	shoes = /obj/item/clothing/shoes/jackboots
+	head = /obj/item/clothing/head/beret/marine/captain
+	neck = /obj/item/clothing/neck/cloak/cap/marine
+	glasses = /obj/item/clothing/glasses/sunglasses
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/away/typhoon/captain
+
+/obj/effect/mob_spawn/corpse/human/typhoon/cargo
+	name = "CPO. Alex Smith"
+	outfit = /datum/outfit/typhoon/cargo
+
+/datum/outfit/typhoon/cargo
+	name = "TGMC Requisitions Officer"
+	ears = /obj/item/radio/headset/marine
+	uniform = /obj/item/clothing/under/rank/security/head_of_security/formal/marine
+	suit = /obj/item/clothing/suit/armor/bulletproof
+	shoes = /obj/item/clothing/shoes/jackboots
+	belt = /obj/item/grenade/frag
+	gloves = /obj/item/clothing/gloves/color/black
+	glasses = /obj/item/clothing/glasses/sunglasses
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/away/typhoon/cargo
+

@@ -22,7 +22,7 @@
 	pixel_y = 14
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "at" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/plastic,
@@ -81,6 +81,9 @@
 /obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/tgmctyphoon/hangar)
+"bx" = (
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "bD" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/smooth,
@@ -95,6 +98,10 @@
 /obj/effect/decal/cleanable/blood/splatter/over_window,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/tgmctyphoon/bridge)
+"cd" = (
+/obj/effect/turf_decal/tgmc_name/m,
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/tgmctyphoon)
 "ce" = (
 /obj/item/food/grown/poppy{
 	pixel_y = 9
@@ -165,7 +172,7 @@
 /obj/effect/spawner/random/maintenance/three,
 /obj/effect/spawner/random/techstorage/arcade_boards,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "dj" = (
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
 	dir = 1;
@@ -187,7 +194,7 @@
 /obj/effect/spawner/random/maintenance/three,
 /obj/effect/spawner/random/mod,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "dr" = (
 /obj/structure/table/reinforced/rglass,
 /obj/effect/decal/cleanable/blood,
@@ -269,7 +276,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "eW" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/ruin/space/has_grav/tgmctyphoon/hangar/valhalla)
@@ -284,7 +291,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "fv" = (
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/ruin/space/has_grav/tgmctyphoon/bowhallway)
@@ -295,7 +302,7 @@
 /obj/effect/spawner/random/medical/medkit,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "fy" = (
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
@@ -332,7 +339,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "fR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -342,8 +349,8 @@
 	pixel_y = -7;
 	pixel_x = -7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "fS" = (
 /obj/structure/table/reinforced/rglass,
 /obj/item/clothing/head/utility/surgerycap/cmo,
@@ -382,7 +389,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "gR" = (
 /obj/machinery/power/port_gen/pacman/super,
 /turf/open/floor/iron/smooth,
@@ -421,7 +428,7 @@
 /area/ruin/space/has_grav/tgmctyphoon/bridge/corporate)
 "hF" = (
 /turf/closed/wall,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "hI" = (
 /obj/item/gun/ballistic/automatic/pistol/m1911/no_mag,
 /turf/open/floor/plating,
@@ -431,7 +438,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth_large,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "ih" = (
 /obj/structure/chair/sofa/corp/left,
 /turf/open/floor/wood,
@@ -535,7 +542,7 @@
 	},
 /obj/item/stack/rods/two,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "kV" = (
 /obj/structure/closet,
 /obj/item/ammo_box/magazine/m45,
@@ -611,8 +618,8 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "ns" = (
 /obj/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
@@ -642,7 +649,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/railing,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "ob" = (
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 8
@@ -675,7 +682,7 @@
 "oD" = (
 /obj/structure/chair/office/light,
 /turf/open/floor/iron/smooth_large,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "oS" = (
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 8
@@ -693,8 +700,8 @@
 	pixel_y = 7;
 	pixel_x = -7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "pl" = (
 /obj/structure/table/reinforced,
 /obj/item/bodybag/environmental/nanotrasen,
@@ -753,7 +760,7 @@
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "qk" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/tgmctyphoon/bridge/co)
@@ -762,7 +769,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "qC" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/tgmctyphoon/alphabravo)
@@ -770,13 +777,13 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/rack,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "qP" = (
 /turf/open/floor/carpet/blue,
 /area/ruin/space/has_grav/tgmctyphoon/bridge/fc)
 "qQ" = (
 /obj/structure/table/reinforced,
-/obj/item/radio,
+/obj/item/radio/headset/marine,
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/tgmctyphoon/bridge)
 "qV" = (
@@ -787,13 +794,13 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "rl" = (
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "rG" = (
 /obj/structure/chair,
 /obj/structure/sign/warning/chem_diamond/directional/north,
@@ -811,6 +818,9 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/tgmctyphoon/hangar)
+"sd" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/tgmctyphoon/starboardmaint_eng)
 "sm" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/tgmctyphoon/charliedelta)
@@ -833,8 +843,8 @@
 	dir = 10;
 	pixel_x = 7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "sO" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/tgmctyphoon/hangar)
@@ -880,7 +890,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "tF" = (
 /obj/structure/closet,
 /turf/open/floor/iron/white,
@@ -904,7 +914,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "tQ" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/tgmctyphoon/bridge/corporate)
@@ -920,10 +930,10 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "uD" = (
 /turf/closed/wall/r_wall,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "uF" = (
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/tgmctyphoon/engineering/engine)
@@ -935,7 +945,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "uM" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -945,7 +955,7 @@
 "uT" = (
 /obj/machinery/vending/security,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "uU" = (
 /obj/machinery/door/poddoor/shutters/preopen,
 /turf/open/floor/iron/white/textured,
@@ -982,7 +992,7 @@
 /obj/effect/turf_decal/stripes/corner,
 /obj/structure/railing/corner,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "vz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -991,8 +1001,8 @@
 	dir = 1;
 	pixel_y = -7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "vJ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1008,7 +1018,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "vS" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/smooth,
@@ -1039,7 +1049,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "wt" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
@@ -1055,7 +1065,7 @@
 "wI" = (
 /obj/item/chair,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "wP" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/tgmctyphoon/medical)
@@ -1101,7 +1111,7 @@
 	},
 /obj/effect/turf_decal/caution,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "xq" = (
 /obj/item/chair,
 /turf/open/floor/iron/white,
@@ -1113,11 +1123,11 @@
 "xE" = (
 /obj/effect/spawner/random/exotic/ripley,
 /turf/open/floor/iron/recharge_floor,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "xF" = (
 /obj/machinery/vending/engivend,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "xQ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/decal/cleanable/blood/splatter/over_window,
@@ -1175,6 +1185,9 @@
 /obj/item/clothing/gloves/combat,
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/tgmctyphoon/bridge)
+"yZ" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/tgmctyphoon/starboardmaint_eng)
 "zn" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
@@ -1206,6 +1219,9 @@
 /obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/tgmctyphoon/engineering/engine)
+"AC" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "AD" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/glasses/hud/health/night,
@@ -1230,8 +1246,8 @@
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	pixel_y = 7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Bq" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/tgmcemblem{
@@ -1243,8 +1259,8 @@
 /turf/open/floor/carpet/royalblue,
 /area/ruin/space/has_grav/tgmctyphoon/bridge/co)
 "BE" = (
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "BT" = (
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/ruin/space/has_grav/tgmctyphoon/charliedelta)
@@ -1275,7 +1291,7 @@
 /obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/contraband/permabrig_gear,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "CG" = (
 /obj/item/bouquet/poppy,
 /obj/item/clothing/head/helmet/marine/engineer{
@@ -1335,8 +1351,8 @@
 	dir = 4;
 	pixel_x = -7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "DQ" = (
 /obj/structure/chair/stool,
 /turf/open/floor/iron/white,
@@ -1356,7 +1372,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Ec" = (
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/tgmctyphoon/sternhallway)
@@ -1377,7 +1393,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "EJ" = (
 /obj/structure/table/reinforced,
 /obj/item/phone,
@@ -1385,7 +1401,7 @@
 /area/ruin/space/has_grav/tgmctyphoon/bridge)
 "Fc" = (
 /turf/open/floor/plating,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/starboardmaint_eng)
 "Fd" = (
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/tgmctyphoon/portmaint)
@@ -1398,7 +1414,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "FL" = (
 /obj/structure/chair{
 	dir = 1
@@ -1430,6 +1446,10 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/tgmctyphoon/hangar)
+"Gr" = (
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/tgmctyphoon)
 "GB" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -1489,7 +1509,7 @@
 /obj/effect/decal/cleanable/glass,
 /obj/item/rack_parts,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Iz" = (
 /obj/structure/chair,
 /turf/open/floor/carpet/executive,
@@ -1546,7 +1566,7 @@
 "JN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/smooth_large,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "JV" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/white,
@@ -1569,7 +1589,7 @@
 /area/ruin/space/has_grav/tgmctyphoon/bridge)
 "Kf" = (
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Kj" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/sign/nanotrasen{
@@ -1580,10 +1600,10 @@
 "Km" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Kw" = (
 /turf/open/floor/iron/smooth_large,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "Kx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -1593,8 +1613,8 @@
 	pixel_y = -7;
 	pixel_x = 7
 	},
-/turf/open/chasm,
-/area/space)
+/turf/open/chasm/cargo,
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Kz" = (
 /obj/effect/turf_decal/tile/red/fourcorners,
 /obj/structure/chair/plastic{
@@ -1608,7 +1628,7 @@
 /obj/effect/spawner/random/maintenance/three,
 /obj/effect/spawner/random/medical/medkit,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "KF" = (
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/tgmctyphoon/portmaint)
@@ -1629,7 +1649,7 @@
 /obj/item/clothing/under/rank/centcom/military,
 /obj/item/clothing/under/rank/centcom/military,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "LC" = (
 /obj/structure/table/reinforced,
 /obj/effect/mob_spawn/corpse/human/doctor,
@@ -1662,13 +1682,13 @@
 /obj/item/clothing/suit/armor/vest/marine,
 /obj/item/clothing/head/beret/durathread,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Mi" = (
 /obj/effect/turf_decal/tile/purple/half/contrasted{
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "Mp" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
@@ -1699,7 +1719,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Nn" = (
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 4
@@ -1723,7 +1743,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Nt" = (
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 8
@@ -1745,7 +1765,7 @@
 "NW" = (
 /obj/item/shard,
 /turf/open/floor/plating,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Oa" = (
 /turf/open/floor/iron/tgmcemblem{
 	dir = 1
@@ -1763,7 +1783,7 @@
 "Og" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "On" = (
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/tgmctyphoon/bridge/corporate)
@@ -1802,7 +1822,7 @@
 /obj/effect/turf_decal/box,
 /obj/structure/rack,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "PD" = (
 /obj/structure/table/reinforced,
 /obj/item/taperecorder/empty,
@@ -1843,7 +1863,11 @@
 "Qv" = (
 /obj/effect/spawner/structure/window/reinforced/damaged,
 /turf/open/floor/plating,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
+"Qz" = (
+/obj/effect/turf_decal/tgmc_name/g,
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/tgmctyphoon)
 "QH" = (
 /obj/structure/sign/warning/cold_temp/directional/north,
 /obj/structure/table/reinforced,
@@ -1858,7 +1882,7 @@
 "Ra" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Rf" = (
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/tgmctyphoon/bridge)
@@ -1901,7 +1925,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Sm" = (
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/tgmctyphoon/starboardmaint)
@@ -1911,7 +1935,7 @@
 /obj/effect/spawner/random/maintenance/three,
 /obj/effect/spawner/random/decoration/material,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Sw" = (
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 4
@@ -1952,7 +1976,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/chair,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "TA" = (
 /obj/machinery/chem_heater,
 /turf/open/floor/iron/white,
@@ -2022,7 +2046,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "UY" = (
 /obj/effect/turf_decal/box,
 /obj/structure/rack,
@@ -2030,7 +2054,7 @@
 /obj/effect/spawner/random/decoration/glowstick,
 /obj/effect/spawner/random/decoration/glowstick,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Vj" = (
 /turf/open/floor/carpet/executive,
 /area/ruin/space/has_grav/tgmctyphoon/bridge/corporate)
@@ -2075,7 +2099,7 @@
 "Wp" = (
 /obj/effect/spawner/random/trash/caution_sign,
 /turf/open/floor/iron/smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cargo)
 "Wr" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/structure/chair/plastic{
@@ -2085,7 +2109,7 @@
 /area/ruin/space/has_grav/tgmctyphoon/hangar)
 "Wy" = (
 /turf/open/floor/catwalk_floor/iron_smooth,
-/area/space)
+/area/ruin/space/has_grav/tgmctyphoon/cryo)
 "WM" = (
 /turf/open/floor/iron/tgmcemblem/center{
 	dir = 8
@@ -2109,6 +2133,10 @@
 /obj/structure/sign/flag/terragov/directional/north,
 /turf/open/floor/carpet/executive,
 /area/ruin/space/has_grav/tgmctyphoon/bridge/corporate)
+"XC" = (
+/obj/effect/turf_decal/tgmc_name/t,
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/tgmctyphoon)
 "XM" = (
 /obj/machinery/door/poddoor/preopen,
 /turf/open/floor/plating/airless,
@@ -2133,6 +2161,11 @@
 /obj/machinery/computer,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/tgmctyphoon/medical)
+"Yg" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tgmc_name/c,
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/tgmctyphoon)
 "Yh" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/tgmctyphoon/sternhallway)
@@ -2880,7 +2913,7 @@ Tq
 Tq
 Tq
 Tq
-Tq
+XC
 Tq
 CX
 CX
@@ -3078,7 +3111,7 @@ Tq
 Tq
 Tq
 Tq
-Tq
+Qz
 Tq
 CX
 CX
@@ -3274,9 +3307,9 @@ cz
 eq
 Tq
 cB
-AF
-aM
-AF
+Tq
+Gr
+cd
 AF
 AF
 CX
@@ -3341,8 +3374,8 @@ Zq
 Tq
 Tq
 cB
-AF
-AF
+Tq
+Tq
 aM
 CX
 CX
@@ -3408,7 +3441,7 @@ Tq
 Tq
 Tq
 cB
-AF
+cB
 AF
 CX
 CX
@@ -3474,7 +3507,7 @@ Tq
 Tq
 Tq
 IQ
-cB
+Yg
 cB
 CX
 CX
@@ -6371,7 +6404,7 @@ JN
 Kw
 Wy
 Wy
-Kf
+bx
 hF
 Ec
 Ec
@@ -9215,8 +9248,8 @@ MU
 Pm
 pU
 pU
-hF
-hF
+AC
+AC
 Kf
 Og
 Ns
@@ -9253,11 +9286,11 @@ CX
 CX
 CX
 CX
-uD
-hF
-hF
-hF
-hF
+yZ
+sd
+sd
+sd
+sd
 sO
 sO
 sO
@@ -9281,7 +9314,7 @@ MU
 MU
 MU
 MU
-hF
+AC
 Kf
 Kf
 Kf
@@ -9319,7 +9352,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9385,7 +9418,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9413,7 +9446,7 @@ MU
 MU
 MU
 MU
-hF
+AC
 Kf
 Kf
 Wp
@@ -9451,7 +9484,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9479,7 +9512,7 @@ ec
 ec
 tl
 MU
-hF
+AC
 vy
 Na
 kS
@@ -9517,7 +9550,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9545,7 +9578,7 @@ Or
 dc
 RI
 MU
-hF
+AC
 oa
 Kx
 nn
@@ -9583,7 +9616,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9611,7 +9644,7 @@ Or
 UH
 RI
 MU
-hF
+AC
 oa
 vz
 BE
@@ -9649,7 +9682,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9677,7 +9710,7 @@ vJ
 sa
 RI
 MU
-hF
+AC
 Ex
 vz
 BE
@@ -9715,7 +9748,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9743,7 +9776,7 @@ Or
 Or
 RI
 MU
-hF
+AC
 oa
 vz
 BE
@@ -9781,7 +9814,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9809,7 +9842,7 @@ Or
 Or
 RI
 MU
-hF
+AC
 oa
 fR
 DI
@@ -9847,7 +9880,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 Fc
 Fc
@@ -9875,7 +9908,7 @@ Or
 Or
 RI
 MU
-hF
+AC
 uI
 wj
 RZ
@@ -9913,10 +9946,10 @@ CX
 CX
 CX
 CX
-uD
-uD
-uD
-uD
+yZ
+yZ
+yZ
+yZ
 Fc
 sO
 bp
@@ -9941,11 +9974,11 @@ vJ
 ja
 RI
 MU
-hF
-hF
+AC
+AC
 Kf
-hF
-hF
+AC
+AC
 uD
 uD
 uD
@@ -9981,8 +10014,8 @@ CX
 CX
 CX
 CX
-eY
-uD
+sd
+yZ
 Fc
 sO
 bp
@@ -10007,13 +10040,13 @@ Or
 UH
 RI
 MU
-hF
+AC
 Kf
 Kf
 Kf
 Kf
 uD
-hF
+AC
 CX
 CX
 CX
@@ -10048,7 +10081,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 sO
 bp
@@ -10114,7 +10147,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 sO
 ju
@@ -10139,7 +10172,7 @@ ct
 ct
 PF
 MU
-hF
+AC
 Kf
 Kf
 Kf
@@ -10180,7 +10213,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 sO
 aN
@@ -10205,7 +10238,7 @@ MU
 MU
 MU
 MU
-hF
+AC
 Kf
 Kf
 Kf
@@ -10246,7 +10279,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 sO
 aN
@@ -10271,7 +10304,7 @@ QL
 QL
 bj
 MU
-hF
+AC
 xE
 Kf
 Kf
@@ -10312,7 +10345,7 @@ CX
 CX
 CX
 CX
-uD
+yZ
 Fc
 sO
 aN
@@ -10337,7 +10370,7 @@ Dg
 Dg
 RT
 MU
-hF
+AC
 Kf
 Kf
 Kf
@@ -10378,7 +10411,7 @@ Tq
 Tq
 Tq
 Hd
-uD
+yZ
 Fc
 sO
 VC
@@ -10403,7 +10436,7 @@ Dg
 Dp
 RT
 MU
-hF
+AC
 xE
 Kf
 Kf
@@ -10444,7 +10477,7 @@ Tq
 Tq
 Tq
 eY
-uD
+yZ
 Fc
 sO
 MU
@@ -10469,7 +10502,7 @@ Dg
 Dg
 RT
 MU
-hF
+AC
 Kf
 Kf
 Kf
