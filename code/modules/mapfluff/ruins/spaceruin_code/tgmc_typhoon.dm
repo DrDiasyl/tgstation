@@ -352,6 +352,13 @@
 		2 MINUTES + 46 SECONDS,
 		3 MINUTES + 19 SECONDS,
 	)
+//Plague for the memorial
+/obj/structure/plaque/static_plaque/golden/marine
+	name = "TGV Typhoon Memorial plaque"
+	desc = "In honor of the brave soldiers of the TerraGov Marine Corps who gave their lives in service to their fellow citizens, we dedicate this memorial plaque on board the TGV Typhoon. These valiant warriors fought for the preservation of peace and freedom, and their sacrifice will never be forgotten.\
+	May their courage and dedication inspire all those who serve in the TerraGov Marine Corps and beyond, and may their memory serve as a testament to the unbreakable spirit of humanity. We honor their sacrifice and pledge to uphold the ideals for which they gave their lives.\
+	'Here lies the brave men and women of the TerraGov Marine Corps, who fearlessly defended their fellow citizens and the ideals of freedom and justice. Their courage and sacrifice will forever be remembered.'"
+	icon_state = "marineplaque"
 
 //Clothing for the TGMC Typhoon. Can be used for any other marine needs.
 
@@ -477,7 +484,6 @@
 	name = "TGMC Commanding Officer"
 	ears = /obj/item/radio/headset/marine
 	uniform = /obj/item/clothing/under/rank/security/head_of_security/formal/marine
-	suit = /obj/item/clothing/suit/armor/bulletproof
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/beret/marine/captain
 	neck = /obj/item/clothing/neck/cloak/cap/marine

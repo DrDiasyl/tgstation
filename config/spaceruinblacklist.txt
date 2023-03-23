@@ -44,6 +44,7 @@
 #_maps/RandomRuins/SpaceRuins/originalcontent.dmm
 #_maps/RandomRuins/SpaceRuins/shuttlerelic.dmm
 #_maps/RandomRuins/SpaceRuins/spacehotel.dmm
+#_maps/RandomRuins/SpaceRuins/tgmc_typhoon.dmm
 #_maps/RandomRuins/SpaceRuins/thederelict.dmm
 #_maps/RandomRuins/SpaceRuins/turretedoutpost.dmm
 #_maps/RandomRuins/SpaceRuins/vaporwave.dmm
@@ -56,3 +57,4 @@
 #_maps/RandomRuins/SpaceRuins/spinwardsmoothies.dmm
 #_maps/RandomRuins/SpaceRuins/dangerous_research.dmm
 #_maps/RandomRuins/SpaceRuins/the_faceoff.dmm
+
