@@ -4,7 +4,6 @@
  * Applies and removes the cult halo
  */
 /datum/element/cult_halo
-	element_flags = ELEMENT_DETACH
 
 /datum/element/cult_halo/Attach(datum/target, initial_delay = 20 SECONDS)
 	. = ..()
@@ -12,8 +11,8 @@
 		return ELEMENT_INCOMPATIBLE
 
 	// Register signals for mob transformation to prevent premature halo removal
-	RegisterSignal(target, list(COMSIG_CHANGELING_TRANSFORM, COMSIG_MONKEY_HUMANIZE, COMSIG_HUMAN_MONKEYIZE), .proc/set_halo)
-	addtimer(CALLBACK(src, .proc/set_halo, target), initial_delay)
+	RegisterSignals(target, list(COMSIG_CHANGELING_TRANSFORM, COMSIG_MONKEY_HUMANIZE, COMSIG_HUMAN_MONKEYIZE), PROC_REF(set_halo))
+	addtimer(CALLBACK(src, PROC_REF(set_halo), target), initial_delay)
 
 /**
  * Halo setter proc
@@ -24,7 +23,7 @@
 	SIGNAL_HANDLER
 
 	ADD_TRAIT(target, TRAIT_CULT_HALO, CULT_TRAIT)
-	var/mutable_appearance/new_halo_overlay = mutable_appearance('icons/effects/32x64.dmi', "halo[rand(1, 6)]", -HALO_LAYER)
+	var/mutable_appearance/new_halo_overlay = mutable_appearance('icons/effects/cult/halo.dmi', "halo[rand(1, 6)]", -HALO_LAYER)
 	if (ishuman(target))
 		var/mob/living/carbon/human/human_parent = target
 		new /obj/effect/temp_visual/cult/sparks(get_turf(human_parent), human_parent.dir)

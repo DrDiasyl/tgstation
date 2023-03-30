@@ -54,10 +54,14 @@
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
 	uniform = /obj/item/clothing/under/misc/assistantformal
+	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/laceup
 	r_pocket = /obj/item/radio/off
-	back = /obj/item/storage/backpack
-	implants = list(/obj/item/implant/mindshield, /obj/item/implant/exile/noteleport)
+
+	implants = list(
+		/obj/item/implant/exile/noteleport,
+		/obj/item/implant/mindshield,
+	)
 
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff/security
 	name = "hotel security sleeper"
@@ -71,70 +75,15 @@
 /datum/outfit/hotelstaff/security
 	name = "Hotel Security"
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt
-	shoes = /obj/item/clothing/shoes/jackboots
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt
-	head = /obj/item/clothing/head/helmet/blueshirt
 	back = /obj/item/storage/backpack/security
 	belt = /obj/item/storage/belt/security/full
+	head = /obj/item/clothing/head/helmet/blueshirt
+	shoes = /obj/item/clothing/shoes/jackboots
 
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
 	return ..()
-
-//battlecruiser stuff, i suppose
-
-/obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser
-	name = "Syndicate Battlecruiser Ship Operative"
-	you_are_text = "You are a crewmember aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to follow your captain's orders, maintain the ship, and keep the engine running. If you are not familiar with how the supermatter engine functions: do not attempt to start it."
-	important_text = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
-	prompt_name = "a battlecruiser crewmember"
-	outfit = /datum/outfit/syndicate_empty/battlecruiser
-
-/datum/outfit/syndicate_empty/battlecruiser
-	name = "Syndicate Battlecruiser Ship Operative"
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_pocket = /obj/item/knife/combat/survival
-	belt = /obj/item/storage/belt/military/assault
-
-/obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser/assault
-	name = "Syndicate Battlecruiser Assault Operative"
-	you_are_text = "You are an assault operative aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to follow your captain's orders, keep intruders out of the ship, and assault Space Station 13. There is an armory, multiple assault ships, and beam cannons to attack the station with."
-	important_text = "Work as a team with your fellow operatives and work out a plan of attack. If you are overwhelmed, escape back to your ship!"
-	prompt_name = "a battlecruiser operative"
-	outfit = /datum/outfit/syndicate_empty/battlecruiser/assault
-
-/datum/outfit/syndicate_empty/battlecruiser/assault
-	name = "Syndicate Battlecruiser Assault Operative"
-	uniform = /obj/item/clothing/under/syndicate/combat
-	l_pocket = /obj/item/ammo_box/magazine/m9mm
-	r_pocket = /obj/item/knife/combat/survival
-	belt = /obj/item/storage/belt/military
-	suit = /obj/item/clothing/suit/armor/vest
-	suit_store = /obj/item/gun/ballistic/automatic/pistol
-	back = /obj/item/storage/backpack/security
-	mask = /obj/item/clothing/mask/gas/syndicate
-
-/obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser/captain
-	name = "Syndicate Battlecruiser Captain"
-	you_are_text = "You are the captain aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to oversee your crew, defend the ship, and destroy Space Station 13. The ship has an armory, multiple ships, beam cannons, and multiple crewmembers to accomplish this goal."
-	important_text = "As the captain, this whole operation falls on your shoulders. You do not need to nuke the station, causing sufficient damage and preventing your ship from being destroyed will be enough."
-	prompt_name = "a battlecruiser captain"
-	outfit = /datum/outfit/syndicate_empty/battlecruiser/assault/captain
-
-/datum/outfit/syndicate_empty/battlecruiser/assault/captain
-	name = "Syndicate Battlecruiser Captain"
-	l_pocket = /obj/item/melee/energy/sword/saber/red
-	r_pocket = /obj/item/melee/baton/telescopic
-	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	suit_store = /obj/item/gun/ballistic/revolver/mateba
-	back = /obj/item/storage/backpack/satchel/leather
-	head = /obj/item/clothing/head/hos/syndicate
-	mask = /obj/item/clothing/mask/cigarette/cigar/havana
-	glasses = /obj/item/clothing/glasses/thermal/eyepatch
-	id_trim = /datum/id_trim/battlecruiser/captain
 
 /obj/effect/mob_spawn/ghost_role/human/syndicate
 	name = "Syndicate Operative"
@@ -148,14 +97,15 @@
 
 /datum/outfit/syndicate_empty
 	name = "Syndicate Operative Empty"
-	uniform = /obj/item/clothing/under/syndicate
-	shoes = /obj/item/clothing/shoes/combat
-	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	ears = /obj/item/radio/headset/syndicate/alt
-	back = /obj/item/storage/backpack
-	implants = list(/obj/item/implant/weapons_auth)
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
+	uniform = /obj/item/clothing/under/syndicate
+	back = /obj/item/storage/backpack
+	ears = /obj/item/radio/headset/syndicate/alt
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	shoes = /obj/item/clothing/shoes/combat
+
+	implants = list(/obj/item/implant/weapons_auth)
 
 /datum/outfit/syndicate_empty/post_equip(mob/living/carbon/human/H)
 	H.faction |= ROLE_SYNDICATE
@@ -180,10 +130,10 @@
 /datum/outfit/cryobartender
 	name = "Cryogenic Bartender"
 	uniform = /obj/item/clothing/under/rank/civilian/bartender
-	back = /obj/item/storage/backpack
-	shoes = /obj/item/clothing/shoes/sneakers/black
 	suit = /obj/item/clothing/suit/armor/vest
+	back = /obj/item/storage/backpack
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
+	shoes = /obj/item/clothing/shoes/sneakers/black
 
 //Timeless prisons: Spawns in Wish Granter prisons in lavaland. Ghosts become age-old users of the Wish Granter and are advised to seek repentance for their past.
 /obj/effect/mob_spawn/ghost_role/human/exile
@@ -222,7 +172,7 @@
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	faction = list("nanotrasenprivate")
+	faction = list(FACTION_NANOTRASEN_PRIVATE)
 	prompt_name = "a private security officer"
 	you_are_text = "You are a Nanotrasen Private Security Officer!"
 	flavour_text = "If higher command has an assignment for you, it's best you follow that. Otherwise, death to The Syndicate."
@@ -252,14 +202,14 @@
 /obj/effect/mob_spawn/ghost_role/human/doctor/alive/equip(mob/living/carbon/human/doctor)
 	. = ..()
 	// Remove radio and PDA so they wouldn't annoy station crew.
-	var/list/del_types = list(/obj/item/pda, /obj/item/radio/headset)
+	var/list/del_types = list(/obj/item/modular_computer/pda, /obj/item/radio/headset)
 	for(var/del_type in del_types)
 		var/obj/item/unwanted_item = locate(del_type) in doctor
 		qdel(unwanted_item)
 
 /obj/effect/mob_spawn/ghost_role/mouse
 	name = "sleeper"
-	mob_type = /mob/living/simple_animal/mouse
+	mob_type = /mob/living/basic/mouse
 	prompt_name = "a mouse"
 	you_are_text = "You're a mouse!"
 	flavour_text = "Uh... yep! Squeak squeak, motherfucker."
@@ -296,13 +246,14 @@
 
 /datum/outfit/snowsyndie
 	name = "Syndicate Snow Operative"
-	uniform = /obj/item/clothing/under/syndicate/coldres
-	shoes = /obj/item/clothing/shoes/combat/coldres
-	ears = /obj/item/radio/headset/syndicate/alt
-	r_pocket = /obj/item/gun/ballistic/automatic/pistol
 	id = /obj/item/card/id/advanced/chameleon
-	implants = list(/obj/item/implant/exile)
 	id_trim = /datum/id_trim/chameleon/operative
+	uniform = /obj/item/clothing/under/syndicate/coldres
+	ears = /obj/item/radio/headset/syndicate/alt
+	shoes = /obj/item/clothing/shoes/combat/coldres
+	r_pocket = /obj/item/gun/ballistic/automatic/pistol
+
+	implants = list(/obj/item/implant/exile)
 
 //Forgotten syndicate ship
 
@@ -317,9 +268,6 @@
 	important_text = "Obey orders given by your captain. DO NOT let the ship fall into enemy hands."
 	outfit = /datum/outfit/syndicatespace/syndicrew
 	spawner_job_path = /datum/job/syndicate_cybersun
-
-/datum/outfit/syndicatespace/syndicrew/post_equip(mob/living/carbon/human/H)
-	H.faction |= ROLE_SYNDICATE
 
 /obj/effect/mob_spawn/ghost_role/human/syndicatespace/special(mob/living/new_spawn)
 	. = ..()
@@ -338,39 +286,42 @@
 	outfit = /datum/outfit/syndicatespace/syndicaptain
 	spawner_job_path = /datum/job/syndicate_cybersun_captain
 
-/datum/outfit/syndicatespace/syndicaptain/post_equip(mob/living/carbon/human/H)
-	H.faction |= ROLE_SYNDICATE
-
 /obj/effect/mob_spawn/ghost_role/human/syndicatespace/captain/Destroy()
 	new /obj/structure/fluff/empty_sleeper/syndicate/captain(get_turf(src))
 	return ..()
 
+/datum/outfit/syndicatespace
+	name = "Syndicate Ship Base"
+	id = /obj/item/card/id/advanced/black/syndicate_command/crew_id
+	uniform = /obj/item/clothing/under/syndicate/combat
+	back = /obj/item/storage/backpack
+	belt = /obj/item/storage/belt/military/assault
+	ears = /obj/item/radio/headset/syndicate/alt
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat
+
+	implants = list(/obj/item/implant/weapons_auth)
+
+/datum/outfit/syndicatespace/post_equip(mob/living/carbon/human/syndie_scum)
+	syndie_scum.faction |= ROLE_SYNDICATE
+
 /datum/outfit/syndicatespace/syndicrew
 	name = "Syndicate Ship Crew Member"
-	uniform = /obj/item/clothing/under/syndicate/combat
 	glasses = /obj/item/clothing/glasses/night
 	mask = /obj/item/clothing/mask/gas/syndicate
-	ears = /obj/item/radio/headset/syndicate/alt
-	shoes = /obj/item/clothing/shoes/combat
-	gloves = /obj/item/clothing/gloves/combat
-	back = /obj/item/storage/backpack
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	r_pocket = /obj/item/knife/combat/survival
-	belt = /obj/item/storage/belt/military/assault
-	id = /obj/item/card/id/advanced/black/syndicate_command/crew_id
-	implants = list(/obj/item/implant/weapons_auth)
 
 /datum/outfit/syndicatespace/syndicaptain
 	name = "Syndicate Ship Captain"
+	id = /obj/item/card/id/advanced/black/syndicate_command/captain_id
 	uniform = /obj/item/clothing/under/syndicate/combat
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	head = /obj/item/clothing/head/hos/beret/syndicate
 	ears = /obj/item/radio/headset/syndicate/alt/leader
-	shoes = /obj/item/clothing/shoes/combat
-	gloves = /obj/item/clothing/gloves/combat
-	back = /obj/item/storage/backpack
+	head = /obj/item/clothing/head/hats/hos/beret/syndicate
 	r_pocket = /obj/item/knife/combat/survival
-	belt = /obj/item/storage/belt/military/assault
-	id = /obj/item/card/id/advanced/black/syndicate_command/captain_id
-	implants = list(/obj/item/implant/weapons_auth)
-	backpack_contents = list(/obj/item/documents/syndicate/red, /obj/item/paper/fluff/ruins/forgottenship/password, /obj/item/gun/ballistic/automatic/pistol/aps)
+	backpack_contents = list(
+		/obj/item/documents/syndicate/red,
+		/obj/item/gun/ballistic/automatic/pistol/aps,
+		/obj/item/paper/fluff/ruins/forgottenship/password,
+	)

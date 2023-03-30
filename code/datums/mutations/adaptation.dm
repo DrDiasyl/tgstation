@@ -4,9 +4,8 @@
 	quality = POSITIVE
 	difficulty = 16
 	text_gain_indication = "<span class='notice'>Your body feels warm!</span>"
-	time_coeff = 5
 	instability = 25
-	conflicts = list(PRESSUREADAPT)
+	conflicts = list(/datum/mutation/human/pressure_adaptation)
 
 /datum/mutation/human/temperature_adaptation/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
 	..()
@@ -19,14 +18,12 @@
 /datum/mutation/human/temperature_adaptation/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
-	ADD_TRAIT(owner, TRAIT_RESISTCOLD, GENETIC_MUTATION)
-	ADD_TRAIT(owner, TRAIT_RESISTHEAT, GENETIC_MUTATION)
+	owner.add_traits(list(TRAIT_RESISTCOLD, TRAIT_RESISTHEAT), GENETIC_MUTATION)
 
 /datum/mutation/human/temperature_adaptation/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	REMOVE_TRAIT(owner, TRAIT_RESISTCOLD, GENETIC_MUTATION)
-	REMOVE_TRAIT(owner, TRAIT_RESISTHEAT, GENETIC_MUTATION)
+	owner.remove_traits(list(TRAIT_RESISTCOLD, TRAIT_RESISTHEAT), GENETIC_MUTATION)
 
 /datum/mutation/human/pressure_adaptation
 	name = "Pressure Adaptation"
@@ -34,9 +31,8 @@
 	quality = POSITIVE
 	difficulty = 16
 	text_gain_indication = "<span class='notice'>Your body feels numb!</span>"
-	time_coeff = 5
 	instability = 25
-	conflicts = list(TEMPADAPT)
+	conflicts = list(/datum/mutation/human/temperature_adaptation)
 
 /datum/mutation/human/pressure_adaptation/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
 	..()
@@ -49,11 +45,9 @@
 /datum/mutation/human/pressure_adaptation/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
-	ADD_TRAIT(owner, TRAIT_RESISTLOWPRESSURE, GENETIC_MUTATION)
-	ADD_TRAIT(owner, TRAIT_RESISTHIGHPRESSURE, GENETIC_MUTATION)
+	owner.add_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTHIGHPRESSURE), GENETIC_MUTATION)
 
 /datum/mutation/human/pressure_adaptation/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	REMOVE_TRAIT(owner, TRAIT_RESISTLOWPRESSURE, GENETIC_MUTATION)
-	REMOVE_TRAIT(owner, TRAIT_RESISTHIGHPRESSURE, GENETIC_MUTATION)
+	owner.remove_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTHIGHPRESSURE), GENETIC_MUTATION)

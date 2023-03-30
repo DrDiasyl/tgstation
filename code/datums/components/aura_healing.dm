@@ -85,8 +85,11 @@
 
 /datum/component/aura_healing/Destroy(force, silent)
 	STOP_PROCESSING(SSaura_healing, src)
+	var/alert_category = "aura_healing_[REF(src)]"
 
-	QDEL_LIST_ASSOC_VAL(current_alerts)
+	for(var/mob/living/alert_holder in current_alerts)
+		alert_holder.clear_alert(alert_category)
+	current_alerts.Cut()
 
 	return ..()
 
@@ -108,12 +111,12 @@
 		if (!(candidate in current_alerts))
 			var/atom/movable/screen/alert/aura_healing/alert = candidate.throw_alert(alert_category, /atom/movable/screen/alert/aura_healing, new_master = parent)
 			alert.desc = "You are being healed by [parent]."
-			current_alerts[candidate] = alert
+			current_alerts += candidate
 
 		if (should_show_effect && candidate.health < candidate.maxHealth)
 			new /obj/effect/temp_visual/heal(get_turf(candidate), healing_color)
 
-		if (iscarbon(candidate) || issilicon(candidate))
+		if (iscarbon(candidate) || issilicon(candidate) || isbasicmob(candidate))
 			candidate.adjustBruteLoss(-brute_heal * delta_time, updating_health = FALSE)
 			candidate.adjustFireLoss(-burn_heal * delta_time, updating_health = FALSE)
 
@@ -122,14 +125,17 @@
 			candidate.adjustToxLoss(-toxin_heal * delta_time, updating_health = FALSE, forced = TRUE)
 
 			candidate.adjustOxyLoss(-suffocation_heal * delta_time, updating_health = FALSE)
-			candidate.adjustStaminaLoss(-stamina_heal * delta_time, updating_health = FALSE)
+			candidate.adjustStaminaLoss(-stamina_heal * delta_time, updating_stamina = FALSE)
 			candidate.adjustCloneLoss(-clone_heal * delta_time, updating_health = FALSE)
 
 			for (var/organ in organ_healing)
 				candidate.adjustOrganLoss(organ, -organ_healing[organ] * delta_time)
 		else if (isanimal(candidate))
-			var/mob/living/simple_animal/simple_candidate = candidate
-			simple_candidate.adjustHealth(-simple_heal * delta_time, updating_health = FALSE)
+			var/mob/living/simple_animal/animal_candidate = candidate
+			animal_candidate.adjustHealth(-simple_heal * delta_time, updating_health = FALSE)
+		else if (isbasicmob(candidate))
+			var/mob/living/basic/basic_candidate = candidate
+			basic_candidate.adjust_health(-simple_heal * delta_time, updating_health = FALSE)
 
 		if (candidate.blood_volume < BLOOD_VOLUME_NORMAL)
 			candidate.blood_volume += blood_heal * delta_time

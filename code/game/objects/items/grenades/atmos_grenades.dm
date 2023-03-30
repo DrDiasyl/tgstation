@@ -1,7 +1,7 @@
 /obj/item/grenade/gas_crystal
 	desc = "Some kind of crystal, this shouldn't spawn"
 	name = "Gas Crystal"
-	icon = 'icons/obj/grenade.dmi'
+	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "bluefrag"
 	inhand_icon_state = "flashbang"
 	resistance_flags = FIRE_PROOF
@@ -21,7 +21,7 @@
 	SEND_SIGNAL(src, COMSIG_GRENADE_ARMED, det_time, delayoverride)
 	if(user)
 		SEND_SIGNAL(src, COMSIG_MOB_GRENADE_ARMED, user, src, det_time, delayoverride)
-	addtimer(CALLBACK(src, .proc/detonate), isnull(delayoverride)? det_time : delayoverride)
+	addtimer(CALLBACK(src, PROC_REF(detonate)), isnull(delayoverride)? det_time : delayoverride)
 
 /obj/item/grenade/gas_crystal/healium_crystal
 	name = "Healium crystal"
@@ -32,11 +32,13 @@
 
 /obj/item/grenade/gas_crystal/healium_crystal/detonate(mob/living/lanced_by)
 	. = ..()
+	if(!.)
+		return
+
 	update_mob()
 	playsound(src, 'sound/effects/spray2.ogg', 100, TRUE)
 	var/list/connected_turfs = detect_room(origin = get_turf(src), max_size = fix_range)
-	var/datum/gas_mixture/base_mix = new
-	base_mix.parse_gas_string(OPENTURF_DEFAULT_ATMOS)
+	var/datum/gas_mixture/base_mix = SSair.parse_gas_string(OPENTURF_DEFAULT_ATMOS)
 	for(var/turf/open/turf_fix in connected_turfs)
 		if(turf_fix.blocks_air)
 			continue
@@ -56,6 +58,9 @@
 
 /obj/item/grenade/gas_crystal/proto_nitrate_crystal/detonate(mob/living/lanced_by)
 	. = ..()
+	if(!.)
+		return
+
 	update_mob()
 	playsound(src, 'sound/effects/spray2.ogg', 100, TRUE)
 	for(var/turf/turf_loc in view(refill_range, loc))
@@ -77,6 +82,9 @@
 
 /obj/item/grenade/gas_crystal/nitrous_oxide_crystal/detonate(mob/living/lanced_by)
 	. = ..()
+	if(!.)
+		return
+
 	update_mob()
 	playsound(src, 'sound/effects/spray2.ogg', 100, TRUE)
 	for(var/turf/turf_loc in view(fill_range, loc))

@@ -6,9 +6,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	if (!istype(borgo, /mob/living/silicon/robot))
+	if (!iscyborg(borgo))
 		borgo = input("Select a borg", "Select a borg", null, null) as null|anything in sort_names(GLOB.silicon_mobs)
-	if (!istype(borgo, /mob/living/silicon/robot))
+	if (!iscyborg(borgo))
 		to_chat(usr, span_warning("Borg is required for borgpanel"), confidential = TRUE)
 
 	var/datum/borgpanel/borgpanel = new(usr, borgo)
@@ -85,9 +85,9 @@
 	switch (action)
 		if ("set_charge")
 			var/newcharge = tgui_input_number(usr, "Set new charge", borg.name, borg.cell.charge, borg.cell.maxcharge)
-			if (isnull(newcharge))
+			if(isnull(newcharge))
 				return
-			borg.cell.charge = clamp(newcharge, 0, borg.cell.maxcharge)
+			borg.cell.charge = newcharge
 			message_admins("[key_name_admin(user)] set the charge of [ADMIN_LOOKUPFLW(borg)] to [borg.cell.charge].")
 			log_silicon("[key_name(user)] set the charge of [key_name(borg)] to [borg.cell.charge].")
 		if ("remove_cell")
@@ -178,7 +178,7 @@
 				log_silicon("[key_name(user)] removed the [channel] radio channel from [key_name(borg)].")
 			else // We're adding a channel
 				if (!borg.radio.keyslot) // Assert that an encryption key exists
-					borg.radio.keyslot = new (borg.radio)
+					borg.radio.keyslot = new()
 				borg.radio.keyslot.channels[channel] = 1
 				if (channel == RADIO_CHANNEL_SYNDICATE)
 					borg.radio.keyslot.syndie = TRUE

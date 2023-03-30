@@ -1,7 +1,7 @@
 /mob/living/simple_animal/bot/secbot/grievous //This bot is powerful. If you managed to get 4 eswords somehow, you deserve this horror. Emag him for best results.
 	name = "General Beepsky"
 	desc = "Is that a secbot with four eswords in its arms...?"
-	icon = 'icons/mob/aibots.dmi'
+	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "grievous"
 	health = 150
 	maxHealth = 150
@@ -31,11 +31,11 @@
 	if(ismob(AM) && AM == target)
 		visible_message(span_warning("[src] flails his swords and cuts [AM]!"))
 		playsound(src,'sound/effects/beepskyspinsabre.ogg',100,TRUE,-1)
-		INVOKE_ASYNC(src, .proc/stun_attack, AM)
+		INVOKE_ASYNC(src, PROC_REF(stun_attack), AM)
 
 /mob/living/simple_animal/bot/secbot/grievous/Initialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(weapon, /obj/item.proc/attack_self, src)
+	INVOKE_ASYNC(weapon, TYPE_PROC_REF(/obj/item, attack_self), src)
 
 /mob/living/simple_animal/bot/secbot/grievous/Destroy()
 	QDEL_NULL(weapon)
@@ -53,7 +53,7 @@
 	weapon.attack(C, src)
 	playsound(src, 'sound/weapons/blade1.ogg', 50, TRUE, -1)
 	if(C.stat == DEAD)
-		addtimer(CALLBACK(src, /atom/.proc/update_appearance), 2)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/, update_appearance)), 2)
 		back_to_idle()
 
 
@@ -63,7 +63,7 @@
 	switch(mode)
 		if(BOT_IDLE) // idle
 			update_appearance()
-			walk_to(src,0)
+			SSmove_manager.stop_looping(src)
 			look_for_perp() // see if any criminals are in range
 			if(!mode && bot_mode_flags & BOT_MODE_AUTOPATROL) // still idle, and set to patrol
 				mode = BOT_START_PATROL // switch to patrol mode
@@ -72,7 +72,7 @@
 			playsound(src,'sound/effects/beepskyspinsabre.ogg',100,TRUE,-1)
 			// general beepsky doesn't give up so easily, jedi scum
 			if(frustration >= 20)
-				walk_to(src,0)
+				SSmove_manager.stop_looping(src)
 				back_to_idle()
 				return
 			if(target) // make sure target exists
@@ -83,7 +83,7 @@
 					return
 				else // not next to perp
 					var/turf/olddist = get_dist(src, target)
-					walk_to(src, target,1,4)
+					SSmove_manager.move_to(src, target, 1, 4)
 					if((get_dist(src, target)) >= (olddist))
 						frustration++
 					else
@@ -109,7 +109,7 @@
 		if((C.name == oldtarget_name) && (world.time < last_found + 100))
 			continue
 
-		threatlevel = C.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
+		threatlevel = C.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, PROC_REF(check_for_weapons)))
 
 		if(!threatlevel)
 			continue
@@ -124,14 +124,15 @@
 			icon_state = "grievous-c"
 			visible_message("<b>[src]</b> points at [C.name]!")
 			mode = BOT_HUNT
-			INVOKE_ASYNC(src, .proc/handle_automated_action)
+			INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 			break
 		else
 			continue
 
 /mob/living/simple_animal/bot/secbot/grievous/explode()
-	..()
 	var/atom/Tsec = drop_location()
 	//Parent is dropping the weapon, so let's drop 3 more to make up for it.
-	for(var/IS = 0 to 3)
+	for(var/dropped_weapons = 0 to 3)
 		drop_part(weapon, Tsec)
+
+	return ..()

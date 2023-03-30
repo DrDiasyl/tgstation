@@ -1,14 +1,3 @@
-#define HOLOPAD_MAX_DIAL_TIME 200
-
-#define HOLORECORD_DELAY "delay"
-#define HOLORECORD_SAY "say"
-#define HOLORECORD_SOUND "sound"
-#define HOLORECORD_LANGUAGE "lang"
-#define HOLORECORD_PRESET "preset"
-#define HOLORECORD_RENAME "rename"
-
-#define HOLORECORD_MAX_LENGTH 200
-
 /mob/camera/ai_eye/remote/holo/setLoc(turf/destination, force_update = FALSE)
 	. = ..()
 	var/obj/machinery/holopad/H = origin
@@ -96,9 +85,7 @@
 	dialed_holopads.Cut()
 
 	if(calling_holopad)//if the call is answered, then calling_holopad wont be in dialed_holopads and thus wont have set_holocall(src, FALSE) called
-		calling_holopad.calling = FALSE
-		calling_holopad.outgoing_call = null
-		calling_holopad.SetLightsAndPower()
+		calling_holopad.callee_hung_up()
 		calling_holopad = null
 	if(connected_holopad)
 		connected_holopad.SetLightsAndPower()
@@ -163,7 +150,7 @@
 	if(!Check())
 		return
 
-	calling_holopad.calling = FALSE
+	calling_holopad.callee_picked_up()
 	hologram = answering_holopad.activate_holo(user)
 	hologram.HC = src
 
@@ -205,7 +192,7 @@
 
 /datum/action/innate/end_holocall
 	name = "End Holocall"
-	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
+	button_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "camera_off"
 	var/datum/holocall/hcall
 
@@ -244,7 +231,7 @@
 /obj/item/disk/holodisk/Initialize(mapload)
 	. = ..()
 	if(preset_record_text)
-		INVOKE_ASYNC(src, .proc/build_record)
+		INVOKE_ASYNC(src, PROC_REF(build_record))
 
 /obj/item/disk/holodisk/Destroy()
 	QDEL_NULL(record)
@@ -302,7 +289,7 @@
 				if(ispath(preset_type,/datum/preset_holoimage))
 					record.entries += list(list(HOLORECORD_PRESET,preset_type))
 	if(!preset_image_type)
-		record.caller_image = image('icons/mob/animal.dmi',"old")
+		record.caller_image = image('icons/mob/simple/animal.dmi',"old")
 	else
 		var/datum/preset_holoimage/H = new preset_image_type
 		record.caller_image = H.build_image()
@@ -324,33 +311,17 @@
 		if(outfit_type)
 			mannequin.equipOutfit(outfit_type,TRUE)
 		mannequin.setDir(SOUTH)
-		COMPILE_OVERLAYS(mannequin)
 		. = image(mannequin)
 		unset_busy_human_dummy("HOLODISK_PRESET")
 
-/obj/item/disk/holodisk/example
-	preset_image_type = /datum/preset_holoimage/clown
-	preset_record_text = {"
-	NAME Clown
-	DELAY 10
-	SAY Why did the chaplain cross the maint ?
-	DELAY 20
-	SAY He wanted to get to the other side!
-	SOUND clownstep
-	DELAY 30
-	LANGUAGE /datum/language/narsie
-	SAY Helped him get there!
-	DELAY 10
-	SAY ALSO IM SECRETLY A GORILLA
-	DELAY 10
-	PRESET /datum/preset_holoimage/gorilla
-	NAME Gorilla
-	LANGUAGE /datum/language/common
-	SAY OOGA
-	DELAY 20"}
+/datum/preset_holoimage/clown
+	outfit_type = /datum/outfit/job/clown
 
 /datum/preset_holoimage/engineer
 	outfit_type = /datum/outfit/job/engineer
+
+/datum/preset_holoimage/corgi
+	nonhuman_mobtype = /mob/living/basic/pet/dog/corgi
 
 /datum/preset_holoimage/engineer/mod
 	outfit_type = /datum/outfit/job/engineer/mod
@@ -374,16 +345,40 @@
 	outfit_type = /datum/outfit/job/captain
 
 /datum/preset_holoimage/nanotrasenprivatesecurity
-	outfit_type = /datum/outfit/nanotrasensoldiercorpse2
+	outfit_type = /datum/outfit/nanotrasensoldiercorpse
 
-/datum/preset_holoimage/gorilla
-	nonhuman_mobtype = /mob/living/simple_animal/hostile/gorilla
+/datum/preset_holoimage/syndicatebattlecruisercaptain
+	outfit_type = /datum/outfit/syndicate_empty/battlecruiser
 
-/datum/preset_holoimage/corgi
-	nonhuman_mobtype = /mob/living/simple_animal/pet/dog/corgi
+/datum/preset_holoimage/hivebot
+	nonhuman_mobtype = /mob/living/simple_animal/hostile/hivebot
 
-/datum/preset_holoimage/clown
-	outfit_type = /datum/outfit/job/clown
+/datum/preset_holoimage/ai
+	nonhuman_mobtype = /mob/living/silicon/ai
+
+/datum/preset_holoimage/robot
+	nonhuman_mobtype = /mob/living/silicon/robot
+
+/obj/item/disk/holodisk/example
+	preset_image_type = /datum/preset_holoimage/clown
+	preset_record_text = {"
+	NAME Clown
+	DELAY 10
+	SAY Why did the chaplain cross the maint ?
+	DELAY 20
+	SAY He wanted to get to the other side!
+	SOUND clownstep
+	DELAY 30
+	LANGUAGE /datum/language/narsie
+	SAY Helped him get there!
+	DELAY 10
+	SAY ALSO IM SECRETLY A GORILLA
+	DELAY 10
+	PRESET /datum/preset_holoimage/gorilla
+	NAME Gorilla
+	LANGUAGE /datum/language/common
+	SAY OOGA
+	DELAY 20"}
 
 /obj/item/disk/holodisk/donutstation/whiteship
 	name = "Blackbox Print-out #DS024"
@@ -473,3 +468,26 @@
 	NAME Blackbox Automated Message
 	SAY Connection lost. Dumping audio logs to disk.
 	DELAY 50"}
+
+/obj/item/disk/holodisk/ruin/space/travelers_rest
+	name = "Owner's memo"
+	desc = "A holodisk containing a small memo from the previous owner, addressed to someone else."
+	preset_image_type = /datum/preset_holoimage/engineer/atmos
+	preset_record_text = {"
+		NAME Space Adventurer
+		SOUND PING
+		DELAY 20
+		SAY Hey, I left you this message for when you come back.
+		DELAY 50
+		SAY I picked up an emergency signal from a freighter and I'm going there to search for some goodies.
+		DELAY 50
+		SAY You can crash here if you need to, but make sure to check the anchor cables before you leave.
+		DELAY 50
+		SAY If you don't, this thing might drift off into space.
+		DELAY 50
+		SAY Then some weirdo could find it and potentially claim it as their own.
+		DELAY 50
+		SAY Anyway, gotta go, see ya!
+		DELAY 40
+		SOUND sparks
+	"}

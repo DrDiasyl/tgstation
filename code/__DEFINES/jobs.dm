@@ -7,9 +7,13 @@
 /// Job unavailable due to incompatibility with an antag role.
 #define JOB_UNAVAILABLE_ANTAG_INCOMPAT 6
 
+/// Used when the `get_job_unavailable_error_message` proc can't make sense of a given code.
+#define GENERIC_JOB_UNAVAILABLE_ERROR "Error: Unknown job availability."
+
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 #define DEFAULT_BIBLE "Default Bible Name"
+#define DEFAULT_BIBLE_REPLACE(religion) "The Holy Book of [religion]"
 
 #define JOB_DISPLAY_ORDER_DEFAULT 0
 
@@ -39,6 +43,7 @@
 //Silicon
 #define JOB_AI "AI"
 #define JOB_CYBORG "Cyborg"
+#define JOB_PERSONAL_AI "Personal AI"
 //Security
 #define JOB_WARDEN "Warden"
 #define JOB_DETECTIVE "Detective"
@@ -75,14 +80,14 @@
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
 //ERTs
+#define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"
 #define JOB_ERT_OFFICER "Security Response Officer"
 #define JOB_ERT_ENGINEER "Engineering Response Officer"
 #define JOB_ERT_MEDICAL_DOCTOR "Medical Response Officer"
-#define JOB_ERT_CLOWN "Entertainment Response Officer"
 #define JOB_ERT_CHAPLAIN "Religious Response Officer"
 #define JOB_ERT_JANITOR "Janitorial Response Officer"
-#define JOB_ERT_DEATHSQUAD "Death Commando"
+#define JOB_ERT_CLOWN "Entertainment Response Officer"
 //CentCom
 #define JOB_CENTCOM "Central Command"
 #define JOB_CENTCOM_OFFICIAL "CentCom Official"
@@ -135,7 +140,7 @@
 #define JOB_DISPLAY_ORDER_PRISONER 35
 
 
-#define DEPARTMENT_UNASSIGNED "No department assigned"
+#define DEPARTMENT_UNASSIGNED "No Department"
 
 #define DEPARTMENT_BITFLAG_SECURITY (1<<0)
 #define DEPARTMENT_SECURITY "Security"
@@ -175,7 +180,17 @@
 #define JOB_REOPEN_ON_ROUNDSTART_LOSS (1<<6)
 /// If the player with this job can have quirks assigned to him or not. Relevant for new player joinable jobs and roundstart antags.
 #define JOB_ASSIGN_QUIRKS (1<<7)
-
+/// Whether this job can be an intern.
+#define JOB_CAN_BE_INTERN (1<<8)
 
 #define FACTION_NONE "None"
 #define FACTION_STATION "Station"
+
+// Variable macros used to declare who is the supervisor for a given job, announced to the player when they join as any given job.
+#define SUPERVISOR_CAPTAIN "the Captain"
+#define SUPERVISOR_CE "the Chief Engineer"
+#define SUPERVISOR_CMO "the Chief Medical Officer"
+#define SUPERVISOR_HOP "the Head of Personnel"
+#define SUPERVISOR_HOS "the Head of Security"
+#define SUPERVISOR_QM "the Quartermaster"
+#define SUPERVISOR_RD "the Research Director"
