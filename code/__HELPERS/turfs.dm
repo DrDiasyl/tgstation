@@ -409,3 +409,60 @@ Turf and target are separate in case you want to teleport some distance from a t
 	if(locate(type_to_find) in location)
 		return TRUE
 	return FALSE
+
+/**
+ * Checks if the turf has sufficent atmos for someones habitability, you set the requirements
+ *
+ * Returns TRUE if atmos at the turf has more then min or/and less then max of gasses.
+ * Returns FALSE if atmos at the turf has less the min or/and more then max of gasses.
+ *
+ * Arguments:
+ * * location - The turf which atmos is checked
+ * * min_oxygen - Minimal moles of oxygen required
+ * * max_oxygen - Maximum moles of oxygen required
+ * * min_toxin - Minimal moles of plasma required
+ * * max_toxin - Maximum moles of plasma required
+ * * min_nitrogen - Minimal moles of nitrogen required
+ * * max_nitrogen - Maximum moles of nitrogen required
+ * * min_carbon_dioxide - Minimal moles of carbon dioxide required
+ * * max_carbon_dioxide - Maximum moles of carbon dioxide required
+ */
+/proc/is_habitable_atmos(turf/location, min_oxygen, max_oxygen, min_toxin, max_toxin, min_nitrogen, max_nitrogen, min_carbon_dioxide, max_carbon_dioxide)
+	//If there is no any air at location, it will return FALSE
+	if(!location.air && (min_oxygen || min_toxin || min_nitrogen || min_carbon_dioxide))
+		return FALSE
+
+	///Location of all gases. The turf which is getting checked for habitability.
+	var/location_gases = location.air.gases
+	location.air.assert_gases(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/plasma)
+
+	///Amount of plasma moles in the selected turf.
+	var/plas = location_gases[/datum/gas/plasma][MOLES]
+	///Amount of oxygen moles in the selected turf.
+	var/oxy = location_gases[/datum/gas/oxygen][MOLES]
+	///Amount of nitrogen moles in the selected turf.
+	var/n2 = location_gases[/datum/gas/nitrogen][MOLES]
+	///Amount of carbon dioxide moles in the selected turf.
+	var/co2 = location_gases[/datum/gas/carbon_dioxide][MOLES]
+
+	//Checking if the air has more then minimum of required gases,
+	//also checking if the air has not more then the maximum of required gases.
+	//If any of those don't meet requirements - it returns false. If they do meet then - it returns true.
+	if(min_oxygen && oxy < min_oxygen)
+		return FALSE
+	else if(max_oxygen && oxy > max_oxygen)
+		return FALSE
+	else if(min_toxin && plas < min_toxin)
+		return FALSE
+	else if(max_toxin && plas > max_toxin)
+		return FALSE
+	else if(min_nitrogen && n2 < min_nitrogen)
+		return FALSE
+	else if(max_nitrogen && n2 > max_nitrogen)
+		return FALSE
+	else if(min_carbon_dioxide && co2 < min_carbon_dioxide)
+		return FALSE
+	else if(max_carbon_dioxide && co2 > max_carbon_dioxide)
+		return FALSE
+
+	return TRUE
