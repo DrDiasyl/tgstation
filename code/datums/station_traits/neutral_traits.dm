@@ -327,3 +327,17 @@
 	icon_state = "xmashat_grey"
 	greyscale_config = /datum/greyscale_config/festive_hat
 	greyscale_config_worn = /datum/greyscale_config/festive_hat_worn
+
+//Gimmick Jobs Traits
+/datum/station_trait/gimmick_terragov_dignitary
+	name = "TerraGov Dignitary Arrival"
+	trait_type = STATION_TRAIT_NEUTRAL
+	weight = 5
+	show_in_report = TRUE
+	report_message = "To benefit our relationships today the station will be visited by a TerraGov dignitary, make sure he will be okay!"
+	blacklist = list(
+		/datum/station_trait/gimmick_test_subject,
+		/datum/station_trait/gimmick_campaigner,
+		/datum/station_trait/gimmick_union_rep,
+		/datum/station_trait/gimmick_inspector,
+	)
