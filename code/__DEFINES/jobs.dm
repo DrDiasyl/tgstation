@@ -194,3 +194,50 @@
 #define SUPERVISOR_HOS "the Head of Security"
 #define SUPERVISOR_QM "the Quartermaster"
 #define SUPERVISOR_RD "the Research Director"
+
+/**
+ * Various names/prefixes for the job positions, that are given depending on how much the job was played.
+ * This is to make identifying newbies from long-term players easier.
+ * Starting with highest on top to the lowest on bottom.
+ *
+ * Command is the only unique one which has its own names, other jobs just get prefixes.
+ **/
+//COMMAND
+//Captain
+#define JOB_RANK_CAPTAIN_EXPERIENCED "Commodore"
+#define JOB_RANK_CAPTAIN_NEW "Commander-Captain"
+//Head of Personnel
+#define JOB_RANK_HOP_EXPERIENCED "Personnel Director"
+#define JOB_RANK_HOP_NEW "Personnel Manager"
+//Head of Security
+#define JOB_RANK_HOS_EXPERIENCED "Security Captain"
+#define JOB_RANK_HOS_NEW "Security Commander"
+//Research Director
+#define JOB_RANK_RD_EXPERIENCED "Chief Research Director"
+#define JOB_RANK_RD_NEW "Research Coordinator"
+//Chief Engineer
+#define JOB_RANK_CE_EXPERIENCED "Master Chief Engineer"
+#define JOB_RANK_CE_NEW "Engineering Supervisor"
+//Chief Medical Officer
+#define JOB_RANK_CMO_EXPERIENCED "Master Chief Medical Officer"
+#define JOB_RANK_CMO_NEW "Medical Officer"
+
+//SECURITY
+#define JOB_RANK_SECURITY_EXPERIENCED "Sergeant"
+#define JOB_RANK_SECURITY_NORMAL "Corporal"
+#define JOB_RANK_SECURITY_NEW "Cadet"
+
+//ENGINEERING
+#define JOB_RANK_ENGINEERING_EXPERIENCED "1st Degree"
+#define JOB_RANK_ENGINEERING_NORMAL "2nd Degree"
+#define JOB_RANK_ENGINEERING_NEW "3rd Degree"
+
+//MEDICAL
+#define JOB_RANK_MEDICAL_EXPERIENCED "Professor"
+#define JOB_RANK_MEDICAL_NORMAL "Specialist"
+#define JOB_RANK_MEDICAL_NEW "Resident"
+
+//SCIENCE
+#define JOB_RANK_SCIENCE_EXPERIENCED "Professor"
+#define JOB_RANK_SCIENCE_NORMAL "Professor"
+#define JOB_RANK_SCIENCE_NEW "Student"
