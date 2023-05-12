@@ -851,3 +851,52 @@
 		/obj/item/seeds,
 		/obj/item/shovel/spade,
 	))
+
+/obj/item/storage/belt/paperwork
+	name = "paperwork belt"
+	desc = "Can hold paperwork gear like paper bins and stamps."
+	icon_state = "paperwork"
+	inhand_icon_state = "paperwork"
+	worn_icon_state = "paperwork"
+	content_overlays = TRUE
+
+/obj/item/storage/belt/security/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 10
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.set_holdable(list(
+		/obj/item/paper_bin,
+		/obj/item/folder,
+		/obj/item/clipboard,
+		/obj/item/stamp,
+		/obj/item/assembly/flash/handheld,
+		/obj/item/holosign_creator,
+		/obj/item/melee/baton/telescopic,
+		/obj/item/radio,
+		/obj/item/pen,
+		/obj/item/papercutter,
+		/obj/item/barcodescanner,
+		/obj/item/experi_scanner,
+		/obj/item/slime_scanner,
+		/obj/item/autopsy_scanner,
+		/obj/item/detective_scanner,
+		/obj/item/universal_scanner,
+		/obj/item/paper,
+		/obj/item/paperwork,
+		/obj/item/documents,
+		/obj/item/station_charter,
+		/obj/item/toy/crayon,
+		/obj/item/inspector,
+		/obj/item/boxcutter,
+		/obj/item/pinpointer,
+		/obj/item/card,
+		/obj/item/hand_labeler,
+		/obj/item/hand_labeler_refill,
+		/obj/item/dest_tagger,
+		/obj/item/sales_tagger,
+		/obj/item/book,
+		/obj/item/modular_computer,
+		/obj/item/dog_bone,
+		/obj/item/disk,
+		/obj/item/megaphone,
+	))
