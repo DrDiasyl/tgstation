@@ -36,6 +36,7 @@
 	if(!proximity_flag)
 		return
 	do_knockback(target, user, get_dir(source, target))
+	return COMPONENT_AFTERATTACK_PROCESSED_ITEM
 
 /// triggered after a hostile simplemob attacks something
 /datum/element/knockback/proc/hostile_attackingtarget(mob/living/simple_animal/hostile/attacker, atom/target, success)
@@ -66,7 +67,7 @@
 	if(throwee.anchored && !throw_anchored)
 		return
 	if(throw_distance < 0)
-		throw_dir = turn(throw_dir, 180)
+		throw_dir = REVERSE_DIR(throw_dir)
 		throw_distance *= -1
 	var/atom/throw_target = get_edge_target_turf(throwee, throw_dir)
 	throwee.safe_throw_at(throw_target, throw_distance, 1, thrower, gentle = throw_gentle)

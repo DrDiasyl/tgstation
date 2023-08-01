@@ -10,7 +10,7 @@
 	icon = 'icons/turf/shuttle.dmi'
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS
-	armor = list(MELEE = 100, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 70) //default + ignores melee
+	armor_type = /datum/armor/power_shuttle_engine
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	max_integrity = 500
 	density = TRUE
@@ -25,6 +25,13 @@
 
 	///The mobile ship we are connected to.
 	var/datum/weakref/connected_ship_ref
+
+/datum/armor/power_shuttle_engine
+	melee = 100
+	bullet = 10
+	laser = 10
+	fire = 50
+	acid = 70
 
 /obj/machinery/power/shuttle_engine/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	. = ..()
@@ -81,7 +88,7 @@
 		if(ENGINE_UNWRENCHED)
 			to_chat(user, span_warning("The [src.name] needs to be wrenched to the floor!"))
 		if(ENGINE_WRENCHED)
-			if(!tool.tool_start_check(user, amount=0))
+			if(!tool.tool_start_check(user, amount=round(ENGINE_WELDTIME / 5)))
 				return TRUE
 
 			user.visible_message(span_notice("[user.name] starts to weld the [name] to the floor."), \
@@ -94,7 +101,7 @@
 				alter_engine_power(engine_power)
 
 		if(ENGINE_WELDED)
-			if(!tool.tool_start_check(user, amount=0))
+			if(!tool.tool_start_check(user, amount=round(ENGINE_WELDTIME / 5)))
 				return TRUE
 
 			user.visible_message(span_notice("[user.name] starts to cut the [name] free from the floor."), \
@@ -155,7 +162,7 @@
 
 /obj/machinery/power/shuttle_engine/large
 	name = "engine"
-	icon = 'icons/obj/2x2.dmi'
+	icon = 'icons/obj/fluff/2x2.dmi'
 	icon_state = "large_engine"
 	desc = "A very large bluespace engine used to propel very large ships."
 	circuit = null
@@ -166,7 +173,7 @@
 
 /obj/machinery/power/shuttle_engine/huge
 	name = "engine"
-	icon = 'icons/obj/3x3.dmi'
+	icon = 'icons/obj/fluff/3x3.dmi'
 	icon_state = "huge_engine"
 	desc = "An extremely large bluespace engine used to propel extremely large ships."
 	circuit = null

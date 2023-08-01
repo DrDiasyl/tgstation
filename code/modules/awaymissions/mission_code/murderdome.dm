@@ -4,9 +4,16 @@
 	flags_1 = PREVENT_CLICK_UNDER_1 | NODECONSTRUCT_1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
+/obj/structure/window/reinforced/fulltile/indestructible/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	return FALSE
+
+
 /obj/structure/grille/indestructible
 	flags_1 = CONDUCT_1 | NODECONSTRUCT_1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+/obj/structure/grille/indestructible/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	return FALSE
 
 /obj/effect/spawner/structure/window/reinforced/indestructible
 	spawn_list = list(/obj/structure/grille/indestructible, /obj/structure/window/reinforced/fulltile/indestructible)
@@ -23,7 +30,7 @@
 /obj/effect/murderdome/dead_barricade
 	name = "dead barrier"
 	desc = "It provided cover in fire fights. And now it's gone."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrier0"
 	alpha = 100
 

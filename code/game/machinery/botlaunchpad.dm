@@ -1,7 +1,7 @@
 /obj/machinery/botpad
 	name = "Bot pad"
 	desc = "A lighter version of the orbital mech pad modified to launch bots. Requires linking to a remote to function."
-	icon = 'icons/obj/telescience.dmi'
+	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "botpad"
 	circuit = /obj/item/circuitboard/machine/botpad
 	// ID of the console, used for linking up
@@ -42,7 +42,7 @@
 				bot_count += 1 // this counts the number of bots so we don't launch if there multiple bots.
 				possible_bot = ROI  // We don't change the launched_bot var here because we are not sure if there is another bot on the pad.
 			else
-				user?.balloon_alert(user, "There is an unidentified life form on the pad!")
+				user?.balloon_alert(user, "unidentified life form on the pad!")
 				return
 	if(bot_count == 1)
 		launched_bot = possible_bot
@@ -54,13 +54,13 @@
 		))
 		use_power(active_power_usage)
 	else
-		user?.balloon_alert(user, "There is more than one bot on the pad!")
+		user?.balloon_alert(user, "too many bots on the pad!")
 
 /obj/machinery/botpad/proc/recall(mob/living/user)
 	if(!launched_bot)
-		user?.balloon_alert(user, "No bots detected on the pad!")
+		user?.balloon_alert(user, "no bots detected on the pad!")
 		return
-	user?.balloon_alert(user, "Sending the bot back to its pad")
+	user?.balloon_alert(user, "bot sent back to pad")
 	launched_bot.call_bot(src,  get_turf(src))
 
 /obj/structure/closet/supplypod/botpod

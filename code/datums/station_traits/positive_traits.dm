@@ -15,7 +15,7 @@
 	. = ..()
 	COOLDOWN_START(src, party_cooldown, rand(PARTY_COOLDOWN_LENGTH_MIN, PARTY_COOLDOWN_LENGTH_MAX))
 
-/datum/station_trait/lucky_winner/process(delta_time)
+/datum/station_trait/lucky_winner/process(seconds_per_tick)
 	if(!COOLDOWN_FINISHED(src, party_cooldown))
 		return
 
@@ -161,49 +161,49 @@
 
 /datum/station_trait/deathrattle_department/service
 	name = "Deathrattled Service"
-	trait_flags = NONE
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_SERVICE
 	department_name = "Service"
 
 /datum/station_trait/deathrattle_department/cargo
 	name = "Deathrattled Cargo"
-	trait_flags = NONE
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_CARGO
 	department_name = "Cargo"
 
 /datum/station_trait/deathrattle_department/engineering
 	name = "Deathrattled Engineering"
-	trait_flags = NONE
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_ENGINEERING
 	department_name = "Engineering"
 
 /datum/station_trait/deathrattle_department/command
 	name = "Deathrattled Command"
-	trait_flags = NONE
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_COMMAND
 	department_name = "Command"
 
 /datum/station_trait/deathrattle_department/science
 	name = "Deathrattled Science"
-	trait_flags = NONE
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_SCIENCE
 	department_name = "Science"
 
 /datum/station_trait/deathrattle_department/security
 	name = "Deathrattled Security"
-	trait_flags = NONE
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_SECURITY
 	department_name = "Security"
 
 /datum/station_trait/deathrattle_department/medical
 	name = "Deathrattled Medical"
-	trait_flags = NONE
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
 	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_MEDICAL
 	department_name = "Medical"
@@ -292,6 +292,7 @@
 		/datum/job/chief_medical_officer = /obj/item/organ/internal/cyberimp/chest/reviver,
 		/datum/job/clown = /obj/item/organ/internal/cyberimp/brain/anti_stun, //HONK!
 		/datum/job/cook = /obj/item/organ/internal/cyberimp/chest/nutriment/plus,
+		/datum/job/coroner = /obj/item/organ/internal/tongue/bone, //hes got a bone to pick with you
 		/datum/job/curator = /obj/item/organ/internal/eyes/robotic/glow,
 		/datum/job/detective = /obj/item/organ/internal/lungs/cybernetic/tier3,
 		/datum/job/doctor = /obj/item/organ/internal/cyberimp/arm/surgery,
@@ -333,3 +334,15 @@
 		return
 	var/obj/item/organ/internal/cybernetic = new cybernetic_type()
 	cybernetic.Insert(spawned, special = TRUE, drop_if_replaced = FALSE)
+
+/datum/station_trait/luxury_escape_pods
+	name = "Luxury Escape Pods"
+	trait_type = STATION_TRAIT_POSITIVE
+	weight = 5
+	show_in_report = TRUE
+	report_message = "Due to good performance, we've provided your station with luxury escape pods."
+	trait_to_give = STATION_TRAIT_BIGGER_PODS
+	blacklist = list(/datum/station_trait/cramped_escape_pods)
+
+#undef PARTY_COOLDOWN_LENGTH_MIN
+#undef PARTY_COOLDOWN_LENGTH_MAX

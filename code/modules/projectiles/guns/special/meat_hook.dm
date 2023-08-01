@@ -19,7 +19,9 @@
 /obj/item/gun/magic/hook/shoot_with_empty_chamber(mob/living/user)
 	balloon_alert(user, "not ready yet!")
 
-/obj/item/gun/magic/hook/can_trigger_gun(mob/living/user) // This isn't really a gun, so it shouldn't be checking for TRAIT_NOGUNS, a firing pin (pinless), or a trigger guard (guardless)
+/obj/item/gun/magic/hook/can_trigger_gun(mob/living/user, akimbo_usage) // This isn't really a gun, so it shouldn't be checking for TRAIT_NOGUNS, a firing pin (pinless), or a trigger guard (guardless)
+	if(akimbo_usage)
+		return FALSE //this would be kinda weird while shooting someone down.
 	return TRUE
 
 /obj/item/ammo_casing/magic/hook
@@ -32,7 +34,7 @@
 /obj/projectile/hook
 	name = "hook"
 	icon_state = "hook"
-	icon = 'icons/obj/lavaland/artefacts.dmi'
+	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	pass_flags = PASSTABLE
 	damage = 20
 	stamina = 20

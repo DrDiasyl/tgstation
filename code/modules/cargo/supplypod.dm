@@ -11,7 +11,7 @@
 	allow_dense = TRUE
 	delivery_icon = null
 	can_weld_shut = FALSE
-	armor = list(MELEE = 30, BULLET = 50, LASER = 50, ENERGY = 100, BOMB = 100, BIO = 0, FIRE = 100, ACID = 80)
+	armor_type = /datum/armor/closet_supplypod
 	anchored = TRUE //So it cant slide around after landing
 	anchorable = FALSE
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
@@ -89,6 +89,15 @@
 	explosionSize = list(0,0,0,0)
 	delays = list(POD_TRANSIT = 20, POD_FALLING = 4, POD_OPENING = 30, POD_LEAVING = 30)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+/datum/armor/closet_supplypod
+	melee = 30
+	bullet = 50
+	laser = 50
+	energy = 100
+	bomb = 100
+	fire = 100
+	acid = 80
 
 /obj/structure/closet/supplypod/Initialize(mapload, customStyle = FALSE)
 	. = ..()
@@ -201,7 +210,7 @@
 /obj/structure/closet/supplypod/toggle(mob/living/user)
 	return
 
-/obj/structure/closet/supplypod/open(mob/living/user, force = FALSE)
+/obj/structure/closet/supplypod/open(mob/living/user, force = FALSE, special_effects = TRUE)
 	return
 
 /obj/structure/closet/supplypod/proc/handleReturnAfterDeparting(atom/movable/holder = src)
@@ -240,12 +249,12 @@
 				for (var/bp in carbon_target_mob.bodyparts) //Look at the bodyparts in our poor mob beneath our pod as it lands
 					var/obj/item/bodypart/bodypart = bp
 					if(bodypart.body_part != HEAD && bodypart.body_part != CHEST)//we dont want to kill him, just teach em a lesson!
-						if (bodypart.dismemberable)
+						if (!(bodypart.bodypart_flags & BODYPART_UNREMOVABLE))
 							bodypart.dismember() //Using the power of flextape i've sawed this man's limb in half!
 							break
 			if (effectOrgans) //effectOrgans means remove every organ in our mob
 				var/mob/living/carbon/carbon_target_mob = target_living
-				for(var/obj/item/organ/organ_to_yeet as anything in carbon_target_mob.internal_organs)
+				for(var/obj/item/organ/organ_to_yeet as anything in carbon_target_mob.organs)
 					var/destination = get_edge_target_turf(turf_underneath, pick(GLOB.alldirs)) //Pick a random direction to toss them in
 					organ_to_yeet.Remove(carbon_target_mob) //Note that this isn't the same proc as for lists
 					organ_to_yeet.forceMove(turf_underneath) //Move the organ outta the body
@@ -254,7 +263,7 @@
 				for (var/bp in carbon_target_mob.bodyparts) //Look at the bodyparts in our poor mob beneath our pod as it lands
 					var/obj/item/bodypart/bodypart = bp
 					var/destination = get_edge_target_turf(turf_underneath, pick(GLOB.alldirs))
-					if (bodypart.dismemberable)
+					if (!(bodypart.bodypart_flags & BODYPART_UNREMOVABLE))
 						bodypart.dismember() //Using the power of flextape i've sawed this man's bodypart in half!
 						bodypart.throw_at(destination, 2, 3)
 						sleep(0.1 SECONDS)
@@ -380,14 +389,12 @@
 			return FALSE
 		if(istype(obj_to_insert, /obj/effect/supplypod_rubble))
 			return FALSE
-		if((obj_to_insert.comp_lookup && obj_to_insert.comp_lookup[COMSIG_OBJ_HIDE]) && reverse_option_list["Underfloor"])
-			return TRUE
-		else if ((obj_to_insert.comp_lookup && obj_to_insert.comp_lookup[COMSIG_OBJ_HIDE]) && !reverse_option_list["Underfloor"])
-			return FALSE
-		if(isProbablyWallMounted(obj_to_insert) && reverse_option_list["Wallmounted"])
-			return TRUE
-		else if (isProbablyWallMounted(obj_to_insert) && !reverse_option_list["Wallmounted"])
-			return FALSE
+
+		if(HAS_TRAIT(obj_to_insert, TRAIT_UNDERFLOOR))
+			return !!reverse_option_list["Underfloor"]
+		if(isProbablyWallMounted(obj_to_insert))
+			return !!reverse_option_list["Wallmounted"]
+
 		if(!obj_to_insert.anchored && reverse_option_list["Unanchored"])
 			return TRUE
 		if(obj_to_insert.anchored && !ismecha(obj_to_insert) && reverse_option_list["Anchored"]) //Mecha are anchored but there is a separate option for them
@@ -415,6 +422,7 @@
 	addtimer(CALLBACK(src, PROC_REF(handleReturnAfterDeparting), holder), 15) //Finish up the pod's duties after a certain amount of time
 
 /obj/structure/closet/supplypod/extractionpod/preReturn(atom/movable/holder)
+	// Double ensure we're loaded, this SHOULD be here by now but you never know
 	SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NINJA_HOLDING_FACILITY)
 	var/turf/picked_turf = pick(GLOB.holdingfacility)
 	reverse_dropoff_coords = list(picked_turf.x, picked_turf.y, picked_turf.z)
@@ -424,16 +432,19 @@
 	opened = TRUE
 	set_density(FALSE)
 	update_appearance()
+	after_open(null, FALSE)
 
 /obj/structure/closet/supplypod/extractionpod/setOpened()
 	opened = TRUE
 	set_density(TRUE)
 	update_appearance()
+	after_open(null, FALSE)
 
 /obj/structure/closet/supplypod/setClosed() //Ditto
 	opened = FALSE
 	set_density(TRUE)
 	update_appearance()
+	after_close(null, FALSE)
 
 /obj/structure/closet/supplypod/proc/tryMakeRubble(turf/T) //Ditto
 	if (rubble_type == RUBBLE_NONE)
@@ -465,7 +476,7 @@
 	vis_contents += glow_effect
 	glow_effect.layer = GASFIRE_LAYER
 	SET_PLANE_EXPLICIT(glow_effect, ABOVE_GAME_PLANE, src)
-	RegisterSignal(glow_effect, COMSIG_PARENT_QDELETING, PROC_REF(remove_glow))
+	RegisterSignal(glow_effect, COMSIG_QDELETING, PROC_REF(remove_glow))
 
 /obj/structure/closet/supplypod/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
 	. = ..()
@@ -482,7 +493,7 @@
 
 /obj/structure/closet/supplypod/proc/remove_glow()
 	SIGNAL_HANDLER
-	UnregisterSignal(glow_effect, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(glow_effect, COMSIG_QDELETING)
 	vis_contents -= glow_effect
 	glow_effect = null
 
@@ -682,7 +693,7 @@
 /obj/item/disk/cargo/bluespace_pod //Disk that can be inserted into the Express Console to allow for Advanced Bluespace Pods
 	name = "Bluespace Drop Pod Upgrade"
 	desc = "This disk provides a firmware update to the Express Supply Console, granting the use of Nanotrasen's Bluespace Drop Pods to the supply department."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/obj/assemblies/module.dmi'
 	icon_state = "cargodisk"
 	inhand_icon_state = "card-id"
 	w_class = WEIGHT_CLASS_SMALL

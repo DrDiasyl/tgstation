@@ -31,13 +31,8 @@
 /datum/sm_delam/singularity/filters(obj/machinery/power/supermatter_crystal/sm)
 	..()
 
-	// override the ray from parent call.
-	sm.add_filter(name = "ray", priority = 1, params=list(
-		type = "rays",
-		size = sm.internal_energy ? clamp((sm.damage/100) * sm.internal_energy, 50, 125) : 1,
-		color = SUPERMATTER_SINGULARITY_RAYS_COLOUR,
-		factor = clamp(sm.damage / 300, 1, 30),
-		density = clamp(sm.damage / 5, 12, 200)
+	sm.modify_filter(name = "ray", new_params = list(
+		color = SUPERMATTER_SINGULARITY_RAYS_COLOUR
 	))
 
 	sm.add_filter(name = "outline", priority = 2, params = list(
@@ -63,12 +58,8 @@
 	return list()
 
 /datum/sm_delam/singularity/lights(obj/machinery/power/supermatter_crystal/sm)
-	sm.set_light(
-		l_range = 4 + clamp(sm.damage/2, 10, 50),
-		l_power = 3,
-		l_color = SUPERMATTER_SINGULARITY_LIGHT_COLOUR,
-		l_on = !!sm.internal_energy,
-	)
+	..()
+	sm.set_light_color(SUPERMATTER_SINGULARITY_LIGHT_COLOUR)
 
 /// When we have too much power.
 /datum/sm_delam/tesla
@@ -102,18 +93,13 @@
 /datum/sm_delam/tesla/filters(obj/machinery/power/supermatter_crystal/sm)
 	..()
 
-	// override the ray from parent call.
-	sm.add_filter(name = "ray", priority = 1, params = list(
-		type = "rays",
-		size = sm.internal_energy ? clamp((sm.damage/100) * sm.internal_energy, 50, 125) : 1,
+	sm.modify_filter(name = "ray", new_params = list(
 		color = SUPERMATTER_TESLA_COLOUR,
-		factor = clamp(sm.damage/300, 1, 30),
-		density = clamp(sm.damage/5, 12, 200)
 	))
 
 	sm.add_filter(name = "icon", priority = 2, params = list(
 		type = "layer",
-		icon = new/icon('icons/obj/engine/energy_ball.dmi', "energy_ball", frame = rand(1,12)),
+		icon = new/icon('icons/obj/machines/engine/energy_ball.dmi', "energy_ball", frame = rand(1,12)),
 		flags = FILTER_UNDERLAY
 	))
 
@@ -122,12 +108,8 @@
 	sm.remove_filter(list("icon"))
 
 /datum/sm_delam/tesla/lights(obj/machinery/power/supermatter_crystal/sm)
-	sm.set_light(
-		l_range = 4 + clamp(sm.damage * sm.internal_energy, 50, 500),
-		l_power = 3,
-		l_color = SUPERMATTER_TESLA_COLOUR,
-		l_on = !!sm.internal_energy,
-	)
+	..()
+	sm.set_light_color(SUPERMATTER_TESLA_COLOUR)
 
 /// Default delam.
 /datum/sm_delam/explosive

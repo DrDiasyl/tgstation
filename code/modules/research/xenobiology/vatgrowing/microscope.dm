@@ -1,7 +1,7 @@
 /obj/structure/microscope
 	name = "Microscope"
 	desc = "A simple microscope, allowing you to examine micro-organisms."
-	icon = 'icons/obj/xenobiology/vatgrowing.dmi'
+	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "microscope"
 	var/obj/item/petri_dish/current_dish
 
@@ -88,7 +88,7 @@
 	reqs = list(
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/sheet/plastic = 1,
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/flashlight = 1,
 	)
 	category = CAT_CHEMISTRY

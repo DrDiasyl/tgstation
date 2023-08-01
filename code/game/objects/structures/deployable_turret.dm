@@ -202,7 +202,7 @@
 	var/turf/targets_from = get_turf(src)
 	if(QDELETED(target))
 		target = target_turf
-	var/obj/projectile/projectile_to_fire = new projectile_type
+	var/obj/projectile/projectile_to_fire = new projectile_type(targets_from)
 	playsound(src, firesound, 75, TRUE)
 	projectile_to_fire.preparePixelProjectile(target, targets_from)
 	projectile_to_fire.firer = user
@@ -237,7 +237,7 @@
 
 /obj/item/gun_control
 	name = "turret controls"
-	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = ABSTRACT | NOBLUDGEON | DROPDEL
@@ -270,6 +270,7 @@
 
 /obj/item/gun_control/afterattack(atom/targeted_atom, mob/user, flag, params)
 	. = ..()
+	. |= AFTERATTACK_PROCESSED_ITEM
 	var/modifiers = params2list(params)
 	var/obj/machinery/deployable_turret/E = user.buckled
 	E.calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(user, targeted_atom, modifiers)

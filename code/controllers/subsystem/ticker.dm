@@ -10,8 +10,10 @@ SUBSYSTEM_DEF(ticker)
 
 	/// state of current round (used by process()) Use the defines GAME_STATE_* !
 	var/current_state = GAME_STATE_STARTUP
-	/// Boolean to track if round was ended by admin intervention or a "round-ending" event, like summoning Nar'Sie, a blob victory, the nuke going off, etc.
-	var/force_ending = FALSE
+	/// Boolean to track if round should be forcibly ended next ticker tick.
+	/// Set by admin intervention ([ADMIN_FORCE_END_ROUND])
+	/// or a "round-ending" event, like summoning Nar'Sie, a blob victory, the nuke going off, etc. ([FORCE_END_ROUND])
+	var/force_ending = END_ROUND_AS_NORMAL
 	/// If TRUE, there is no lobby phase, the game starts immediately.
 	var/start_immediately = FALSE
 	/// Boolean to track and check if our subsystem setup is done.
@@ -144,6 +146,8 @@ SUBSYSTEM_DEF(ticker)
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
 		gametime_offset = world.timeofday
+	else
+		gametime_offset = (CONFIG_GET(number/shift_time_start_hour) HOURS)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
@@ -154,7 +158,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
+			send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
@@ -204,7 +208,7 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 			check_queue()
 
-			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
+			if(!roundend_check_paused && (mode.check_finished() || force_ending))
 				current_state = GAME_STATE_FINISHED
 				toggle_ooc(TRUE) // Turn it on
 				toggle_dooc(TRUE)
@@ -255,7 +259,7 @@ SUBSYSTEM_DEF(ticker)
 	collect_minds()
 	equip_characters()
 
-	GLOB.data_core.manifest()
+	GLOB.manifest.build()
 
 	transfer_characters() //transfer keys to the new mobs
 
@@ -732,3 +736,5 @@ SUBSYSTEM_DEF(ticker)
 		possible_themes += themes
 	if(possible_themes.len)
 		return "[global.config.directory]/reboot_themes/[pick(possible_themes)]"
+
+#undef ROUND_START_MUSIC_LIST

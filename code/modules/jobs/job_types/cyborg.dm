@@ -6,7 +6,6 @@
 	total_positions = 0
 	spawn_positions = 1
 	supervisors = "your laws and the AI" //Nodrak
-	selection_color = "#ddffdd"
 	spawn_type = /mob/living/silicon/robot
 	minimal_player_age = 21
 	exp_requirements = 120
@@ -20,7 +19,7 @@
 		/datum/job_department/silicon,
 		)
 	random_spawns_possible = FALSE
-	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK
+	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK | JOB_CANNOT_OPEN_SLOTS
 
 
 /datum/job/cyborg/after_spawn(mob/living/spawned, client/player_client)

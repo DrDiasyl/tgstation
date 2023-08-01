@@ -2,7 +2,7 @@
 /obj/item/bodypart/proc/painless_wound_roll(wounding_type, phantom_wounding_dmg, wound_bonus, bare_wound_bonus, sharpness=NONE)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if(!owner || phantom_wounding_dmg <= WOUND_MINIMUM_DAMAGE || wound_bonus == CANT_WOUND)
+	if(!owner || phantom_wounding_dmg <= WOUND_MINIMUM_DAMAGE || wound_bonus == CANT_WOUND || (owner.status_flags & GODMODE))
 		return
 
 	var/mangled_state = get_mangled_state()
@@ -55,11 +55,11 @@
  * * wound_bonus- The wound_bonus of an attack
  * * bare_wound_bonus- The bare_wound_bonus of an attack
  */
-/obj/item/bodypart/proc/check_wounding(woundtype, damage, wound_bonus, bare_wound_bonus, attack_direction)
+/obj/item/bodypart/proc/check_wounding(woundtype, damage, wound_bonus, bare_wound_bonus, attack_direction, damage_source)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/wound)
 
-	if(HAS_TRAIT(owner, TRAIT_NEVER_WOUNDED))
+	if(HAS_TRAIT(owner, TRAIT_NEVER_WOUNDED) || (owner.status_flags & GODMODE))
 		return
 
 	// note that these are fed into an exponent, so these are magnified
@@ -89,7 +89,7 @@
 		var/list/clothing = human_wearer.clothingonpart(src)
 		for(var/obj/item/clothing/clothes_check as anything in clothing)
 			// unlike normal armor checks, we tabluate these piece-by-piece manually so we can also pass on appropriate damage the clothing's limbs if necessary
-			if(clothes_check.armor.getRating(WOUND))
+			if(clothes_check.get_armor_rating(WOUND))
 				bare_wound_bonus = 0
 				break
 
@@ -109,12 +109,12 @@
 				new_wound = replaced_wound.replace_wound(possible_wound, attack_direction = attack_direction)
 			else
 				new_wound = new possible_wound
-				new_wound.apply_wound(src, attack_direction = attack_direction)
+				new_wound.apply_wound(src, attack_direction = attack_direction, wound_source = damage_source)
 			log_wound(owner, new_wound, damage, wound_bonus, bare_wound_bonus, base_roll) // dismembering wounds are logged in the apply_wound() for loss wounds since they delete themselves immediately, these will be immediately returned
 			return new_wound
 
 // try forcing a specific wound, but only if there isn't already a wound of that severity or greater for that type on this bodypart
-/obj/item/bodypart/proc/force_wound_upwards(specific_woundtype, smited = FALSE)
+/obj/item/bodypart/proc/force_wound_upwards(specific_woundtype, smited = FALSE, wound_source)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/datum/wound/potential_wound = specific_woundtype
@@ -125,7 +125,7 @@
 			return
 
 	var/datum/wound/new_wound = new potential_wound
-	new_wound.apply_wound(src, smited = smited)
+	new_wound.apply_wound(src, smited = smited, wound_source = wound_source)
 
 /**
  * check_wounding_mods() is where we handle the various modifiers of a wound roll
@@ -148,7 +148,7 @@
 		var/list/clothing = human_owner.clothingonpart(src)
 		for(var/obj/item/clothing/clothes as anything in clothing)
 			// unlike normal armor checks, we tabluate these piece-by-piece manually so we can also pass on appropriate damage the clothing's limbs if necessary
-			armor_ablation += clothes.armor.getRating(WOUND)
+			armor_ablation += clothes.get_armor_rating(WOUND)
 			if(wounding_type == WOUND_SLASH)
 				clothes.take_damage_zone(body_zone, damage, BRUTE)
 			else if(wounding_type == WOUND_BURN && damage >= 10) // lazy way to block freezing from shredding clothes without adding another var onto apply_damage()

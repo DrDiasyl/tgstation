@@ -11,7 +11,7 @@
 	production = 1
 	yield = 4
 	growthstages = 4
-	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
+	growing_icon = 'icons/obj/service/hydroponics/growing_vegetables.dmi'
 	icon_grow = "potato-grow"
 	icon_dead = "potato-dead"
 	genes = list(/datum/plant_gene/trait/battery, /datum/plant_gene/trait/one_bite)
@@ -28,7 +28,7 @@
 	juice_results = list(/datum/reagent/consumable/potato_juice = 0)
 	distill_reagent = /datum/reagent/consumable/ethanol/vodka
 
-/obj/item/food/grown/potato/MakeBakeable()
+/obj/item/food/grown/potato/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/baked_potato, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
 /obj/item/food/grown/potato/wedges
@@ -66,5 +66,5 @@
 	icon_state = "sweetpotato"
 	distill_reagent = /datum/reagent/consumable/ethanol/sbiten
 
-/obj/item/food/grown/potato/sweet/MakeBakeable()
+/obj/item/food/grown/potato/sweet/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/yakiimo, rand(15 SECONDS, 35 SECONDS), TRUE, TRUE)

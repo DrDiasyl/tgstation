@@ -19,7 +19,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
 
-/turf/open/floor/wood/setup_broken_states()
+/turf/open/floor/wood/broken_states()
 	return list("wood-broken", "wood-broken2", "wood-broken3", "wood-broken4", "wood-broken5", "wood-broken6", "wood-broken7")
 
 /turf/open/floor/wood/examine(mob/user)
@@ -78,21 +78,21 @@
 	icon_state = "wood_tile"
 	floor_tile = /obj/item/stack/tile/wood/tile
 
-/turf/open/floor/wood/tile/setup_broken_states()
+/turf/open/floor/wood/tile/broken_states()
 	return list("wood_tile-broken", "wood_tile-broken2", "wood_tile-broken3")
 
 /turf/open/floor/wood/parquet
 	icon_state = "wood_parquet"
 	floor_tile = /obj/item/stack/tile/wood/parquet
 
-/turf/open/floor/wood/parquet/setup_broken_states()
+/turf/open/floor/wood/parquet/broken_states()
 	return list("wood_parquet-broken", "wood_parquet-broken2", "wood_parquet-broken3", "wood_parquet-broken4", "wood_parquet-broken5", "wood_parquet-broken6", "wood_parquet-broken7")
 
 /turf/open/floor/wood/large
 	icon_state = "wood_large"
 	floor_tile = /obj/item/stack/tile/wood/large
 
-/turf/open/floor/wood/large/setup_broken_states()
+/turf/open/floor/wood/large/broken_states()
 	return list("wood_large-broken", "wood_large-broken2", "wood_large-broken3")
 
 /turf/open/floor/bamboo
@@ -110,7 +110,7 @@
 	clawfootstep = FOOTSTEP_WOOD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
-/turf/open/floor/bamboo/setup_broken_states()
+/turf/open/floor/bamboo/broken_states()
 	return list("bamboodamaged")
 
 /turf/open/floor/bamboo/tatami
@@ -119,7 +119,7 @@
 	floor_tile = /obj/item/stack/tile/bamboo/tatami
 	smoothing_flags = NONE
 
-/turf/open/floor/bamboo/tatami/setup_broken_states()
+/turf/open/floor/bamboo/tatami/broken_states()
 	return list("tatami-damaged")
 
 /turf/open/floor/bamboo/tatami/purple
@@ -133,7 +133,7 @@
 /turf/open/floor/grass
 	name = "grass patch"
 	desc = "You can't tell if this is real grass or just cheap plastic imitation."
-	icon_state = "grass0"
+	icon_state = "grass"
 	floor_tile = /obj/item/stack/tile/grass
 	flags_1 = NONE
 	bullet_bounce_sound = null
@@ -143,8 +143,8 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
 
-/turf/open/floor/grass/setup_broken_states()
-	return list("sand")
+/turf/open/floor/grass/broken_states()
+	return list("[initial(icon_state)]_damaged")
 
 /turf/open/floor/grass/Initialize(mapload)
 	. = ..()
@@ -155,10 +155,21 @@
 /turf/open/floor/grass/proc/spawniconchange()
 	icon_state = "grass[rand(0,3)]"
 
+/turf/open/floor/grass/lavaland
+	name = "dead grass patch"
+	desc = "It turns out grass doesn't grow very well in hell."
+	icon_state = "sand"
+	broken = TRUE
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+	damaged_dmi = 'icons/turf/damaged.dmi'
+
+/turf/open/floor/grass/lavaland/spawniconchange()
+	return
+
 /turf/open/floor/grass/fairy //like grass but fae-er
 	name = "fairygrass patch"
 	desc = "Something about this grass makes you want to frolic. Or get high."
-	icon_state = "fairygrass0"
+	icon_state = "fairygrass"
 	floor_tile = /obj/item/stack/tile/fairygrass
 	light_range = 2
 	light_power = 0.80
@@ -171,6 +182,7 @@
 	gender = PLURAL
 	name = "snow"
 	icon = 'icons/turf/snow.dmi'
+	damaged_dmi = 'icons/turf/snow.dmi'
 	desc = "Looks cold."
 	icon_state = "snow"
 	flags_1 = NONE
@@ -188,9 +200,9 @@
 
 /turf/open/floor/fake_snow/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/diggable, /obj/item/stack/tile/mineral/snow, 2, worm_chance = 0)
+	AddElement(/datum/element/diggable, /obj/item/stack/tile/mineral/snow, 1, worm_chance = 0)
 
-/turf/open/floor/fake_snow/setup_broken_states()
+/turf/open/floor/fake_snow/broken_states()
 	return list("snow_dug")
 
 /turf/open/floor/fake_snow/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
@@ -458,7 +470,7 @@
 /turf/open/floor/carpet/neon/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/decal, neon_icon || icon, neon_icon_state || base_icon_state, dir, null, null, alpha, neon_color, smoothing_junction)
-	AddElement(/datum/element/decal, neon_icon || icon, neon_icon_state || base_icon_state, dir, EMISSIVE_PLANE, null, emissive_alpha, EMISSIVE_COLOR, smoothing_junction)
+	AddElement(/datum/element/decal, neon_icon || icon, neon_icon_state || base_icon_state, dir, EMISSIVE_PLANE, null, emissive_alpha, GLOB.emissive_color, smoothing_junction)
 
 /turf/open/floor/carpet/neon/simple
 	name = "simple neon carpet"
@@ -775,6 +787,9 @@
 /turf/open/floor/carpet/neon/simple/pink/nodots/airless
 	initial_gas_mix = AIRLESS_ATMOS
 
+/turf/open/floor/carpet/blue/lavaland
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+
 /turf/open/floor/fakepit
 	desc = "A clever illusion designed to look like a bottomless pit."
 	icon = 'icons/turf/floors/chasms.dmi'
@@ -810,12 +825,11 @@
 	floor_tile = /obj/item/stack/tile/fakespace
 	plane = PLANE_SPACE
 	tiled_dirt = FALSE
+	damaged_dmi = 'icons/turf/space.dmi'
 
-/turf/open/floor/fakespace/setup_broken_states()
+/turf/open/floor/fakespace/broken_states()
 	return list("damaged")
 
 /turf/open/floor/fakespace/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = 'icons/turf/space.dmi'
-	underlay_appearance.icon_state = "space"
-	SET_PLANE(underlay_appearance, PLANE_SPACE, src)
+	generate_space_underlay(underlay_appearance, asking_turf)
 	return TRUE

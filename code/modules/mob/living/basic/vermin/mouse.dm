@@ -8,7 +8,6 @@
 
 	maxHealth = 5
 	health = 5
-	see_in_dark = 6
 	density = FALSE
 	pass_flags = PASSTABLE|PASSGRILLE|PASSMOB
 	mob_size = MOB_SIZE_TINY
@@ -38,17 +37,19 @@
 	/// Probability that, if we successfully bite a shocked cable, that we will die to it.
 	var/cable_zap_prob = 85
 
-/mob/living/basic/mouse/Initialize(mapload, tame = FALSE)
+/mob/living/basic/mouse/Initialize(mapload, tame = FALSE, new_body_color)
 	. = ..()
 	if(contributes_to_ratcap)
 		SSmobs.cheeserats |= src
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 	src.tame = tame
+	if(!isnull(new_body_color))
+		body_color = new_body_color
 	if(isnull(body_color))
 		body_color = pick("brown", "gray", "white")
-		held_state = "mouse_[body_color]" // not handled by variety element
-		AddElement(/datum/element/animal_variety, "mouse", body_color, FALSE)
+	held_state = "mouse_[body_color]" // not handled by variety element
+	AddElement(/datum/element/animal_variety, "mouse", body_color, FALSE)
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_MOUSE, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 10)
 	AddComponent(/datum/component/squeak, list('sound/effects/mousesqueek.ogg' = 1), 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE) //as quiet as a mouse or whatever
 	var/static/list/loc_connections = list(
@@ -86,7 +87,7 @@
 /// Kills the rat and changes its icon state to be splatted (bloody).
 /mob/living/basic/mouse/proc/splat()
 	icon_dead = "mouse_[body_color]_splat"
-	adjust_health(-maxHealth)
+	adjust_health(maxHealth)
 
 // On revival, re-add the mouse to the ratcap, or block it if we're at it
 /mob/living/basic/mouse/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
@@ -115,9 +116,7 @@
 	. = ..(TRUE)
 	// Now if we were't ACTUALLY gibbed, spawn the dead mouse
 	if(!gibbed)
-		var/obj/item/food/deadmouse/mouse = new(loc)
-		mouse.name = name
-		mouse.icon_state = icon_dead
+		var/obj/item/food/deadmouse/mouse = new(loc, src)
 		if(HAS_TRAIT(src, TRAIT_BEING_SHOCKED))
 			mouse.desc = "They're toast."
 			mouse.add_atom_colour("#3A3A3A", FIXED_COLOUR_PRIORITY)
@@ -251,6 +250,7 @@
 	response_harm_continuous = "splats"
 	response_harm_simple = "splat"
 	gold_core_spawnable = NO_SPAWN
+	contributes_to_ratcap = FALSE
 
 /mob/living/basic/mouse/brown/tom/make_tameable()
 	tame = TRUE
@@ -269,6 +269,7 @@
 	name = "rat"
 	desc = "They're a nasty, ugly, evil, disease-ridden rodent with anger issues."
 
+	gold_core_spawnable = NO_SPAWN
 	melee_damage_lower = 3
 	melee_damage_upper = 5
 	obj_damage = 5
@@ -293,19 +294,40 @@
 	eatverbs = list("devour")
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
 	foodtypes = GORE | MEAT | RAW
-	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
+	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/consumable/liquidgibs = 5)
 	decomp_req_handle = TRUE
 	ant_attracting = FALSE
 	decomp_type = /obj/item/food/deadmouse/moldy
+	var/body_color = "gray"
+	var/critter_type = /mob/living/basic/mouse
 
-/obj/item/food/deadmouse/Initialize(mapload)
+/obj/item/food/deadmouse/Initialize(mapload, mob/living/basic/mouse/dead_critter)
 	. = ..()
+	if(dead_critter)
+		body_color = dead_critter.body_color
+		critter_type = dead_critter.type
+		name = dead_critter.name
+		icon_state = dead_critter.icon_dead
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_MOUSE, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 10)
+	RegisterSignal(src, COMSIG_ATOM_ON_LAZARUS_INJECTOR, PROC_REF(use_lazarus))
 
 /obj/item/food/deadmouse/examine(mob/user)
 	. = ..()
 	if (reagents?.has_reagent(/datum/reagent/yuck) || reagents?.has_reagent(/datum/reagent/fuel))
-		. += span_warning("[p_theyre(TRUE)] dripping with fuel and smells terrible.")
+		. += span_warning("[p_Theyre()] dripping with fuel and smells terrible.")
+
+///Spawn a new mouse from this dead mouse item when hit by a lazarus injector and conditions are met.
+/obj/item/food/deadmouse/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
+	SIGNAL_HANDLER
+	if(injector.revive_type != SENTIENCE_ORGANIC)
+		balloon_alert(user, "invalid creature!")
+		return
+	var/mob/living/basic/mouse/revived_critter = new critter_type (drop_location(), FALSE, body_color)
+	revived_critter.name = name
+	revived_critter.lazarus_revive(user, injector.malfunctioning)
+	injector.expend(revived_critter, user)
+	qdel(src)
+	return LAZARUS_INJECTOR_USED
 
 /obj/item/food/deadmouse/attackby(obj/item/attacking_item, mob/user, params)
 	var/mob/living/living_user = user
@@ -329,6 +351,7 @@
 /obj/item/food/deadmouse/afterattack(obj/target, mob/living/user, proximity_flag)
 	. = ..()
 	if(proximity_flag && reagents && target.is_open_container())
+		. |= AFTERATTACK_PROCESSED_ITEM
 		// is_open_container will not return truthy if target.reagents doesn't exist
 		var/datum/reagents/target_reagents = target.reagents
 		var/trans_amount = reagents.maximum_volume - reagents.total_volume * (4 / 3)
@@ -336,7 +359,7 @@
 			to_chat(user, span_notice("You dip [src] into [target]."))
 		else
 			to_chat(user, span_warning("That's a terrible idea."))
-		return
+		return .
 
 /obj/item/food/deadmouse/moldy
 	name = "moldy dead mouse"
@@ -344,7 +367,7 @@
 	icon_state = "mouse_gray_dead"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/mold = 10)
 	foodtypes = GORE | MEAT | RAW | GROSS
-	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5, /datum/reagent/consumable/mold = 10)
+	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/consumable/liquidgibs = 5, /datum/reagent/consumable/mold = 10)
 	preserved_food = TRUE
 
 /// The mouse AI controller
@@ -378,9 +401,8 @@
 
 /datum/ai_planning_subtree/flee_target/mouse
 
-/datum/ai_planning_subtree/flee_target/mouse/SelectBehaviors(datum/ai_controller/controller, delta_time)
-	var/datum/weakref/hunting_weakref = controller.blackboard[BB_CURRENT_HUNTING_TARGET]
-	var/atom/hunted_cheese = hunting_weakref?.resolve()
+/datum/ai_planning_subtree/flee_target/mouse/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+	var/atom/hunted_cheese = controller.blackboard[BB_CURRENT_HUNTING_TARGET]
 	if (!isnull(hunted_cheese))
 		return // We see some cheese, which is more important than our life
 	return ..()
@@ -406,21 +428,9 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/simple_find_target,
-		/datum/ai_planning_subtree/attack_obstacle_in_path/rat,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/rat,
+		/datum/ai_planning_subtree/attack_obstacle_in_path,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cheese,
 		/datum/ai_planning_subtree/random_speech/mouse,
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cables,
 	)
-
-/datum/ai_planning_subtree/basic_melee_attack_subtree/rat
-	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/rat
-
-/datum/ai_behavior/basic_melee_attack/rat
-	action_cooldown = 2 SECONDS
-
-/datum/ai_planning_subtree/attack_obstacle_in_path/rat
-	attack_behaviour = /datum/ai_behavior/attack_obstructions/rat
-
-/datum/ai_behavior/attack_obstructions/rat
-	action_cooldown = 2 SECONDS

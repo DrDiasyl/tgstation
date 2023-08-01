@@ -130,14 +130,14 @@
 	icon_state = "clockwork_helmet_old"
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEEARS|HIDEHAIR
-	armor = list(MELEE = 5, BULLET = 0, LASER = -5, ENERGY = -15, BOMB = 10, BIO = 0, FIRE = 20, ACID = 20)
+	armor_type = /datum/armor/costume_bronze
 
 /obj/item/clothing/head/costume/fancy
 	name = "fancy hat"
 	icon_state = "fancy_hat"
 	greyscale_colors = "#E3C937#782A81"
 	greyscale_config = /datum/greyscale_config/fancy_hat
-	greyscale_config_worn = /datum/greyscale_config/fancy_hat_worn
+	greyscale_config_worn = /datum/greyscale_config/fancy_hat/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/costume/football_helmet
@@ -145,7 +145,7 @@
 	icon_state = "football_helmet"
 	greyscale_colors = "#D74722"
 	greyscale_config = /datum/greyscale_config/football_helmet
-	greyscale_config_worn = /datum/greyscale_config/football_helmet_worn
+	greyscale_config_worn = /datum/greyscale_config/football_helmet/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/costume/tv_head
@@ -160,6 +160,14 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	var/has_fov = TRUE
+
+/datum/armor/costume_bronze
+	melee = 5
+	laser = -5
+	energy = -15
+	bomb = 10
+	fire = 20
+	acid = 20
 
 /obj/item/clothing/head/costume/tv_head/Initialize(mapload)
 	. = ..()

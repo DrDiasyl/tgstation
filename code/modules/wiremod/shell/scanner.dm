@@ -5,7 +5,7 @@
  */
 /obj/item/wiremod_scanner
 	name = "scanner"
-	icon = 'icons/obj/wiremod.dmi'
+	icon = 'icons/obj/science/circuits.dmi'
 	icon_state = "setup_small"
 	inhand_icon_state = "electronic"
 	worn_icon_state = "electronic"
@@ -58,4 +58,5 @@
 	attacker.set_output(user)
 	attacking.set_output(target)
 	signal.set_output(COMPONENT_SIGNAL)
+	return COMPONENT_AFTERATTACK_PROCESSED_ITEM
 

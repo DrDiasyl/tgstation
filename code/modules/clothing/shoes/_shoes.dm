@@ -9,7 +9,7 @@
 	body_parts_covered = FEET
 	slot_flags = ITEM_SLOT_FEET
 
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/clothing_shoes
 	slowdown = SHOES_SLOWDOWN
 	strip_delay = 1 SECONDS
 	var/offset = 0
@@ -22,6 +22,9 @@
 	var/lace_time = 5 SECONDS
 	///An active alert
 	var/datum/weakref/our_alert_ref
+
+/datum/armor/clothing_shoes
+	bio = 50
 
 /obj/item/clothing/shoes/suicide_act(mob/living/carbon/user)
 	if(prob(50))
@@ -275,3 +278,17 @@
 	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
 		to_chat(user, span_notice("You [tied ? "untie" : "tie"] the laces on [src]."))
 		adjust_laces(tied ? SHOES_UNTIED : SHOES_TIED, user)
+
+/obj/item/clothing/shoes/apply_fantasy_bonuses(bonus)
+	. = ..()
+	slowdown = modify_fantasy_variable("slowdown", slowdown, -bonus * 0.1, 0)
+	if(ismob(loc))
+		var/mob/wearer = loc
+		wearer.update_equipment_speed_mods()
+
+/obj/item/clothing/shoes/remove_fantasy_bonuses(bonus)
+	slowdown = reset_fantasy_variable("slowdown", slowdown)
+	if(ismob(loc))
+		var/mob/wearer = loc
+		wearer.update_equipment_speed_mods()
+	return ..()

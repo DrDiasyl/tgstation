@@ -9,7 +9,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_CAPTAIN
-	selection_color = "#ffdddd"
 	req_admin_notify = 1
 	minimal_player_age = 14
 	exp_requirements = 300
@@ -35,7 +34,7 @@
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
 	rpg_title = "Guard Leader"
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
+	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
@@ -72,7 +71,7 @@
 	box = /obj/item/storage/box/survival/security
 	chameleon_extras = list(
 		/obj/item/gun/energy/e_gun/hos,
-		/obj/item/stamp/hos,
+		/obj/item/stamp/head/hos,
 		)
 	implants = list(/obj/item/implant/mindshield)
 

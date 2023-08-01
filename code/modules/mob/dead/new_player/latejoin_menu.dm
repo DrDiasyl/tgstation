@@ -67,6 +67,10 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		departments[department.department_name] = department_data
 
 		for(var/datum/job/job_datum as anything in department.department_jobs)
+			//Jobs under multiple departments should only be displayed if this is their first department or the command department
+			if(LAZYLEN(job_datum.departments_list) > 1 && job_datum.departments_list[1] != department.type && !(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+				continue
+
 			var/job_availability = owner.IsJobUnavailable(job_datum.title, latejoin = TRUE)
 
 			var/list/job_data = list(
@@ -82,7 +86,8 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				department_data["open_slots"] = "∞"
 
 			if(department_data["open_slots"] != "∞")
-				department_data["open_slots"] += job_datum.total_positions - job_datum.current_positions
+				if(job_datum.total_positions - job_datum.current_positions > 0)
+					department_data["open_slots"] += job_datum.total_positions - job_datum.current_positions
 
 			department_jobs[job_datum.title] = job_data
 
@@ -100,13 +105,13 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		departments[department.department_name] = department_data
 
 		for(var/datum/job/job_datum as anything in department.department_jobs)
-			var/datum/outfit/outfit = job_datum.outfit
-			var/datum/id_trim/trim = initial(outfit.id_trim)
+			//Jobs under multiple departments should only be displayed if this is their first department or the command department
+			if(LAZYLEN(job_datum.departments_list) > 1 && job_datum.departments_list[1] != department.type && !(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+				continue
 
 			var/list/job_data = list(
 				"command" = !!(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND),
 				"description" = job_datum.description,
-				"icon" = initial(trim.orbit_icon),
 			)
 
 			department_jobs[job_datum.title] = job_data

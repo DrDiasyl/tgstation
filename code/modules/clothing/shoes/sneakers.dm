@@ -6,9 +6,9 @@
 	righthand_file = 'icons/mob/inhands/clothing/shoes_righthand.dmi'
 	greyscale_colors = "#2d2d33#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers
-	greyscale_config_worn = /datum/greyscale_config/sneakers_worn
-	greyscale_config_inhand_left = /datum/greyscale_config/sneakers_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_inhand_right
+	greyscale_config_worn = /datum/greyscale_config/sneakers/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/sneakers/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/sneakers/inhand_right
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/sneakers/black
@@ -29,7 +29,10 @@
 /obj/item/clothing/shoes/sneakers/blue
 	name = "blue shoes"
 	greyscale_colors = "#4f88df#ffffff"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 95, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/sneakers_blue
+
+/datum/armor/sneakers_blue
+	bio = 95
 
 /obj/item/clothing/shoes/sneakers/green
 	name = "green shoes"
@@ -51,7 +54,12 @@
 /obj/item/clothing/shoes/sneakers/white
 	name = "white shoes"
 	greyscale_colors = "#ffffff#ffffff"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 95, FIRE = 0, ACID = 0)
+	icon_preview = 'icons/obj/fluff/previews.dmi'
+	icon_state_preview = "shoes_cloth"
+	armor_type = /datum/armor/sneakers_white
+
+/datum/armor/sneakers_white
+	bio = 95
 
 /obj/item/clothing/shoes/sneakers/rainbow
 	name = "rainbow shoes"
@@ -68,17 +76,19 @@
 
 /obj/item/clothing/shoes/sneakers/orange
 	name = "orange shoes"
+	icon_preview = 'icons/obj/fluff/previews.dmi'
+	icon_state_preview = "prisonshoes"
 	greyscale_colors = "#d15b1b#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers_orange
-	greyscale_config_worn = /datum/greyscale_config/sneakers_orange_worn
-	greyscale_config_inhand_left = /datum/greyscale_config/sneakers_orange_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_orange_inhand_right
+	greyscale_config_worn = /datum/greyscale_config/sneakers_orange/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/sneakers_orange/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_orange/inhand_right
 	flags_1 = NONE
 	var/obj/item/restraints/handcuffs/attached_cuffs
 
 /obj/item/clothing/shoes/sneakers/orange/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob, (slot_flags|ITEM_SLOT_HANDCUFFED))
+	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_HANDCUFFED)
 
 /obj/item/clothing/shoes/sneakers/orange/handle_atom_del(atom/deleting_atom)
 	if(deleting_atom == attached_cuffs)
@@ -157,10 +167,9 @@
 /obj/item/clothing/shoes/sneakers/marisa
 	desc = "A pair of magic black shoes."
 	name = "magic shoes"
-	worn_icon_state = "marisa"
 	greyscale_colors = "#2d2d33#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers_marisa
-	greyscale_config_worn = null
+	greyscale_config_worn = /datum/greyscale_config/sneakers_marisa/worn
 	strip_delay = 5
 	equip_delay_other = 50
 	can_be_tied = FALSE

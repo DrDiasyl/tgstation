@@ -8,8 +8,17 @@
 	desc = "It's good to be emperor."
 	inhand_icon_state = "that"
 	flags_inv = 0
-	armor = list(MELEE = 30, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/hats_centhat
 	strip_delay = 80
+
+/datum/armor/hats_centhat
+	melee = 30
+	bullet = 15
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/head/costume/constable
 	name = "constable helmet"
@@ -40,14 +49,18 @@
 	name = "mailman's hat"
 	icon_state = "mailman"
 	desc = "<i>'Right-on-time'</i> mail service head wear."
+	clothing_traits = list(TRAIT_HATED_BY_DOGS)
 
 /obj/item/clothing/head/bio_hood/plague
 	name = "plague doctor's hat"
 	desc = "These were once used by plague doctors. Will protect you from exposure to the Pestilence."
 	icon_state = "plaguedoctor"
 	clothing_flags = THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/bio_hood_plague
 	flags_inv = NONE
+
+/datum/armor/bio_hood_plague
+	bio = 100
 
 /obj/item/clothing/head/costume/nursehat
 	name = "nurse's hat"
@@ -84,8 +97,36 @@
 	icon_state = "cowboy"
 	worn_icon_state = "hunter"
 	inhand_icon_state = null
-	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 15, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/head_cowboy
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	/// Chance that the hat will catch a bullet for you
+	var/deflect_chance = 2
+
+/obj/item/clothing/head/cowboy/Initialize(mapload)
+	. = ..()
+	AddComponent(\
+		/datum/component/bullet_intercepting,\
+		block_chance = deflect_chance,\
+		active_slots = ITEM_SLOT_HEAD,\
+		on_intercepted = CALLBACK(src, PROC_REF(on_intercepted_bullet)),\
+	)
+
+/// When we catch a bullet, fling away
+/obj/item/clothing/head/cowboy/proc/on_intercepted_bullet(mob/living/victim, obj/projectile/bullet)
+	victim.visible_message(span_warning("\The [bullet] sends [victim]'s hat flying!"))
+	victim.dropItemToGround(src, force = TRUE, silent = TRUE)
+	throw_at(get_edge_target_turf(loc, pick(GLOB.alldirs)), range = 3, speed = 3)
+	playsound(victim, get_sfx(SFX_RICOCHET), 100, TRUE)
+
+/datum/armor/head_cowboy
+	melee = 5
+	bullet = 5
+	laser = 5
+	energy = 15
+
+/// Bounty hunter's hat, very likely to intercept bullets
+/obj/item/clothing/head/cowboy/bounty
+	deflect_chance = 50
 
 /obj/item/clothing/head/cowboy/black
 	name = "desperado hat"
@@ -181,7 +222,16 @@
 	desc = "A cap for a party coordinator, stylish!."
 	icon_state = "capcap"
 	inhand_icon_state = "that"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/hats_coordinator
+
+/datum/armor/hats_coordinator
+	melee = 25
+	bullet = 15
+	laser = 25
+	energy = 35
+	bomb = 25
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/head/costume/jackbros
 	name = "frosty hat"
@@ -201,8 +251,17 @@
 	desc = "Worn by the finest of CentCom commanders. Inside the lining of the cap, lies two faint initials."
 	inhand_icon_state = "that"
 	flags_inv = 0
-	armor = list(MELEE = 30, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/hats_centcom_cap
 	strip_delay = (8 SECONDS)
+
+/datum/armor/hats_centcom_cap
+	melee = 30
+	bullet = 15
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/head/fedora/human_leather
 	name = "human skin hat"
@@ -245,3 +304,10 @@
 	name = "red nightcap"
 	desc = "A red nightcap for all the sleepyheads and dozers out there."
 	icon_state = "sleep_red"
+
+/obj/item/clothing/head/costume/paper_hat
+	name = "paper hat"
+	desc = "A flimsy hat made of paper."
+	icon_state = "paper"
+	worn_icon_state = "paper"
+	dog_fashion = /datum/dog_fashion/head

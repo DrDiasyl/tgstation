@@ -53,8 +53,10 @@ Slimecrossing Items
 	return ret
 
 /obj/item/camera/rewind/afterattack(atom/target, mob/user, flag)
+	. |= AFTERATTACK_PROCESSED_ITEM
+
 	if(!on || !pictures_left || !isturf(target.loc))
-		return
+		return .
 
 	if(user == target)
 		to_chat(user, span_notice("You take a selfie!"))
@@ -64,7 +66,7 @@ Slimecrossing Items
 	to_chat(target, span_boldnotice("You'll remember this moment forever!"))
 
 	target.AddComponent(/datum/component/dejavu, 2)
-	.=..()
+	return . | ..()
 
 
 
@@ -76,10 +78,12 @@ Slimecrossing Items
 	pictures_max = 1
 
 /obj/item/camera/timefreeze/afterattack(atom/target, mob/user, flag)
+	. |= AFTERATTACK_PROCESSED_ITEM
+
 	if(!on || !pictures_left || !isturf(target.loc))
-		return
+		return .
 	new /obj/effect/timestop(get_turf(target), 2, 50, list(user))
-	. = ..()
+	return . | ..()
 
 //Hypercharged slime cell - Charged Yellow
 /obj/item/stock_parts/cell/high/slime_hypercharged
@@ -98,7 +102,7 @@ Slimecrossing Items
 /obj/item/barriercube
 	name = "barrier cube"
 	desc = "A compressed cube of slime. When squeezed, it grows to massive size!"
-	icon = 'icons/obj/xenobiology/slimecrossing.dmi'
+	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "barriercube"
 	w_class = WEIGHT_CLASS_TINY
 
@@ -115,7 +119,7 @@ Slimecrossing Items
 /obj/structure/barricade/slime
 	name = "gelatinous barrier"
 	desc = "A huge chunk of grey slime. Bullets might get stuck in it."
-	icon = 'icons/obj/xenobiology/slimecrossing.dmi'
+	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "slimebarrier"
 	proj_pass_rate = 40
 	max_integrity = 60
@@ -124,7 +128,7 @@ Slimecrossing Items
 /obj/effect/forcefield/slimewall
 	name = "solidified gel"
 	desc = "A mass of solidified slime gel - completely impenetrable, but it's melting away!"
-	icon = 'icons/obj/xenobiology/slimecrossing.dmi'
+	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "slimebarrier_thick"
 	can_atmos_pass = ATMOS_PASS_NO
 	opacity = TRUE
@@ -140,11 +144,19 @@ Slimecrossing Items
 /obj/structure/ice_stasis
 	name = "ice block"
 	desc = "A massive block of ice. You can see something vaguely humanoid inside."
-	icon = 'icons/obj/xenobiology/slimecrossing.dmi'
+	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "frozen"
 	density = TRUE
 	max_integrity = 100
-	armor = list(MELEE = 30, BULLET = 50, LASER = -50, ENERGY = -50, BOMB = 0, BIO = 0, FIRE = -80, ACID = 30)
+	armor_type = /datum/armor/structure_ice_stasis
+
+/datum/armor/structure_ice_stasis
+	melee = 30
+	bullet = 50
+	laser = -50
+	energy = -50
+	fire = -80
+	acid = 30
 
 /obj/structure/ice_stasis/Initialize(mapload)
 	. = ..()
@@ -161,35 +173,34 @@ Slimecrossing Items
 	name = "gold capture device"
 	desc = "Bluespace technology packed into a roughly egg-shaped device, used to store nonhuman creatures. Can't catch them all, though - it only fits one."
 	w_class = WEIGHT_CLASS_SMALL
-	icon = 'icons/obj/xenobiology/slimecrossing.dmi'
+	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "capturedevice"
 
-/obj/item/capturedevice/attack(mob/living/M, mob/user)
+/obj/item/capturedevice/attack(mob/living/pokemon, mob/user)
 	if(length(contents))
 		to_chat(user, span_warning("The device already has something inside."))
 		return
-	if(!isanimal(M))
+	if(!isanimal_or_basicmob(pokemon))
 		to_chat(user, span_warning("The capture device only works on simple creatures."))
 		return
-	if(M.mind)
-		to_chat(user, span_notice("You offer the device to [M]."))
-		if(tgui_alert(M, "Would you like to enter [user]'s capture device?", "Gold Capture Device", list("Yes", "No")) == "Yes")
-			if(user.canUseTopic(src, be_close = TRUE) && user.canUseTopic(M, be_close = TRUE))
-				to_chat(user, span_notice("You store [M] in the capture device."))
-				to_chat(M, span_notice("The world warps around you, and you're suddenly in an endless void, with a window to the outside floating in front of you."))
-				store(M, user)
+	if(pokemon.mind)
+		to_chat(user, span_notice("You offer the device to [pokemon]."))
+		if(tgui_alert(pokemon, "Would you like to enter [user]'s capture device?", "Gold Capture Device", list("Yes", "No")) == "Yes")
+			if(user.can_perform_action(src) && user.can_perform_action(pokemon))
+				to_chat(user, span_notice("You store [pokemon] in the capture device."))
+				to_chat(pokemon, span_notice("The world warps around you, and you're suddenly in an endless void, with a window to the outside floating in front of you."))
+				store(pokemon, user)
 			else
-				to_chat(user, span_warning("You were too far away from [M]."))
-				to_chat(M, span_warning("You were too far away from [user]."))
+				to_chat(user, span_warning("You were too far away from [pokemon]."))
+				to_chat(pokemon, span_warning("You were too far away from [user]."))
 		else
-			to_chat(user, span_warning("[M] refused to enter the device."))
+			to_chat(user, span_warning("[pokemon] refused to enter the device."))
 			return
-	else
-		if(ishostile(M) && !(FACTION_NEUTRAL in M.faction))
-			to_chat(user, span_warning("This creature is too aggressive to capture."))
-			return
-	to_chat(user, span_notice("You store [M] in the capture device."))
-	store(M)
+	else if(!(FACTION_NEUTRAL in pokemon.faction))
+		to_chat(user, span_warning("This creature is too aggressive to capture."))
+		return
+	to_chat(user, span_notice("You store [pokemon] in the capture device."))
+	store(pokemon)
 
 /obj/item/capturedevice/attack_self(mob/user)
 	if(contents.len)

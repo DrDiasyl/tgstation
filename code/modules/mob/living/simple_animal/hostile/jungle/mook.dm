@@ -14,10 +14,8 @@
 	icon_living = "mook"
 	icon_dead = "mook_dead"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	pixel_x = -16
-	base_pixel_x = -16
-	pixel_y = -8
-	base_pixel_y = -8
+	SET_BASE_PIXEL(-16, -8)
+
 	maxHealth = 45
 	health = 45
 	melee_damage_lower = 30
@@ -109,7 +107,7 @@
 /mob/living/simple_animal/hostile/jungle/mook/proc/LeapAttack()
 	if(target && !stat && attack_state == MOOK_ATTACK_WARMUP)
 		attack_state = MOOK_ATTACK_ACTIVE
-		set_density(FALSE)
+		ADD_TRAIT(src, TRAIT_UNDENSE, LEAPING_TRAIT)
 		melee_damage_lower = 30
 		melee_damage_upper = 30
 		update_icons()
@@ -125,7 +123,7 @@
 /mob/living/simple_animal/hostile/jungle/mook/proc/AttackRecovery()
 	if(attack_state == MOOK_ATTACK_ACTIVE && !stat)
 		attack_state = MOOK_ATTACK_RECOVERY
-		set_density(TRUE)
+		REMOVE_TRAIT(src, TRAIT_UNDENSE, LEAPING_TRAIT)
 		face_atom(target)
 		if(!struck_target_leap)
 			update_icons()
@@ -158,7 +156,7 @@
 		if(CanAttack(L))
 			L.attack_animal(src)
 			struck_target_leap = TRUE
-			set_density(TRUE)
+			REMOVE_TRAIT(src, TRAIT_UNDENSE, LEAPING_TRAIT)
 			update_icons()
 	var/mook_under_us = FALSE
 	for(var/A in get_turf(src))
@@ -171,7 +169,7 @@
 			if(!struck_target_leap && CanAttack(ML))//Check if some joker is attempting to use rest to evade us
 				struck_target_leap = TRUE
 				ML.attack_animal(src)
-				set_density(TRUE)
+				REMOVE_TRAIT(src, TRAIT_UNDENSE, LEAPING_TRAIT)
 				struck_target_leap = TRUE
 				update_icons()
 				continue
@@ -221,10 +219,7 @@
 	icon_state = "mook_leap_cloud"
 	layer = BELOW_MOB_LAYER
 	plane = GAME_PLANE
-	pixel_x = -16
-	base_pixel_x = -16
-	pixel_y = -16
-	base_pixel_y = -16
+	SET_BASE_PIXEL(-16, -16)
 	duration = 10
 
 #undef MOOK_ATTACK_NEUTRAL

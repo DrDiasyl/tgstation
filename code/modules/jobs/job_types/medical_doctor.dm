@@ -7,7 +7,6 @@
 	total_positions = 5
 	spawn_positions = 3
 	supervisors = SUPERVISOR_CMO
-	selection_color = "#ffeef0"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "MEDICAL_DOCTOR"
 
@@ -37,7 +36,7 @@
 		/obj/effect/spawner/random/medical/memeorgans = 1
 	)
 	rpg_title = "Cleric"
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
+	job_flags = STATION_JOB_FLAGS
 
 
 /datum/outfit/job/doctor

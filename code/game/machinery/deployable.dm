@@ -28,7 +28,7 @@
 /obj/structure/barricade/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode && bar_material == METAL)
 		if(atom_integrity < max_integrity)
-			if(!I.tool_start_check(user, amount=0))
+			if(!I.tool_start_check(user, amount=1))
 				return
 
 			to_chat(user, span_notice("You begin repairing [src]..."))
@@ -57,6 +57,7 @@
 	desc = "This space is blocked off by a wooden barricade."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "woodenbarricade"
+	resistance_flags = FLAMMABLE
 	bar_material = WOOD
 	var/drop_amount = 3
 
@@ -132,17 +133,25 @@
 /obj/structure/barricade/security
 	name = "security barrier"
 	desc = "A deployable barrier. Provides good cover in fire fights."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrier0"
 	density = FALSE
 	anchored = FALSE
 	max_integrity = 180
 	proj_pass_rate = 20
-	armor = list(MELEE = 10, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 10, BIO = 0, FIRE = 10, ACID = 0)
+	armor_type = /datum/armor/barricade_security
 
 	var/deploy_time = 40
 	var/deploy_message = TRUE
 
+
+/datum/armor/barricade_security
+	melee = 10
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 10
+	fire = 10
 
 /obj/structure/barricade/security/Initialize(mapload)
 	. = ..()
@@ -170,7 +179,7 @@
 	. += span_notice("Alt-click to toggle modes.")
 
 /obj/item/grenade/barrier/AltClick(mob/living/carbon/user)
-	if(!istype(user) || !user.canUseTopic(src, be_close = TRUE))
+	if(!istype(user) || !user.can_perform_action(src))
 		return
 	toggle_mode(user)
 

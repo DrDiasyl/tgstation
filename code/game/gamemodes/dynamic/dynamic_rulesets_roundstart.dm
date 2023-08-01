@@ -1,3 +1,4 @@
+GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 
 //////////////////////////////////////////////
 //                                          //
@@ -273,10 +274,12 @@
 	weight = 2
 	cost = 20
 	requirements = list(90,90,90,80,60,40,30,20,10,10)
+	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_WIZARDDEN)
 
-/datum/dynamic_ruleset/roundstart/wizard/acceptable(population=0, threat=0)
-	SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_WIZARDDEN)
-	if(GLOB.wizardstart.len == 0)
+/datum/dynamic_ruleset/roundstart/wizard/ready(forced = FALSE)
+	if(!check_candidates())
+		return FALSE
+	if(!length(GLOB.wizardstart))
 		log_admin("Cannot accept Wizard ruleset. Couldn't find any wizard spawn points.")
 		message_admins("Cannot accept Wizard ruleset. Couldn't find any wizard spawn points.")
 		return FALSE
@@ -415,6 +418,7 @@
 	requirements = list(90,90,90,80,60,40,30,20,10,10)
 	flags = HIGH_IMPACT_RULESET
 	antag_cap = list("denominator" = 18, "offset" = 1)
+	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_NUKIEBASE)
 	var/required_role = ROLE_NUCLEAR_OPERATIVE
 	var/datum/team/nuclear/nuke_team
 
@@ -551,7 +555,7 @@
 			log_dynamic("[ruletype] [name] discarded [M.name] from head revolutionary due to ineligibility.")
 	if(revolution.members.len)
 		revolution.update_objectives()
-		revolution.update_heads()
+		revolution.update_rev_heads()
 		SSshuttle.registerHostileEnvironment(revolution)
 		return TRUE
 	log_dynamic("[ruletype] [name] failed to get any eligible headrevs. Refunding [cost] threat.")
@@ -567,6 +571,10 @@
 		return
 
 	finished = winner
+
+	if(winner == REVOLUTION_VICTORY)
+		GLOB.revolutionary_win = TRUE
+
 	return RULESET_STOP_PROCESSING
 
 /// Checks for revhead loss conditions and other antag datums.
@@ -624,16 +632,17 @@
 
 /datum/dynamic_ruleset/roundstart/nuclear/clown_ops/pre_execute()
 	. = ..()
-	if(.)
-		var/obj/machinery/nuclearbomb/syndicate/syndicate_nuke = locate() in GLOB.nuke_list
-		if(syndicate_nuke)
-			var/turf/nuke_turf = get_turf(syndicate_nuke)
-			if(nuke_turf)
-				new /obj/machinery/nuclearbomb/syndicate/bananium(nuke_turf)
-				qdel(syndicate_nuke)
-		for(var/datum/mind/clowns in assigned)
-			clowns.set_assigned_role(SSjob.GetJobType(/datum/job/clown_operative))
-			clowns.special_role = ROLE_CLOWN_OPERATIVE
+	if(!.)
+		return
+
+	var/list/nukes = SSmachines.get_machines_by_type(/obj/machinery/nuclearbomb/syndicate)
+	for(var/obj/machinery/nuclearbomb/syndicate/nuke as anything in nukes)
+		new /obj/machinery/nuclearbomb/syndicate/bananium(nuke.loc)
+		qdel(nuke)
+
+	for(var/datum/mind/clowns in assigned)
+		clowns.set_assigned_role(SSjob.GetJobType(/datum/job/clown_operative))
+		clowns.special_role = ROLE_CLOWN_OPERATIVE
 
 //////////////////////////////////////////////
 //                                          //
@@ -693,3 +702,5 @@
 
 	for(var/department_type in department_types)
 		create_separatist_nation(department_type, announcement = FALSE, dangerous = FALSE, message_admins = FALSE)
+
+	GLOB.round_default_lawset = /datum/ai_laws/united_nations

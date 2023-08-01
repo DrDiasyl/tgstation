@@ -10,18 +10,31 @@
 /proc/cmp_text_dsc(a,b)
 	return sorttext(a,b)
 
+/proc/cmp_embed_text_asc(a,b)
+	if(isdatum(a))
+		a = REF(a)
+	if(isdatum(b))
+		b = REF(b)
+	return sorttext("[b]", "[a]")
+
+/proc/cmp_embed_text_dsc(a,b)
+	if(isdatum(a))
+		a = REF(a)
+	if(isdatum(b))
+		b = REF(b)
+	return sorttext("[a]", "[b]")
+
 /proc/cmp_name_asc(atom/a, atom/b)
 	return sorttext(b.name, a.name)
 
 /proc/cmp_name_dsc(atom/a, atom/b)
 	return sorttext(a.name, b.name)
 
-GLOBAL_VAR_INIT(cmp_field, "name")
-/proc/cmp_records_asc(datum/data/record/a, datum/data/record/b)
-	return sorttext(b.fields[GLOB.cmp_field], a.fields[GLOB.cmp_field])
+/proc/cmp_records_asc(datum/record/a, datum/record/b)
+	return sorttext(b.name, a.name)
 
-/proc/cmp_records_dsc(datum/data/record/a, datum/data/record/b)
-	return sorttext(a.fields[GLOB.cmp_field], b.fields[GLOB.cmp_field])
+/proc/cmp_records_dsc(datum/record/a, datum/record/b)
+	return sorttext(a.name, b.name)
 
 // Datum cmp with vars is always slower than a specialist cmp proc, use your judgement.
 /proc/cmp_datum_numeric_asc(datum/a, datum/b, variable)
@@ -171,3 +184,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /// Orders heretic knowledge by priority
 /proc/cmp_heretic_knowledge(datum/heretic_knowledge/knowledge_a, datum/heretic_knowledge/knowledge_b)
 	return initial(knowledge_b.priority) - initial(knowledge_a.priority)
+
+/// Passed a list of assoc lists, sorts them by the list's "name" keys.
+/proc/cmp_assoc_list_name(list/A, list/B)
+	return sorttext(B["name"], A["name"])

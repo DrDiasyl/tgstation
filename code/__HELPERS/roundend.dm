@@ -57,7 +57,7 @@
 						mob_data["module"] = "pAI"
 					else if(iscyborg(L))
 						var/mob/living/silicon/robot/R = L
-						mob_data["module"] = R.model.name
+						mob_data["module"] = (R.model ? R.model.name : "Null Model")
 				else
 					category = "others"
 					mob_data["typepath"] = M.type
@@ -197,29 +197,24 @@
 		if(!didthegamerwin)
 			return FALSE
 		player_client.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score * 2))
-	else if(human_mob.onCentCom())
+	else if(considered_escaped(human_mob.mind))
 		player_client.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score))
 
 
-/datum/controller/subsystem/ticker/proc/declare_completion()
+/datum/controller/subsystem/ticker/proc/declare_completion(was_forced = END_ROUND_AS_NORMAL)
 	set waitfor = FALSE
-
-	to_chat(world, "<span class='infoplain'><BR><BR><BR><span class='big bold'>The round has ended.</span></span>")
-	log_game("The round has ended.")
 
 	for(var/datum/callback/roundend_callbacks as anything in round_end_events)
 		roundend_callbacks.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
 
-	var/speed_round = FALSE
-	if(world.time - SSticker.round_start_time <= 300 SECONDS)
-		speed_round = TRUE
+	var/speed_round = (STATION_TIME_PASSED() <= 10 MINUTES)
 
 	for(var/client/C in GLOB.clients)
 		if(!C?.credits)
 			C?.RollCredits()
 		C?.playtitlemusic(40)
-		if(speed_round)
+		if(speed_round && was_forced != ADMIN_FORCE_END_ROUND)
 			C?.give_award(/datum/award/achievement/misc/speed_round, C?.mob)
 		HandleRandomHardcoreScore(C)
 
@@ -238,6 +233,9 @@
 	//Set news report and mode result
 	mode.set_round_result()
 
+	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>The round has ended."))))
+	log_game("The round has ended.")
+	send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."), CONFIG_GET(string/channel_announce_end_game))
 	send2adminchat("Server", "Round just ended.")
 
 	if(length(CONFIG_GET(keyed_list/cross_server)))
