@@ -345,21 +345,22 @@
 
 /obj/item/clothing/suit/armor/swat
 	name = "MK.I SWAT Suit"
-	desc = "A tactical suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 2321 for military operations. It has a minor slowdown, but offers decent protection."
+	desc = "A tactical suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 2321 for military operations. It's really loud to run in, but offers decent protection."
 	icon_state = "heavy"
 	inhand_icon_state = "swat_suit"
 	armor_type = /datum/armor/armor_swat
 	strip_delay = 120
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	clothing_flags = THICKMATERIAL
-	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT_OFF
-	heat_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
-	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
-	slowdown = 0.7
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	cold_protection = CHEST | GROIN | LEGS | ARMS
+	heat_protection = CHEST | GROIN | LEGS | ARMS
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	repairable_by = /obj/item/stack/sheet/plasteel
 
-//All of the armor below is mostly unused
+/obj/item/clothing/suit/armor/swat/Initialize(mapload)
+	. = ..()
+	//Can hear them approaching you by a mile
+	AddComponent(/datum/component/squeak, list('sound/effects/suitstep1.ogg' = 1, 'sound/effects/suitstep2.ogg' = 1), 50, extrarange = SHORT_RANGE_SOUND_EXTRARANGE, shoes_override = TRUE)
 
 /datum/armor/armor_swat
 	melee = 40
@@ -368,9 +369,11 @@
 	energy = 40
 	bomb = 50
 	bio = 90
-	fire = 100
-	acid = 100
+	fire = 80
+	acid = 80
 	wound = 15
+
+//All of the armor below is mostly unused
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"
