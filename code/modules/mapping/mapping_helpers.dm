@@ -254,6 +254,15 @@
 	else
 		airlock.autoname = TRUE
 
+/obj/effect/mapping_helpers/airlock/red_access
+	name = "airlock red access helper"
+	icon_state = "airlock_red_access"
+
+/obj/effect/mapping_helpers/airlock/red_access/payload(obj/machinery/door/airlock/airlock)
+	if(airlock.red_alert_access)
+		log_mapping("[src] at [AREACOORD(src)] tried to make [airlock] lift access during Red Alert but it's already doing so!")
+	airlock.red_alert_access = TRUE
+
 //air alarm helpers
 /obj/effect/mapping_helpers/airalarm
 	desc = "You shouldn't see this. Report it please."

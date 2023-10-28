@@ -71,20 +71,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 		if("red_alert")
 			if(!event_source)
 				sendEvent(KEYCARD_RED_ALERT)
+				playsound(usr, 'sound/machines/card_slide_beep.ogg', 50, FALSE)
 				. = TRUE
 		if("emergency_maint")
 			if(!event_source)
 				sendEvent(KEYCARD_EMERGENCY_MAINTENANCE_ACCESS)
+				playsound(usr, 'sound/machines/card_slide_beep.ogg', 50, FALSE)
 				. = TRUE
 		if("auth_swipe")
 			if(event_source)
 				event_source.trigger_event(usr)
 				event_source = null
 				update_appearance()
+				playsound(usr, 'sound/machines/card_slide_beep.ogg', 50, FALSE)
 				. = TRUE
 		if("bsa_unlock")
 			if(!event_source)
 				sendEvent(KEYCARD_BSA_UNLOCK)
+				playsound(usr, 'sound/machines/card_slide_beep.ogg', 50, FALSE)
 				. = TRUE
 		if("give_janitor_access")
 			var/mob/living/living_user = usr
@@ -103,6 +107,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 				COOLDOWN_START(src, access_grant_cooldown, ACCESS_GRANTING_COOLDOWN)
 				SEND_GLOBAL_SIGNAL(COMSIG_ON_DEPARTMENT_ACCESS, info["regions"])
 				balloon_alert(usr, "key access sent")
+				playsound(usr, 'sound/machines/card_slide_beep.ogg', 50, FALSE)
 				return
 
 /obj/machinery/keycard_auth/update_appearance(updates)
