@@ -1953,6 +1953,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/disposal)
 "agC" = (
@@ -2988,7 +2989,7 @@
 	layer = 3.1;
 	linked_elevator_id = "tram_xeno_lift";
 	pixel_y = 2;
-	preset_destination_names = list("2" = "Lower                                                                Deck", "3" = "Upper                                                                Deck")
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
 	},
 /turf/closed/wall,
 /area/station/science/xenobiology)
@@ -4493,6 +4494,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/starboard/greater)
 "aEH" = (
@@ -5210,6 +5212,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "aKU" = (
@@ -7661,7 +7664,7 @@
 /obj/effect/turf_decal/trimline/dark_red/warning,
 /obj/machinery/elevator_control_panel/directional/south{
 	linked_elevator_id = "tram_dorm_lift";
-	preset_destination_names = list("2" = "Lower                                                                Deck", "3" = "Upper                                                                Deck")
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/maintenance/tram/left)
@@ -8133,6 +8136,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "bLN" = (
@@ -8234,6 +8238,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "bNi" = (
@@ -9893,6 +9898,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "crz" = (
@@ -10491,7 +10497,7 @@
 	},
 /obj/item/reagent_containers/cup/bottle{
 	desc = "A small bottle of Barber's Aid.";
-	list_reagents = list(/datum/reagent/barbers_aid = 30);
+	list_reagents = list(/datum/reagent/barbers_aid=30);
 	name = "Barber's Aid bottle";
 	pixel_x = 10;
 	pixel_y = 3
@@ -13891,6 +13897,7 @@
 	name = "EVA Maintenance Hatch"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/command/eva,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/eva)
 "dLN" = (
@@ -14415,6 +14422,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "dUj" = (
@@ -14480,6 +14488,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "dVC" = (
@@ -18096,6 +18105,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "frh" = (
@@ -20393,6 +20403,7 @@
 /obj/machinery/duct,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "glc" = (
@@ -21993,6 +22004,7 @@
 /obj/effect/mapping_helpers/airlock/access/all/science/general,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/side,
 /area/station/science/research)
 "gPA" = (
@@ -23370,7 +23382,7 @@
 	},
 /obj/item/reagent_containers/cup/bottle{
 	desc = "A small bottle of Barber's Aid.";
-	list_reagents = list(/datum/reagent/barbers_aid = 30);
+	list_reagents = list(/datum/reagent/barbers_aid=30);
 	name = "Barber's Aid bottle";
 	pixel_x = -2;
 	pixel_y = 10
@@ -23446,6 +23458,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/storage/eva)
 "hsh" = (
@@ -24979,7 +24992,7 @@
 	},
 /obj/machinery/elevator_control_panel/directional/north{
 	linked_elevator_id = "tram_upper_center_lift";
-	preset_destination_names = list("2" = "Lower                                Deck", "3" = "Upper                                Deck")
+	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
 	},
 /obj/effect/turf_decal/trimline/dark_red/warning{
 	dir = 1
@@ -25859,7 +25872,7 @@
 /obj/structure/transport/linear/public,
 /obj/machinery/elevator_control_panel/directional/west{
 	linked_elevator_id = "tram_cargo_lift";
-	preset_destination_names = list("2" = "Lower                                Deck", "3" = "Upper                                Deck");
+	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck");
 	req_access = list("mining")
 	},
 /obj/effect/abstract/elevator_music_zone{
@@ -26942,6 +26955,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/starboard/central)
 "iLv" = (
@@ -27623,6 +27637,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "iWI" = (
@@ -28547,6 +28562,7 @@
 	name = "Science Maintenance Hatch"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/science/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/science)
 "jmk" = (
@@ -29042,7 +29058,7 @@
 /obj/structure/transport/linear/public,
 /obj/machinery/elevator_control_panel/directional/west{
 	linked_elevator_id = "tram_perma_lift";
-	preset_destination_names = list("2" = "Lower                                Deck", "3" = "Upper                                Deck")
+	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
 	},
 /obj/effect/turf_decal/caution/stand_clear/red{
 	dir = 1
@@ -29215,6 +29231,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "jxK" = (
@@ -30892,7 +30909,7 @@
 /obj/structure/transport/linear/public,
 /obj/machinery/elevator_control_panel/directional/east{
 	linked_elevator_id = "tram_lower_center_lift";
-	preset_destination_names = list("2" = "Lower                                Deck", "3" = "Upper                                Deck")
+	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/maintenance/tram/mid)
@@ -33423,6 +33440,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "kUg" = (
@@ -33772,6 +33790,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/crew_quarters/dorms)
 "kZD" = (
@@ -34617,7 +34636,7 @@
 "lpo" = (
 /obj/effect/turf_decal/tile/neutral/tram,
 /obj/effect/spawner/random{
-	loot = list(/obj/effect/decal/cleanable/oil/slippery = 10, /obj/effect/decal/cleanable/oil = 90);
+	loot = list(/obj/effect/decal/cleanable/oil/slippery=10,/obj/effect/decal/cleanable/oil=90);
 	name = "funny slipper :)"
 	},
 /turf/open/floor/tram/plate,
@@ -38735,6 +38754,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "mKj" = (
@@ -39761,6 +39781,7 @@
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "nhj" = (
@@ -40474,6 +40495,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/cargo/office)
 "nrQ" = (
@@ -46261,6 +46283,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "pAR" = (
@@ -46478,6 +46501,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/science/general,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/side,
 /area/station/science/research)
 "pFm" = (
@@ -50434,6 +50458,7 @@
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "qZq" = (
@@ -52841,6 +52866,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "rSj" = (
@@ -58995,7 +59021,7 @@
 "tZM" = (
 /obj/effect/turf_decal/tile/neutral/tram,
 /obj/effect/spawner/random{
-	loot = list(/obj/effect/decal/cleanable/oil/slippery = 10, /obj/effect/decal/cleanable/oil = 90);
+	loot = list(/obj/effect/decal/cleanable/oil/slippery=10,/obj/effect/decal/cleanable/oil=90);
 	name = "funny slipper :)"
 	},
 /turf/open/floor/tram/plate,
@@ -61189,7 +61215,7 @@
 	desc = "A small control panel used to move the kitchen dumbwaiter up and down.";
 	linked_elevator_id = "dumbwaiter_lift";
 	name = "Dumbwaiter control Panel";
-	preset_destination_names = list("2" = "Hydroponics", "3" = "Kitchen")
+	preset_destination_names = list("2"="Hydroponics","3"="Kitchen")
 	},
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal/bin,
@@ -62288,7 +62314,7 @@
 /area/station/security/checkpoint/medical)
 "vbt" = (
 /obj/machinery/computer/atmos_control/oxygen_tank{
-	atmos_chambers = list("o2ordance" = "Oxygen                                                                Supply")
+	atmos_chambers = list("o2ordance"="Oxygen                                                                Supply")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/airalarm/directional/north,
@@ -62376,7 +62402,7 @@
 	desc = "A small control panel used to move the kitchen dumbwaiter up and down.";
 	linked_elevator_id = "dumbwaiter_lift";
 	name = "Dumbwaiter control Panel";
-	preset_destination_names = list("2" = "Hydroponics", "3" = "Kitchen")
+	preset_destination_names = list("2"="Hydroponics","3"="Kitchen")
 	},
 /obj/effect/turf_decal/tile/green/fourcorners,
 /turf/open/floor/iron/dark,
@@ -65458,6 +65484,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "why" = (
@@ -68005,6 +68032,7 @@
 	},
 /obj/effect/turf_decal/trimline/yellow/arrow_cw,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/engine_smes)
 "xjx" = (
@@ -68353,6 +68381,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "xqO" = (
@@ -68806,6 +68835,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/command/eva,
 /obj/effect/mapping_helpers/airlock/access/any/command/gateway,
 /obj/effect/mapping_helpers/airlock/access/any/command/teleporter,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/command/teleporter)
 "xzI" = (
@@ -68885,6 +68915,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "xAJ" = (
@@ -68903,7 +68934,7 @@
 	layer = 3.1;
 	linked_elevator_id = "tram_xeno_lift";
 	pixel_y = 2;
-	preset_destination_names = list("2" = "Lower                                                                Deck", "3" = "Upper                                                                Deck")
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
 	},
 /turf/closed/wall/r_wall,
 /area/station/science/xenobiology)
@@ -68946,7 +68977,7 @@
 /obj/structure/transport/linear/public,
 /obj/machinery/elevator_control_panel/directional/west{
 	linked_elevator_id = "tram_sci_lift";
-	preset_destination_names = list("2" = "Lower                                Deck", "3" = "Upper                                Deck")
+	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
 	},
 /obj/effect/turf_decal/trimline/dark_red/warning{
 	dir = 9

@@ -1520,6 +1520,7 @@
 	name = "Science East"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/science/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "ato" = (
@@ -4350,6 +4351,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor1/starboard/fore)
 "bfh" = (
@@ -4658,6 +4660,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/paramedic)
 "biC" = (
@@ -5498,6 +5501,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/science/research,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "bru" = (
@@ -11244,6 +11248,7 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "cRe" = (
@@ -11559,7 +11564,7 @@
 /obj/machinery/elevator_control_panel/directional/east{
 	linked_elevator_id = "aft_vator";
 	pixel_x = 24;
-	preset_destination_names = list("2" = "Supply-Engi        Floor", "3" = "Med-Sci        Floor", "4" = "Service        Floor")
+	preset_destination_names = list("2"="Supply-Engi        Floor","3"="Med-Sci        Floor","4"="Service        Floor")
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/hallway/floor1/aft)
@@ -11929,6 +11934,7 @@
 	name = "Treatment Center"
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "cZA" = (
@@ -13579,6 +13585,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/patients_rooms)
 "dyq" = (
@@ -13818,6 +13825,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/office)
 "dAI" = (
@@ -14698,6 +14706,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "dNy" = (
@@ -15029,31 +15038,31 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/item/reagent_containers/pill/happinesspsych{
 	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
+	list_reagents = list(/datum/reagent/drug/happiness=5,/datum/reagent/drug/space_drugs=10,/datum/reagent/drug/mushroomhallucinogen=10);
 	name = "strange pill";
 	pixel_x = 9
 	},
 /obj/item/reagent_containers/pill/happinesspsych{
 	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
+	list_reagents = list(/datum/reagent/drug/happiness=5,/datum/reagent/drug/space_drugs=10,/datum/reagent/drug/mushroomhallucinogen=10);
 	name = "strange pill"
 	},
 /obj/item/reagent_containers/pill/happinesspsych{
 	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
+	list_reagents = list(/datum/reagent/drug/happiness=5,/datum/reagent/drug/space_drugs=10,/datum/reagent/drug/mushroomhallucinogen=10);
 	name = "strange pill";
 	pixel_x = -9;
 	pixel_y = -8
 	},
 /obj/item/reagent_containers/pill/happinesspsych{
 	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
+	list_reagents = list(/datum/reagent/drug/happiness=5,/datum/reagent/drug/space_drugs=10,/datum/reagent/drug/mushroomhallucinogen=10);
 	name = "strange pill";
 	pixel_y = -8
 	},
 /obj/item/reagent_containers/pill/happinesspsych{
 	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
+	list_reagents = list(/datum/reagent/drug/happiness=5,/datum/reagent/drug/space_drugs=10,/datum/reagent/drug/mushroomhallucinogen=10);
 	name = "strange pill";
 	pixel_x = -9
 	},
@@ -18226,6 +18235,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/science/general,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/science/auxlab)
 "eKf" = (
@@ -21406,6 +21416,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "fHf" = (
@@ -24346,6 +24357,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/duct,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/office)
 "gvO" = (
@@ -28328,6 +28340,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/medbay/lobby)
 "hxl" = (
@@ -31017,6 +31030,7 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance Access"
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/plating,
 /area/station/maintenance/floor2/starboard/fore)
 "iia" = (
@@ -32324,6 +32338,7 @@
 	dir = 8
 	},
 /obj/machinery/duct,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/medbay/central)
 "izw" = (
@@ -34216,6 +34231,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /obj/machinery/door/firedoor,
 /obj/machinery/duct,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/treatment_center)
 "iZP" = (
@@ -37322,6 +37338,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/supply/shipping,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/disposal)
 "jPR" = (
@@ -37661,6 +37678,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/morgue,
 /obj/machinery/duct,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/plating,
 /area/station/maintenance/floor2/port)
 "jVo" = (
@@ -39373,6 +39391,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/cargo/storage)
 "krq" = (
@@ -39828,7 +39847,7 @@
 /obj/machinery/elevator_control_panel/directional/east{
 	linked_elevator_id = "com_vator";
 	pixel_x = 24;
-	preset_destination_names = list("3" = "Medsci", "4" = "Service", "5" = "Command")
+	preset_destination_names = list("3"="Medsci","4"="Service","5"="Command")
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/hallway/floor2/fore)
@@ -41109,6 +41128,7 @@
 	name = "Paramedic Dispatch"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/paramedic)
 "kMQ" = (
@@ -41818,6 +41838,7 @@
 	name = "EVA Storage"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/command/eva,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/storage/eva)
 "kWa" = (
@@ -45235,6 +45256,7 @@
 	name = "Maintenance Access"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/plating,
 /area/station/maintenance/floor2/starboard/fore)
 "lQa" = (
@@ -47657,6 +47679,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/aft)
 "mtW" = (
@@ -51540,6 +51563,7 @@
 	name = "Cargo Office"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/cargo/lobby)
 "nsr" = (
@@ -54559,6 +54583,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/duct,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "ohO" = (
@@ -55059,6 +55084,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "onX" = (
@@ -55547,6 +55573,7 @@
 	name = "Maintenance Access"
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/plating,
 /area/station/maintenance/floor3/starboard/fore)
 "ovB" = (
@@ -56519,6 +56546,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/cargo/sorting)
 "oIS" = (
@@ -56730,17 +56758,17 @@
 "oMm" = (
 /obj/structure/table/reinforced,
 /obj/item/food/butter{
-	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/drug/space_drugs = 10);
+	food_reagents = list(/datum/reagent/consumable/nutriment=5,/datum/reagent/drug/space_drugs=10);
 	name = "stick of 'medicated' butter";
 	pixel_y = 8
 	},
 /obj/item/food/butter{
-	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/drug/space_drugs = 10);
+	food_reagents = list(/datum/reagent/consumable/nutriment=5,/datum/reagent/drug/space_drugs=10);
 	name = "stick of 'medicated' butter";
 	pixel_y = 3
 	},
 /obj/item/food/butter{
-	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/drug/space_drugs = 10);
+	food_reagents = list(/datum/reagent/consumable/nutriment=5,/datum/reagent/drug/space_drugs=10);
 	name = "stick of 'medicated' butter";
 	pixel_y = -2
 	},
@@ -58594,6 +58622,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/office)
 "pnc" = (
@@ -58956,6 +58985,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
 "prw" = (
@@ -60613,6 +60643,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "pOY" = (
@@ -61617,6 +61648,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "qdm" = (
@@ -63507,7 +63539,7 @@
 /obj/machinery/elevator_control_panel/directional/west{
 	linked_elevator_id = "fore_vator";
 	pixel_x = -24;
-	preset_destination_names = list("2" = "Supply-Engi        Floor", "3" = "Med-Sci        Floor", "4" = "Service        Floor")
+	preset_destination_names = list("2"="Supply-Engi        Floor","3"="Med-Sci        Floor","4"="Service        Floor")
 	},
 /obj/machinery/lift_indicator/directional/west{
 	linked_elevator_id = "fore_vator";
@@ -63681,6 +63713,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "qDS" = (
@@ -69178,6 +69211,7 @@
 	cycle_id = "engimain"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "sdN" = (
@@ -70090,6 +70124,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "ssM" = (
@@ -76031,6 +76066,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/science/research,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "tUq" = (
@@ -80812,11 +80848,11 @@
 "viv" = (
 /obj/structure/table/reinforced,
 /obj/item/food/cake/chocolate{
-	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/drug/space_drugs = 10);
+	food_reagents = list(/datum/reagent/consumable/nutriment=20,/datum/reagent/drug/space_drugs=10);
 	name = "large pot brownie"
 	},
 /obj/item/food/cake/chocolate{
-	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/drug/space_drugs = 10);
+	food_reagents = list(/datum/reagent/consumable/nutriment=20,/datum/reagent/drug/space_drugs=10);
 	name = "large pot brownie";
 	pixel_y = 6
 	},
@@ -84830,6 +84866,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "wit" = (
@@ -86273,6 +86310,7 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/medbay/lobby)
 "wzJ" = (
@@ -86591,6 +86629,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/smooth,
 /area/station/cargo/storage)
 "wEQ" = (
