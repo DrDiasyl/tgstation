@@ -43,6 +43,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 		QDEL_NULL(held_item)
 	return ..()
 
+/obj/structure/fireaxecabinet/examine(mob/user)
+	. = ..()
+	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
+		. += span_notice("In response to the station's state of emergency, the lock can be manually reset with just your hand.")
+	else
+		. += span_notice("You can easily reset the lock's circuitry using a multitool.")
+
 /obj/structure/fireaxecabinet/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(iscyborg(user) || attacking_item.tool_behaviour == TOOL_MULTITOOL)
 		toggle_lock(user)
@@ -129,6 +136,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 
 /obj/structure/fireaxecabinet/attack_hand(mob/user, list/modifiers)
 	. = ..()
+	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED && !open)
+		toggle_lock(user)
 	if(.)
 		return
 	if((open || broken) && held_item)
