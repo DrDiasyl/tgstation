@@ -6667,6 +6667,16 @@
 /obj/effect/turf_decal/box,
 /turf/open/floor/iron/dark/textured,
 /area/station/science/ordnance/storage)
+"bFk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 4
+	},
+/obj/item/storage/pod/station/directional/north,
+/turf/open/floor/iron/white,
+/area/station/medical/medbay)
 "bFr" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 8
@@ -13124,6 +13134,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/wood/corner,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/service)
 "din" = (
@@ -15985,6 +15996,7 @@
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 8
 	},
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "dTl" = (
@@ -51769,6 +51781,7 @@
 	name = "departures camera"
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/storage/pod/station/directional/east,
 /turf/open/floor/iron/dark/corner,
 /area/station/hallway/secondary/exit/departure_lounge)
 "mQZ" = (
@@ -53418,6 +53431,7 @@
 	name = "dormitories camera"
 	},
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "noY" = (
@@ -56378,6 +56392,7 @@
 /obj/item/radio,
 /obj/structure/table,
 /obj/effect/turf_decal/tile/red/half/contrasted,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "odw" = (
@@ -59634,6 +59649,11 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
+"oXE" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner,
+/obj/item/storage/pod/station/directional/south,
+/turf/open/floor/iron/white,
+/area/station/science/research)
 "oXR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -74419,6 +74439,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "sCx" = (
@@ -76386,6 +76407,7 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "tcn" = (
@@ -95124,6 +95146,14 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/service/kitchen)
+"xKU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/obj/item/storage/pod/station/directional/east,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
 "xKX" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/dark,
@@ -133172,7 +133202,7 @@ gsG
 iuU
 tZi
 aUG
-yeL
+oXE
 dQT
 qfi
 qfi
@@ -138325,7 +138355,7 @@ xhT
 ddp
 ako
 ako
-gMX
+bFk
 eSd
 aaM
 aaM
@@ -142604,7 +142634,7 @@ egU
 jPz
 egU
 uPk
-awl
+xKU
 aDg
 krp
 cAF

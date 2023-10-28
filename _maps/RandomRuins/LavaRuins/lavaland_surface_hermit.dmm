@@ -9,7 +9,7 @@
 /turf/closed/wall/mineral/iron,
 /area/ruin/powered)
 "e" = (
-/obj/item/clothing/suit/space/orange,
+/obj/item/clothing/suit/space/fragile,
 /turf/open/misc/asteroid/basalt,
 /area/ruin/powered)
 "f" = (
@@ -180,7 +180,7 @@
 /turf/template_noop,
 /area/template_noop)
 "S" = (
-/obj/item/clothing/head/helmet/space/orange,
+/obj/item/clothing/head/helmet/space/fragile,
 /turf/open/misc/asteroid{
 	name = "dirt"
 	},

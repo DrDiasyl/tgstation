@@ -26,6 +26,10 @@
 	user.visible_message(span_suicide("[user] couldn't do it!"))
 	return SHAME
 
+/obj/item/pickaxe/emergency
+	name = "emergency disembarkation tool"
+	desc = "For extracting yourself from rough landings."
+
 /obj/item/pickaxe/rusted
 	name = "rusty pickaxe"
 	desc = "A pickaxe that's been left to rust."

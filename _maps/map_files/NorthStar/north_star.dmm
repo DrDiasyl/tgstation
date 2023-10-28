@@ -215,6 +215,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/holopad,
 /obj/effect/landmark/navigate_destination/dockarrival,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/iron/textured_large,
 /area/station/hallway/secondary/entry)
 "acl" = (
@@ -624,6 +625,7 @@
 /area/station/maintenance/floor2/starboard)
 "ahT" = (
 /obj/machinery/camera/directional/west,
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/wood,
 /area/station/service/kitchen/diner)
 "ahU" = (
@@ -3723,6 +3725,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/light/cold/no_nightlight/directional/north,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/white/side{
 	dir = 4
 	},
@@ -7701,6 +7704,7 @@
 /area/station/science/robotics/lab)
 "bUq" = (
 /obj/machinery/vending/cigarette,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
 "bUv" = (
@@ -24882,6 +24886,7 @@
 	dir = 8
 	},
 /obj/machinery/recharge_station,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/corner{
 	dir = 8
 	},
@@ -30146,6 +30151,7 @@
 /obj/effect/turf_decal/tile/blue/opposingcorners{
 	dir = 1
 	},
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/iron/cafeteria,
 /area/station/commons/locker)
 "hVt" = (
@@ -51251,6 +51257,18 @@
 /obj/structure/sign/departments/botany/directional/west,
 /turf/open/openspace,
 /area/station/hallway/floor3/aft)
+"nox" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red/half{
+	dir = 1
+	},
+/obj/item/storage/pod/station/directional/north,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/station/security/office)
 "noA" = (
 /obj/structure/railing{
 	dir = 8
@@ -67656,6 +67674,7 @@
 	dir = 9
 	},
 /obj/machinery/airalarm/directional/north,
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "rHP" = (
@@ -71894,6 +71913,7 @@
 	},
 /obj/machinery/modular_computer/preset/engineering,
 /obj/machinery/light/directional/north,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "sQD" = (
@@ -86402,6 +86422,7 @@
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 1
 	},
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/iron/dark/corner,
 /area/station/hallway/floor3/fore)
 "wAO" = (
@@ -87450,6 +87471,7 @@
 /area/station/medical/storage)
 "wNx" = (
 /obj/machinery/camera/autoname/directional/south,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/cargo/storage)
 "wNH" = (
@@ -92884,6 +92906,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small/directional/north,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/commons/storage/tools)
 "ykL" = (
@@ -319571,7 +319594,7 @@ vRO
 vRO
 eOP
 vWw
-rny
+nox
 kIO
 qXn
 sMp

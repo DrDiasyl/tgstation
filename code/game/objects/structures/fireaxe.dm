@@ -46,9 +46,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 /obj/structure/fireaxecabinet/examine(mob/user)
 	. = ..()
 	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-		. += span_notice("In response to the station's state of emergency, the lock can be manually reset with just your hand.")
+		. += span_warning("In response to the station's state of emergency, the lock can be manually reset with just <b>your hand</b>.")
 	else
-		. += span_notice("You can easily reset the lock's circuitry using a multitool.")
+		. += span_notice("You can easily reset the lock's circuitry using a <b>multitool</b>.")
 
 /obj/structure/fireaxecabinet/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(iscyborg(user) || attacking_item.tool_behaviour == TOOL_MULTITOOL)
@@ -136,15 +136,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 
 /obj/structure/fireaxecabinet/attack_hand(mob/user, list/modifiers)
 	. = ..()
-	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED && !open)
-		toggle_lock(user)
 	if(.)
 		return
+
+	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED && !open)
+		toggle_lock(user)
+
 	if((open || broken) && held_item)
 		user.put_in_hands(held_item)
 		add_fingerprint(user)
 		update_appearance()
 		return
+
 	toggle_open(user)
 
 /obj/structure/fireaxecabinet/attack_hand_secondary(mob/user, list/modifiers)
@@ -200,10 +203,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 	. += locked ? "locked" : "unlocked"
 
 /obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
-	to_chat(user, span_notice("Resetting circuitry..."))
+	balloon_alert(user, "unlocking...")
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	if(do_after(user, 2 SECONDS, target = src))
-		to_chat(user, span_notice("You [locked ? "disable" : "re-enable"] the locking modules."))
+		balloon_alert(user, "[locked ? "unlocked!" : "locked!"]")
 		locked = !locked
 		update_appearance()
 

@@ -3176,6 +3176,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/purple,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "bfa" = (
@@ -17724,6 +17725,7 @@
 "gBx" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/storage/pod/station/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "gBD" = (
@@ -20529,6 +20531,7 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/south,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "hCK" = (
@@ -23042,6 +23045,7 @@
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/machinery/status_display/evac/directional/east,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "iwt" = (
@@ -32101,6 +32105,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+"lDY" = (
+/obj/item/storage/pod/station/directional/north,
+/turf/open/floor/iron,
+/area/station/security/brig)
 "lEr" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
@@ -34381,7 +34389,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/sign/poster/official/random/directional/west,
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
 "mvg" = (
@@ -46237,6 +46245,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/engineering/break_room)
 "qGP" = (
@@ -54901,6 +54910,7 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/north,
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "tId" = (
@@ -64177,6 +64187,7 @@
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 8
 	},
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "wPo" = (
@@ -99534,7 +99545,7 @@ nWu
 fii
 kYg
 kYg
-pHb
+lDY
 oPq
 sbp
 jMy
