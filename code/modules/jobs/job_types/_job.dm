@@ -198,6 +198,9 @@
 	if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
 		equip_to_slot_or_del(new /obj/item/food/griddle_toast(src), ITEM_SLOT_MASK)
 
+	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED) //Gives a emergency toolbox if the station is on Code Red or above
+		equip_to_slot_or_del(new /obj/item/storage/toolbox/emergency(src), ITEM_SLOT_HANDS)
+
 #undef VERY_LATE_ARRIVAL_TOAST_PROB
 
 /mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE)
@@ -293,7 +296,8 @@
 		info += span_boldnotice("As this station was initially staffed with a \
 			[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
 			have been added to your ID card.")
-
+	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED) //Notifies the latejoiner if station is in Code Red or above
+		info += span_danger("The station is currently in a state of emergency! To assist in this situation, you have been pre-equipped with a emergency toolbox. Stay vigilant and be prepared!")
 	return info
 
 /// Returns information pertaining to this job's radio.

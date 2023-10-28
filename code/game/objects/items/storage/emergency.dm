@@ -8,6 +8,8 @@
 	icon_state = "emergency_locked"
 	/// Is it locked or unlocked?
 	var/unlocked = FALSE
+	/// Was it emagged open?
+	var/emagged = FALSE
 
 /obj/item/storage/pod/update_icon_state()
 	. = ..()
@@ -40,10 +42,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 	new /obj/item/bodybag/environmental(src)
 
 /obj/item/storage/pod/attackby(obj/item/W, mob/user, params)
+	lock_check(user)
 	if(unlocked)
 		return ..()
 
 /obj/item/storage/pod/attackby_secondary(obj/item/weapon, mob/user, params)
+	lock_check(user)
 	if(!unlocked)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
@@ -59,30 +63,38 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 		return ..()
 
 /obj/item/storage/pod/attack_hand_secondary(mob/user, list/modifiers)
+	lock_check(user)
 	if(!unlocked)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
 
 /obj/item/storage/pod/AltClick(mob/user)
+	lock_check(user)
 	if(!unlocked)
 		return
 	return ..()
 
 /obj/item/storage/pod/emag_act(mob/user, obj/item/card/emag/emag_card)
-	if(unlocked)
+	if(unlocked || emagged)
 		return
 
 	unlocked = TRUE
+	emagged = TRUE
 	balloon_alert(user, "unlocked!")
 	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	update_appearance()
 
 /obj/item/storage/pod/proc/lock_check(mob/user)
-	if(unlocked)
+	if(emagged)
 		return
 
 	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)
 		balloon_alert(user, "no emergency!")
+		unlocked = FALSE
+		update_appearance()
+		return
+
+	if(unlocked)
 		return
 
 	balloon_alert(user, "unlocking...")

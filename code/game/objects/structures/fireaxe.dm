@@ -203,7 +203,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 	. += locked ? "locked" : "unlocked"
 
 /obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
-	balloon_alert(user, "unlocking...")
+	balloon_alert(user, "[locked ? "unlocking..." : "locking..."]")
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	if(do_after(user, 2 SECONDS, target = src))
 		balloon_alert(user, "[locked ? "unlocked!" : "locked!"]")
