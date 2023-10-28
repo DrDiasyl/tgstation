@@ -117,6 +117,7 @@
 /area/shuttle/arrival)
 "y" = (
 /obj/machinery/light/directional/south,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "A" = (

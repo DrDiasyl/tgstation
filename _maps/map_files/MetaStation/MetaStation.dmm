@@ -17868,6 +17868,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/item/storage/pod/station/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "gES" = (
@@ -31330,6 +31331,7 @@
 	name = "Cargo Bay Maintenance"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
 "lnG" = (
@@ -32045,6 +32047,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "lBA" = (

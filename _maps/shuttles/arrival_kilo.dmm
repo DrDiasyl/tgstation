@@ -85,6 +85,42 @@
 /obj/machinery/status_display/evac/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/arrival)
+"am" = (
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/structure/closet/crate/internals,
+/obj/effect/turf_decal/delivery,
+/obj/item/storage/pod/station/directional/north,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/arrival)
 "an" = (
 /obj/machinery/power/shuttle_engine/propulsion/left{
 	dir = 8
@@ -335,7 +371,7 @@ ab
 "}
 (3,1,1) = {"
 ac
-ai
+am
 ap
 aZ
 aH

@@ -17,7 +17,7 @@
 	. = ..()
 	. += span_notice("Currently its <b>[unlocked ? "unlocked" : "locked"]</b>.")
 	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-		. += span_warning("It is possible to unlock it manually with <b>your hand</b> at this moment.")
+		. += span_warning("It is possible to unlock it manually with <b>your hands</b> at this moment.")
 	else
 		. += span_notice("It is not possible to unlock it at this moment.")
 
@@ -81,7 +81,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 	if(unlocked)
 		return
 
-	if(SSsecurity_level.get_current_level_as_number() <= SEC_LEVEL_BLUE)
+	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)
 		balloon_alert(user, "no emergency!")
 		return
 
@@ -89,6 +89,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	if(do_after(user, 2 SECONDS, target = src))
 		balloon_alert(user, "unlocked!")
+		playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 		unlocked = TRUE
 		update_appearance()
 

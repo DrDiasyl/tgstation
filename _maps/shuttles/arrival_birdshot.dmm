@@ -85,6 +85,7 @@
 /area/shuttle/arrival)
 "L" = (
 /obj/machinery/light/cold/directional/south,
+/obj/item/storage/pod/station/directional/south,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "M" = (

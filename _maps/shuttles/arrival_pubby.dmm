@@ -91,6 +91,7 @@
 /obj/item/storage/medkit/o2,
 /obj/item/tank/internals/emergency_oxygen,
 /obj/item/clothing/mask/breath,
+/obj/item/storage/pod/station/directional/west,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "u" = (
