@@ -8741,6 +8741,7 @@
 	cycle_id = "tcomms-entrance"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "bWN" = (
@@ -9899,7 +9900,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "crz" = (
@@ -14431,7 +14431,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "dUj" = (
@@ -14497,7 +14496,6 @@
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "dVC" = (
@@ -33451,7 +33449,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "kUg" = (
@@ -34436,6 +34433,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "llU" = (
@@ -66724,6 +66722,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/cargo)
 "wFA" = (
@@ -68058,7 +68057,6 @@
 	},
 /obj/effect/turf_decal/trimline/yellow/arrow_cw,
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/engine_smes)
 "xjx" = (
@@ -68946,7 +68944,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "xAJ" = (

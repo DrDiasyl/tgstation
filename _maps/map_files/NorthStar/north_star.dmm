@@ -4354,7 +4354,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor1/starboard/fore)
 "bfh" = (
@@ -5504,7 +5503,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/science/research,
 /obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "bru" = (
@@ -18239,7 +18237,6 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/science/general,
 /obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/science/auxlab)
 "eKf" = (
@@ -39638,6 +39635,8 @@
 /obj/machinery/door/airlock/science/glass{
 	name = "Science Hall"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
+/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/catwalk_floor,
 /area/station/science/lower)
 "ktN" = (
@@ -54601,7 +54600,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/duct,
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
 "ohO" = (
@@ -58640,7 +58638,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/medical/office)
 "pnc" = (
@@ -59003,7 +59000,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
 "prw" = (
@@ -76086,7 +76082,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/science/research,
-/obj/effect/mapping_helpers/airlock/red_access,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "tUq" = (
