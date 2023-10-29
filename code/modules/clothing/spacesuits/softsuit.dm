@@ -1,4 +1,4 @@
-	//NASA Voidsuit
+//NASA Voidsuit
 /obj/item/clothing/head/helmet/space/nasavoid
 	name = "NASA Void Helmet"
 	desc = "An old, NASA CentCom branch designed, dark red space suit helmet."
@@ -25,19 +25,19 @@
 	slowdown = 4
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/multitool)
 
-	//EVA suit
+//EVA suit
 /obj/item/clothing/suit/space/eva
 	name = "EVA suit"
 	icon_state = "space"
 	inhand_icon_state = "s_suit"
-	desc = "A lightweight space suit with the basic ability to protect the wearer from the vacuum of space during emergencies."
+	desc = "A lightweight space suit with the basic ability to protect the wearer from the vacuum of space."
 	armor_type = /datum/armor/space_eva
 
 /obj/item/clothing/head/helmet/space/eva
 	name = "EVA helmet"
 	icon_state = "space"
 	inhand_icon_state = "space_helmet"
-	desc = "A lightweight space helmet with the basic ability to protect the wearer from the vacuum of space during emergencies."
+	desc = "A lightweight space helmet with the basic ability to protect the wearer from the vacuum of space."
 	flash_protect = FLASH_PROTECTION_NONE
 	armor_type = /datum/armor/space_eva
 
@@ -64,34 +64,38 @@
 	qdel(attacked_with)
 	qdel(src)
 
-	//Emergency suit
+//Emergency suit
 /obj/item/clothing/head/helmet/space/fragile
 	name = "emergency space helmet"
-	desc = "A bulky, air-tight helmet meant to protect the user during emergency situations. It doesn't look very durable."
+	desc = "A bulky, air-tight helmet meant to protect the user during emergency situations. It doesn't look very durable nor expensive."
 	icon_state = "syndicate-helm-orange"
-	inhand_icon_state = "syndicate-helm-orange" //resprite?
+	inhand_icon_state = "syndicate-helm-orange"
 	armor_type = /datum/armor/space_fragile
 	strip_delay = 65
+	flash_protect = FLASH_PROTECTION_NONE
+	limb_integrity = 20 //Unlike other space helmets, this one can break
+
+/obj/item/clothing/head/helmet/space/fragile/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 /obj/item/clothing/suit/space/fragile
 	name = "emergency space suit"
-	desc = "A bulky, air-tight suit meant to protect the user during emergency situations. It doesn't look very durable."
-	var/torn = FALSE
+	desc = "A bulky, air-tight suit meant to protect the user during emergency situations. It doesn't look very durable nor expensive."
 	icon_state = "syndicate-orange"
 	inhand_icon_state = "syndicate-orange"
 	slowdown = 2
 	armor_type = /datum/armor/space_fragile
 	strip_delay = 65
+	limb_integrity = 20 //Unlike other space suits, this one can break
+
+/obj/item/clothing/suit/space/fragile/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 /datum/armor/space_fragile
-	melee = 5
-
-/obj/item/clothing/suit/space/fragile/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
-	if(!torn && prob(50))
-		to_chat(owner, span_warning("[src] tears from the damage, breaking the air-tight seal!"))
-		clothing_flags &= ~STOPSPRESSUREDAMAGE
-		name = "torn [src]."
-		desc = "A bulky suit meant to protect the user during emergency situations, at least until someone tore a hole in the suit."
-		torn = TRUE
-		playsound(loc, 'sound/weapons/slashmiss.ogg', 50, TRUE)
-		playsound(loc, 'sound/effects/refill.ogg', 50, TRUE)
+	bio = 100
+	fire = 30
+	acid = 30

@@ -59,6 +59,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 	return TRUE
 
 /obj/item/storage/pod/MouseDrop(over_object, src_location, over_location)
+	lock_check(usr)
 	if(unlocked)
 		return ..()
 
@@ -115,8 +116,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 	new /obj/item/clothing/head/helmet/space/fragile(src)
 	new /obj/item/clothing/suit/space/fragile(src)
 	new /obj/item/clothing/suit/space/fragile(src)
-	new /obj/item/clothing/mask/gas(src)
-	new /obj/item/clothing/mask/gas(src)
+	new /obj/item/clothing/mask/breath(src)
+	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/tank/internals/oxygen/red(src)
 
