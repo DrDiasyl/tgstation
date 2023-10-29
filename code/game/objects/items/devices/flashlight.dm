@@ -408,6 +408,7 @@
 		attack_verb_simple = string_list(list("burn", "singe"))
 		hitsound = 'sound/items/welder.ogg'
 		force = on_damage
+		throwforce = on_damage
 		damtype = BURN
 		update_brightness()
 
@@ -434,6 +435,7 @@
 	attack_verb_simple = string_list(list("burn", "singe"))
 	hitsound = 'sound/items/welder.ogg'
 	force = on_damage
+	throwforce = on_damage
 	damtype = BURN
 	. = ..()
 
@@ -444,6 +446,7 @@
 	attack_verb_simple = initial(attack_verb_simple)
 	hitsound = initial(hitsound)
 	force = initial(force)
+	throwforce = initial(throwforce)
 	damtype = initial(damtype)
 	update_brightness()
 

@@ -110,3 +110,13 @@
 	..()
 	for(var/i in 1 to 7)
 		new /obj/item/tank/internals/emergency_oxygen/engi(src) //in case anyone ever wants to do anything with spawning them, apart from crafting the box
+
+/obj/item/storage/box/flares
+	name = "flares box"
+	desc = "A box of illumination flares."
+	illustration = "flare"
+
+/obj/item/storage/box/flares/PopulateContents()
+	..()
+	for(var/i in 1 to 7)
+		new /obj/item/flashlight/flare(src)

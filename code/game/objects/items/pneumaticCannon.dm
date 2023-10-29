@@ -12,6 +12,7 @@
 	desc = "A gas-powered cannon that can fire any object loaded into it."
 	w_class = WEIGHT_CLASS_BULKY
 	force = 8 //Very heavy
+	throwforce = 10
 	attack_verb_continuous = list("bludgeons", "smashes", "beats")
 	attack_verb_simple = list("bludgeon", "smash", "beat")
 	icon = 'icons/obj/weapons/pneumaticCannon.dmi'
@@ -126,6 +127,7 @@
 		to_chat(user, span_warning("\The [src] can't hold any more items!"))
 	else if(isitem(W))
 		var/obj/item/IW = W
+		playsound(src, 'sound/weapons/gun/shotgun/insert_shell.ogg', 30, TRUE)
 		load_item(IW, user)
 
 /obj/item/pneumatic_cannon/proc/can_load_item(obj/item/I, mob/user)
@@ -318,6 +320,7 @@
 	maxWeightClass = 150 //50 pies. :^)
 	needs_air = FALSE
 	clumsyCheck = FALSE
+
 	var/static/list/pie_typecache = typecacheof(/obj/item/food/pie)
 
 /obj/item/pneumatic_cannon/pie/Initialize(mapload)
@@ -336,6 +339,44 @@
 	charge_type = /obj/item/food/pie/cream/nostun
 	maxWeightClass = 6 //2 pies
 	charge_ticks = 2 //4 second/pie
+
+//Flare gun
+/obj/item/pneumatic_cannon/flare
+	name = "flare gun"
+	desc = "This flare gun, designed for signaling, often ends up 'illuminating' people more effectively than the vast darkness of space."
+	icon_state = "flare"
+	inhand_icon_state = "gun"
+	w_class = WEIGHT_CLASS_NORMAL
+	fire_sound = 'sound/weapons/flare_gun.ogg'
+	gasPerThrow = 0
+	range_multiplier = 3
+	maxWeightClass = 2 //1 flare
+	needs_air = FALSE
+	checktank = FALSE
+
+	var/static/list/flare_typecache = typecacheof(/obj/item/flashlight/flare)
+
+/obj/item/pneumatic_cannon/flare/Initialize(mapload)
+	. = ..()
+	allowed_typecache = flare_typecache
+	update_appearance()
+
+/obj/item/pneumatic_cannon/flare/update_icon_state()
+	. = ..()
+	icon_state = "flare[loadedWeightClass ? "" : "-open"]"
+
+/obj/item/pneumatic_cannon/flare/attackby(obj/item/W, mob/living/user, params)
+	. = ..()
+	update_appearance()
+
+/obj/item/pneumatic_cannon/flare/fire_items(turf/target, mob/user)
+	var/obj/item/flashlight/flare/firing_flare
+	firing_flare = loadedItems[1]
+
+	if(firing_flare)
+		firing_flare.toggle_light()
+	. = ..()
+	update_appearance()
 
 #undef PCANNON_FIREALL
 #undef PCANNON_FILO

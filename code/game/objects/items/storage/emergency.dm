@@ -112,6 +112,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 	desc = "A wall mounted safe containing space suits. Will only open in emergencies."
 
 /obj/item/storage/pod/station/PopulateContents()
+	if(prob(20))
+		new /obj/item/pneumatic_cannon/flare(src)
+		new /obj/item/storage/box/flares
+
 	new /obj/item/clothing/head/helmet/space/fragile(src)
 	new /obj/item/clothing/head/helmet/space/fragile(src)
 	new /obj/item/clothing/suit/space/fragile(src)
