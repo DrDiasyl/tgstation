@@ -46,3 +46,8 @@
 	name = "triple-barrel shotgun internal magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/incapacitate
 	max_ammo = 3
+
+/obj/item/ammo_box/magazine/internal/shot/flare_gun
+	name = "flare gun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/incendiary/flare
+	max_ammo = 1

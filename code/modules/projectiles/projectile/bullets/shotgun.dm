@@ -42,6 +42,28 @@
 	damage = 35
 	leaves_fire_trail = FALSE
 
+/obj/projectile/bullet/incendiary/shotgun/flare
+	name = "flare slug"
+	icon_state = "flare"
+	damage = 10
+	fire_stacks = 2 //Flares aren't designed as weapons
+	embedding = null
+	sharpness = null
+	light_system = MOVABLE_LIGHT
+	light_color = LIGHT_COLOR_FLARE
+	light_range = 7
+	light_on = FALSE
+	speed = 1
+	pixel_speed_multiplier = 0.4
+
+/obj/projectile/bullet/incendiary/shotgun/flare/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/projectile_drop, /obj/item/flashlight/flare/projectile) //So it actually leaves a flare
+
+/obj/projectile/bullet/incendiary/shotgun/flare/fire(angle, atom/direct_target)
+	. = ..()
+	set_light_on(TRUE) //So they aren't bright before being fired
+
 /obj/projectile/bullet/incendiary/shotgun/dragonsbreath
 	name = "dragonsbreath pellet"
 	damage = 5

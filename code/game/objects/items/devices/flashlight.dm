@@ -635,6 +635,21 @@
 	trash_type = /obj/effect/decal/cleanable/ash
 	can_be_extinguished = TRUE
 
+/obj/item/flashlight/flare/projectile //Not an actual projectile
+	name = "projectile flare"
+	desc = "Looks like this one was fired from a flare gun as it has no actual body, good luck grabbing it."
+	icon_state = "flare_projectile"
+	on = TRUE
+	trash_type = /obj/effect/decal/cleanable/ash
+
+/obj/item/flashlight/flare/projectile/attack_hand(mob/living/carbon/human/user, list/modifiers)
+	var/obj/item/bodypart/affecting = user.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+	if(affecting?.receive_damage( 0, 5 )) // 5 burn damage
+		user.update_damage_overlays()
+		to_chat(user, span_warning("You try to pick up the [src], but you burn your hand on it!"))
+		return
+	. = ..()
+
 /obj/item/flashlight/lantern
 	name = "lantern"
 	icon_state = "lantern"

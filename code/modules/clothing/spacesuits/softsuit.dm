@@ -67,13 +67,13 @@
 //Emergency suit
 /obj/item/clothing/head/helmet/space/fragile
 	name = "emergency space helmet"
-	desc = "A bulky, air-tight helmet meant to protect the user during emergency situations. It doesn't look very durable nor expensive."
+	desc = "A bulky, air-tight helmet meant to protect the user during emergency situations. It doesn't look very durable."
 	icon_state = "syndicate-helm-orange"
 	inhand_icon_state = "syndicate-helm-orange"
 	armor_type = /datum/armor/space_fragile
 	strip_delay = 65
 	flash_protect = FLASH_PROTECTION_NONE
-	limb_integrity = 20 //Unlike other space helmets, this one can break
+	limb_integrity = 10 //Unlike other space helmets, this one can break
 
 /obj/item/clothing/head/helmet/space/fragile/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
@@ -82,13 +82,13 @@
 
 /obj/item/clothing/suit/space/fragile
 	name = "emergency space suit"
-	desc = "A bulky, air-tight suit meant to protect the user during emergency situations. It doesn't look very durable nor expensive."
+	desc = "A bulky, air-tight suit meant to protect the user during emergency situations. It doesn't look very durable."
 	icon_state = "syndicate-orange"
 	inhand_icon_state = "syndicate-orange"
 	slowdown = 2
 	armor_type = /datum/armor/space_fragile
 	strip_delay = 65
-	limb_integrity = 20 //Unlike other space suits, this one can break
+	limb_integrity = 10 //Unlike other space suits, this one can break
 
 /obj/item/clothing/suit/space/fragile/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()

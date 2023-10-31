@@ -113,8 +113,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 
 /obj/item/storage/pod/station/PopulateContents()
 	if(prob(20))
-		new /obj/item/pneumatic_cannon/flare(src)
-		new /obj/item/storage/box/flares
+		new /obj/item/gun/ballistic/shotgun/flare_gun(src)
+		new /obj/item/storage/box/flareshot(src)
+	else
+		new /obj/item/storage/box/flares(src)
 
 	new /obj/item/clothing/head/helmet/space/fragile(src)
 	new /obj/item/clothing/head/helmet/space/fragile(src)

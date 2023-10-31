@@ -39,6 +39,13 @@
 	desc = "An incendiary-coated shotgun slug, specially treated to only ignite on impact."
 	projectile_type = /obj/projectile/bullet/incendiary/shotgun/no_trail
 
+/obj/item/ammo_casing/shotgun/incendiary/flare
+	name = "flare shots"
+	desc = "A 12 gauge signalling flare, good for long distance illumination."
+	icon_state = "flare"
+	projectile_type = /obj/projectile/bullet/incendiary/shotgun/flare
+	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect/red
+
 /obj/item/ammo_casing/shotgun/dragonsbreath
 	name = "dragonsbreath shell"
 	desc = "A shotgun shell which fires a spread of incendiary pellets."

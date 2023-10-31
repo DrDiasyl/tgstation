@@ -341,3 +341,47 @@
 /obj/item/gun/ballistic/shotgun/hook/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	hook.afterattack(target, user, proximity_flag, click_parameters)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+//FLARE GUN
+/obj/item/gun/ballistic/shotgun/flare_gun
+	name = "flare gun"
+	desc = "This flare gun, designed for signaling, often ends up 'illuminating' people more effectively than the vast darkness of space."
+	icon_state = "flare"
+	inhand_icon_state = "gun"
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+	fire_sound = 'sound/weapons/flare_gun.ogg'
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
+	force = 8
+	pb_knockback = 0
+	w_class = WEIGHT_CLASS_NORMAL
+	weapon_weight = WEAPON_LIGHT
+	slot_flags = ITEM_SLOT_BELT
+	semi_auto = TRUE
+	bolt_type = BOLT_TYPE_NO_BOLT
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/flare_gun
+	///Did the flare gun blow up?
+	var/blown = FALSE
+
+/obj/item/gun/ballistic/shotgun/flare_gun/examine(mob/user)
+	. = ..()
+	. += span_danger("<b>DANGER:</b> Firing not flare slugs will result in a explosion!")
+	if(blown)
+		. += span_warning("It has blown up and cannot be used anymore.")
+
+/obj/item/gun/ballistic/shotgun/flare_gun/update_icon_state()
+	. = ..()
+	icon_state = "[icon_state][blown ? "-blown" : ""]"
+
+/obj/item/gun/ballistic/shotgun/flare_gun/fire_gun(atom/target, mob/living/user, flag, params)
+	if(blown)
+		balloon_alert(user, "destroyed!")
+		return
+	if(chambered && !istype(chambered, /obj/item/ammo_casing/shotgun/incendiary/flare))
+		if(blow_up(user))
+			user.visible_message(span_danger("[src] blows up!"), span_danger("[src] blows up in your face!"))
+			playsound(src, SFX_EXPLOSION, 50, TRUE)
+			blown = TRUE
+			update_appearance()
+	. = ..()

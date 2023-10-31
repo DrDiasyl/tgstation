@@ -248,6 +248,16 @@
 	for(var/i in 1 to 7)
 		new /obj/item/ammo_casing/shotgun/breacher(src)
 
+/obj/item/storage/box/flareshot
+	name = "box of flare shots (Flammable)"
+	desc = "A box full of 12 gauge signalling flares, designed for flare guns and shotguns."
+	icon_state = "flareshot_box"
+	illustration = null
+
+/obj/item/storage/box/flareshot/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/ammo_casing/shotgun/incendiary/flare(src)
+
 /obj/item/storage/box/emptysandbags
 	name = "box of empty sandbags"
 	illustration = "sandbag"
