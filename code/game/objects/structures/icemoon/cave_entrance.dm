@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(ore_probability, list(
 	faction = list(FACTION_MINING)
 	max_mobs = 3
 	max_integrity = 250
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/wolf)
+	mob_types = list(/mob/living/basic/mining/wolf)
 	move_resist = INFINITY
 	anchored = TRUE
 	scanner_taggable = TRUE
@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(ore_probability, list(
 	name = "demonic portal"
 	desc = "A portal that goes to another world, normal creatures couldn't survive there."
 	icon_state = "nether"
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/ice_demon)
+	mob_types = list(/mob/living/basic/mining/ice_demon)
 	light_range = 1
 	light_color = COLOR_SOFT_RED
 	mob_gps_id = "WT|B" // watcher | bluespace

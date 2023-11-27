@@ -4,7 +4,7 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 	set name = "Secrets"
 	set desc = "Abuse harder than you ever have before with this handy dandy semi-misc stuff menu"
 	set category = "Admin.Game"
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Secrets Panel") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Secrets Panel")
 	var/datum/secrets_menu/tgui = new(usr)//create the datum
 	tgui.ui_interact(usr)//datum has a tgui component, here we open the window
 
@@ -554,7 +554,7 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 			var/spawnpoint = pick(GLOB.blobstart)
 			var/list/mob/dead/observer/candidates
 			var/mob/dead/observer/chosen_candidate
-			var/mob/living/simple_animal/drone/nerd
+			var/mob/living/basic/drone/nerd
 			var/teamsize
 
 			teamsize = input(usr, "How many drones?", "N.E.R.D. team size", 2) as num|null
@@ -570,7 +570,7 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 			while(length(candidates) && teamsize)
 				chosen_candidate = pick(candidates)
 				candidates -= chosen_candidate
-				nerd = new /mob/living/simple_animal/drone/classic(spawnpoint)
+				nerd = new /mob/living/basic/drone/classic(spawnpoint)
 				nerd.key = chosen_candidate.key
 				nerd.log_message("has been selected as a Nanotrasen emergency response drone.", LOG_GAME)
 				teamsize--

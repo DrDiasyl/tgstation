@@ -7,15 +7,8 @@
 			return
 		MOD.install(laws, user) //Proc includes a success mesage so we don't need another one
 		return
-	if(W.force && W.damtype != STAMINA && stat != DEAD && !QDELETED(src)) //only sparks if real damage is dealt.
-		spark_system.start()
-	return ..()
 
-/mob/living/silicon/ai/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
-	if(!SSticker.HasRoundStarted())
-		to_chat(user, "You cannot attack people before the game has started.")
-		return
-	..()
+	return ..()
 
 /mob/living/silicon/ai/attack_slime(mob/living/simple_animal/slime/user, list/modifiers)
 	return //immune to slimes
@@ -53,10 +46,6 @@
 				adjustBruteLoss(30)
 
 	return TRUE
-
-/mob/living/silicon/ai/bullet_act(obj/projectile/Proj)
-	. = ..(Proj)
-	updatehealth()
 
 /mob/living/silicon/ai/flash_act(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0, type = /atom/movable/screen/fullscreen/flash, length = 25)
 	return // no eyes, no flashing
