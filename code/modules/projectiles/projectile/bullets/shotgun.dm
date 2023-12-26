@@ -93,7 +93,6 @@
 /obj/projectile/bullet/pellet
 	icon_state = "pellet"
 	damage_falloff_tile = -0.45
-	stamina_falloff_tile = -0.25
 
 /obj/projectile/bullet/pellet/shotgun_buckshot
 	name = "buckshot pellet"
@@ -109,6 +108,7 @@
 	sharpness = NONE
 	embedding = null
 	speed = 1.2
+	stamina_falloff_tile = -0.25
 	ricochets_max = 4
 	ricochet_chance = 120
 	ricochet_decay_chance = 0.9

@@ -400,7 +400,7 @@
 		var/datum/antagonist/A = target.mind.has_antag_datum(/datum/antagonist/)
 		if(A)
 			poll_message = "[poll_message] Status:[A.name]."
-	var/list/mob/dead/observer/candidates = poll_candidates_for_mob(poll_message, ROLE_PAI, FALSE, 10 SECONDS, target)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates_for_mob(poll_message, check_jobban = ROLE_PAI, poll_time = 10 SECONDS, target_mob = target, pic_source = target, role_name_text = "bolt of possession")
 	if(target.stat == DEAD)//boo.
 		return
 	if(LAZYLEN(candidates))
@@ -481,7 +481,7 @@
 	speed = 0.3
 
 	/// The power of the zap itself when it electrocutes someone
-	var/zap_power = 8e6
+	var/zap_power = 2e4
 	/// The range of the zap itself when it electrocutes someone
 	var/zap_range = 15
 	/// The flags of the zap itself when it electrocutes someone
@@ -496,14 +496,14 @@
 
 /obj/projectile/magic/aoe/lightning/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	tesla_zap(src, zap_range, zap_power, zap_flags)
+	tesla_zap(source = src, zap_range = zap_range, power = zap_power, cutoff = 1e3, zap_flags = zap_flags)
 
 /obj/projectile/magic/aoe/lightning/Destroy()
 	QDEL_NULL(chain)
 	return ..()
 
 /obj/projectile/magic/aoe/lightning/no_zap
-	zap_power = 4e6
+	zap_power = 1e4
 	zap_range = 4
 	zap_flags = ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE | ZAP_LOW_POWER_GEN
 

@@ -236,16 +236,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/shuttle/arrival)
-"aM" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/briefcase{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/secure/briefcase,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron,
-/area/shuttle/arrival)
 "aN" = (
 /obj/machinery/status_display/evac,
 /turf/closed/wall/mineral/titanium,
@@ -294,6 +284,16 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/arrival)
+"gM" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/briefcase{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/briefcase/secure,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron,
+/area/shuttle/arrival)
 "gS" = (
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
@@ -313,44 +313,7 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/arrival)
-"sq" = (
-/obj/machinery/status_display/ai{
-	pixel_x = 32
-	},
-/obj/item/kirbyplants/organic/plant21,
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/shuttle/arrival)
-"uH" = (
-/obj/machinery/vending/wallmed/directional/north{
-	use_power = 0
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron,
-/area/shuttle/arrival)
-"wG" = (
-/obj/item/kirbyplants/organic/plant21,
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/shuttle/arrival)
-"DV" = (
-/obj/machinery/holopad,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron,
-/area/shuttle/arrival)
-"HM" = (
-/obj/structure/table/reinforced,
-/obj/item/folder,
-/obj/item/storage/dice,
-/obj/effect/turf_decal/delivery,
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron,
-/area/shuttle/arrival)
-"JF" = (
+"jT" = (
 /obj/item/clothing/suit/hazardvest{
 	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
 	name = "emergency lifejacket"
@@ -429,6 +392,43 @@
 /obj/structure/closet/crate/internals,
 /obj/effect/turf_decal/bot,
 /obj/item/storage/pod/station/directional/north,
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"sq" = (
+/obj/machinery/status_display/ai{
+	pixel_x = 32
+	},
+/obj/item/kirbyplants/organic/plant21,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"uH" = (
+/obj/machinery/vending/wallmed/directional/north{
+	use_power = 0
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"wG" = (
+/obj/item/kirbyplants/organic/plant21,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"DV" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"HM" = (
+/obj/structure/table/reinforced,
+/obj/item/folder,
+/obj/item/storage/dice,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/shuttle/arrival)
 "My" = (
@@ -600,7 +600,7 @@ ag
 ab
 ad
 ag
-JF
+jT
 he
 sq
 av
@@ -609,7 +609,7 @@ av
 av
 My
 he
-aM
+gM
 ag
 aa
 aa
