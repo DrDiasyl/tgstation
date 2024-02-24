@@ -2,6 +2,7 @@
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_HOSTILE_MEOWS = list("Mawwww", "Mrewwww", "mhhhhng..."),
+		BB_BABIES_PARTNER_TYPES = list(/mob/living/basic/pet/cat),
 		BB_BABIES_CHILD_TYPES = list(/mob/living/basic/pet/cat/kitten),
 	)
 
@@ -27,8 +28,6 @@
 
 /datum/ai_planning_subtree/reside_in_home/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/mob/living/living_pawn = controller.pawn
-	if(QDELETED(living_pawn))
-		return
 
 	if(controller.blackboard_key_exists(BB_CAT_HOME))
 		controller.queue_behavior(/datum/ai_behavior/enter_cat_home, BB_CAT_HOME)
@@ -75,7 +74,6 @@
 	. = ..()
 	controller.clear_blackboard_key(target_key)
 
-
 /datum/ai_planning_subtree/flee_target/from_flee_key/cat_struggle
 	flee_behaviour = /datum/ai_behavior/run_away_from_target/cat_struggle
 
@@ -88,7 +86,7 @@
 
 /datum/ai_planning_subtree/territorial_struggle/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/mob/living/living_pawn = controller.pawn
-	if(QDELETED(living_pawn) || living_pawn.gender != MALE || !SPT_PROB(hostility_chance, seconds_per_tick))
+	if(living_pawn.gender != MALE || !SPT_PROB(hostility_chance, seconds_per_tick))
 		return
 	if(controller.blackboard_key_exists(BB_TRESSPASSER_TARGET))
 		controller.queue_behavior(/datum/ai_behavior/territorial_struggle, BB_TRESSPASSER_TARGET, BB_HOSTILE_MEOWS)
@@ -167,8 +165,6 @@
 
 /datum/ai_planning_subtree/find_and_hunt_target/hunt_mice/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/mob/living/living_pawn = controller.pawn
-	if(QDELETED(living_pawn))
-		return
 	var/list/items_we_carry = typecache_filter_list(living_pawn, controller.blackboard[BB_HUNTABLE_PREY])
 	if(length(items_we_carry))
 		return
@@ -214,7 +210,7 @@
 	var/mob/living/living_pawn = controller.pawn
 	var/atom/target = controller.blackboard[target_key]
 	controller.clear_blackboard_key(target_key)
-	if(isnull(target))
+	if(isnull(target) || QDELETED(living_pawn))
 		return
 	var/manual_emote = "attempts to hunt [target]..."
 	var/end_result = success ? "and succeeds!" : "but fails!"

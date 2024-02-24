@@ -131,17 +131,21 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	tox_damage = 0
 
 //libital
-//Impure
+//Inverse:
 //Simply reduces your alcohol tolerance, kinda simular to prohol
-/datum/reagent/impurity/libitoil
+/datum/reagent/inverse/libitoil
 	name = "Libitoil"
 	description = "Temporarilly interferes a patient's ability to process alcohol."
 	chemical_flags = REAGENT_DONOTSPLIT
 	ph = 13.5
-	liver_damage = 0.1
 	addiction_types = list(/datum/addiction/medicine = 4)
+	tox_damage = 0
 
-/datum/reagent/impurity/libitoil/on_mob_add(mob/living/affected_mob, amount)
+/datum/reagent/inverse/libitoil/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
+	. = ..()
+	affected_mob.adjustOrganLoss(ORGAN_SLOT_LIVER, 0.1 * REM * delta_time)
+
+/datum/reagent/inverse/libitoil/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()
 	var/mob/living/carbon/consumer = affected_mob
 	if(!consumer)
@@ -151,21 +155,21 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	var/obj/item/organ/internal/liver/this_liver = consumer.get_organ_slot(ORGAN_SLOT_LIVER)
 	this_liver.alcohol_tolerance *= 2
 
-/datum/reagent/impurity/libitoil/proc/on_gained_organ(mob/prev_owner, obj/item/organ/organ)
+/datum/reagent/inverse/libitoil/proc/on_gained_organ(mob/prev_owner, obj/item/organ/organ)
 	SIGNAL_HANDLER
 	if(!istype(organ, /obj/item/organ/internal/liver))
 		return
 	var/obj/item/organ/internal/liver/this_liver = organ
 	this_liver.alcohol_tolerance *= 2
 
-/datum/reagent/impurity/libitoil/proc/on_removed_organ(mob/prev_owner, obj/item/organ/organ)
+/datum/reagent/inverse/libitoil/proc/on_removed_organ(mob/prev_owner, obj/item/organ/organ)
 	SIGNAL_HANDLER
 	if(!istype(organ, /obj/item/organ/internal/liver))
 		return
 	var/obj/item/organ/internal/liver/this_liver = organ
 	this_liver.alcohol_tolerance /= 2
 
-/datum/reagent/impurity/libitoil/on_mob_delete(mob/living/affected_mob)
+/datum/reagent/inverse/libitoil/on_mob_delete(mob/living/affected_mob)
 	. = ..()
 	var/mob/living/carbon/consumer = affected_mob
 	UnregisterSignal(consumer, COMSIG_CARBON_LOSE_ORGAN)
@@ -205,18 +209,18 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	affected_mob.adjust_nutrition(-5 * REAGENTS_METABOLISM * seconds_per_tick)
 
 //Lenturi
-//impure
-/datum/reagent/impurity/lentslurri //Okay maybe I should outsource names for these
+//inverse
+/datum/reagent/inverse/lentslurri //Okay maybe I should outsource names for these
 	name = "Lentslurri"//This is a really bad name please replace
-	description = "A highly addicitive muscle relaxant that is made when Lenturi reactions go wrong."
+	description = "A highly addicitive muscle relaxant that is made when Lenturi reactions go wrong, this will cause the patient to move slowly."
 	addiction_types = list(/datum/addiction/medicine = 8)
-	liver_damage = 0
+	tox_damage = 0
 
-/datum/reagent/impurity/lentslurri/on_mob_metabolize(mob/living/carbon/affected_mob)
+/datum/reagent/inverse/lentslurri/on_mob_metabolize(mob/living/carbon/affected_mob)
 	. = ..()
 	affected_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/lenturi)
 
-/datum/reagent/impurity/lentslurri/on_mob_end_metabolize(mob/living/carbon/affected_mob)
+/datum/reagent/inverse/lentslurri/on_mob_end_metabolize(mob/living/carbon/affected_mob)
 	. = ..()
 	affected_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/lenturi)
 
@@ -250,24 +254,21 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	resetting_probability += (5*((current_cycle-1)/10) * seconds_per_tick) // 10 iterations = >51% to itch
 
 //Aiuri
-//impure
-/datum/reagent/impurity/aiuri
+//inverse
+/datum/reagent/inverse/aiuri
 	name = "Aivime"
 	description = "This reagent is known to interfere with the eyesight of a patient."
 	ph = 3.1
 	addiction_types = list(/datum/addiction/medicine = 1.5)
-	liver_damage = 0.1
-	/// blurriness at the start of taking the med
-	var/amount_of_blur_applied = 0 SECONDS
+	///The amount of blur applied per second. Given the average on_life interval is 2 seconds, that'd be 2.5s.
+	var/amount_of_blur_applied = 1.25 SECONDS
+	tox_damage = 0
 
-/datum/reagent/impurity/aiuri/on_mob_add(mob/living/affected_mob, amount)
+/datum/reagent/inverse/aiuri/on_mob_life(mob/living/carbon/owner, delta_time, times_fired)
+	owner.adjustOrganLoss(ORGAN_SLOT_EYES, 0.1 * REM * delta_time)
+	owner.adjust_eye_blur(amount_of_blur_applied * delta_time)
 	. = ..()
-	amount_of_blur_applied = creation_purity * (volume / metabolization_rate) * 2 SECONDS
-	affected_mob.adjust_eye_blur(amount_of_blur_applied)
-
-/datum/reagent/impurity/aiuri/on_mob_delete(mob/living/affected_mob, amount)
-	. = ..()
-	affected_mob.adjust_eye_blur(-amount_of_blur_applied)
+	return TRUE
 
 //Hercuri
 //inverse
@@ -769,18 +770,18 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	liver_damage = 0.1
 	metabolization_rate = 0.04 * REM
 	///The random span we start hearing in
-	var/randomSpan
+	var/random_span
 
 /datum/reagent/impurity/inacusiate/on_mob_metabolize(mob/living/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-	randomSpan = pick(list("clown", "small", "big", "hypnophrase", "alien", "cult", "alert", "danger", "emote", "yell", "brass", "sans", "papyrus", "robot", "his_grace", "phobia"))
+	random_span = pick("clown", "small", "big", "hypnophrase", "alien", "cult", "alert", "danger", "emote", "yell", "brass", "sans", "papyrus", "robot", "his_grace", "phobia")
 	RegisterSignal(affected_mob, COMSIG_MOVABLE_HEAR, PROC_REF(owner_hear))
-	to_chat(affected_mob, span_warning("Your hearing seems to be a bit off!"))
+	to_chat(affected_mob, span_warning("Your hearing seems to be a bit off[affected_mob.can_hear() ? "!" : " - wait, that's normal."]"))
 
 /datum/reagent/impurity/inacusiate/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	UnregisterSignal(affected_mob, COMSIG_MOVABLE_HEAR)
-	to_chat(affected_mob, span_notice("You start hearing things normally again."))
+	to_chat(affected_mob, span_notice("You start hearing things normally again[affected_mob.can_hear() ? "" : " - no, wait, no you don't"]."))
 
 /datum/reagent/impurity/inacusiate/proc/owner_hear(mob/living/owner, list/hearing_args)
 	SIGNAL_HANDLER
@@ -788,8 +789,12 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	// don't skip messages that the owner says or can't understand (since they still make sounds)
 	if(!owner.can_hear())
 		return
+	// not technically hearing
+	var/atom/movable/speaker = hearing_args[HEARING_SPEAKER]
+	if(!isnull(speaker) && HAS_TRAIT(speaker, TRAIT_SIGN_LANG))
+		return
 
-	hearing_args[HEARING_RAW_MESSAGE] = "<span class='[randomSpan]'>[hearing_args[HEARING_RAW_MESSAGE]]</span>"
+	hearing_args[HEARING_SPANS] |= random_span
 
 /datum/reagent/inverse/sal_acid
 	name = "Benzoic Acid"
@@ -842,14 +847,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	ph = 4.5
 	metabolization_rate = 0.08 * REM
 	tox_damage = 0
-
-/datum/reagent/inverse/salbutamol/on_mob_metabolize(mob/living/affected_mob)
-	. = ..()
-	ADD_TRAIT(affected_mob, TRAIT_EASYBLEED, type)
-
-/datum/reagent/inverse/salbutamol/on_mob_end_metabolize(mob/living/affected_mob)
-	. = ..()
-	REMOVE_TRAIT(affected_mob, TRAIT_EASYBLEED, type)
+	metabolized_traits = list(TRAIT_EASYBLEED)
 
 /datum/reagent/inverse/pen_acid
 	name = "Pendetide"

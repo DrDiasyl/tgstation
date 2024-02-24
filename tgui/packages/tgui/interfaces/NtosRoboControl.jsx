@@ -19,6 +19,7 @@ export const NtosRoboControl = (props) => {
   const { act, data } = useBackend();
   const [tab_main, setTab_main] = useSharedState('tab_main', 1);
   const { bots, drones, id_owner, droneaccess, dronepingtypes } = data;
+
   return (
     <NtosWindow width={550} height={550}>
       <NtosWindow.Content scrollable>
@@ -152,8 +153,9 @@ export const RobotInfo = (props) => {
             <LabeledList.Item label="Status">{robot.mode}</LabeledList.Item>
             {mule && (
               <>
+                <LabeledList.Item label="Bot ID">{mule.id}</LabeledList.Item>
                 <LabeledList.Item label="Loaded Cargo">
-                  {data.load || 'N/A'}
+                  {mule.load || 'N/A'}
                 </LabeledList.Item>
                 <LabeledList.Item label="Home">{mule.home}</LabeledList.Item>
                 <LabeledList.Item label="Destination">

@@ -1,18 +1,20 @@
 import { BooleanLike } from 'common/react';
 import { multiline } from 'common/string';
-import { useBackend, useSharedState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Button,
   Dimmer,
   Dropdown,
+  NoticeBox,
   Section,
   Stack,
-  NoticeBox,
 } from '../components';
 import { Window } from '../layouts';
 import {
-  ObjectivePrintout,
   Objective,
+  ObjectivePrintout,
   ReplaceObjectivesButton,
 } from './common/Objectives';
 
@@ -131,11 +133,7 @@ const IntroductionSection = (props) => {
   const { act, data } = useBackend<Info>();
   const { true_name, hive_name, objectives, can_change_objective } = data;
   return (
-    <Section
-      fill
-      title="Intro"
-      scrollable={!!objectives && objectives.length > 4}
-    >
+    <Section fill title="Intro" style={{ overflowY: 'auto' }}>
       <Stack vertical fill>
         <Stack.Item fontSize="25px">
           You are {true_name} from the
@@ -211,8 +209,7 @@ const AbilitiesSection = (props) => {
 const MemoriesSection = (props) => {
   const { data } = useBackend<Info>();
   const { memories } = data;
-  const [selectedMemory, setSelectedMemory] = useSharedState(
-    'memory',
+  const [selectedMemory, setSelectedMemory] = useState(
     (!!memories && memories[0]) || null,
   );
   const memoryMap = {};
@@ -220,6 +217,7 @@ const MemoriesSection = (props) => {
     const memory = memories[index];
     memoryMap[memory.name] = memory;
   }
+
   return (
     <Section
       fill
