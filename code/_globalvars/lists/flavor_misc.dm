@@ -299,6 +299,11 @@ GLOBAL_LIST_INIT(status_display_approved_pictures, list(
 	"deltaalert",
 	"radiation",
 	"currentalert", //For automatic set of status display on current level
+	"internals",
+	"fire",
+	"atwill",
+	"armup",
+	"crisis",
 ))
 
 // Members of status_display_approved_pictures that are actually states and not alert values

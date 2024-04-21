@@ -34,27 +34,34 @@
 	name = "entertainment monitor"
 	desc = "Damn, they better have the /tg/ channel on these things."
 	icon = 'icons/obj/machines/status_display.dmi'
-	icon_state = "entertainment_blank"
+	icon_state = "frame_tv"
 	network = list()
 	density = FALSE
 	circuit = null
 	interaction_flags_atom = INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND | INTERACT_MACHINE_REQUIRES_SIGHT
 	frame_type = /obj/item/wallframe/telescreen/entertainment
-	var/icon_state_off = "entertainment_blank"
-	var/icon_state_on = "entertainment"
+	/// Is the TV on?
+	var/is_on = FALSE
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertainment, 32)
 
 /obj/item/wallframe/telescreen/entertainment
 	name = "entertainment telescreen frame"
 	icon = 'icons/obj/machines/status_display.dmi'
-	icon_state = "entertainment_blank"
+	icon_state = "frame_tv"
 	result_path = /obj/machinery/computer/security/telescreen/entertainment
 
 /obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_CLICK, PROC_REF(BigClick))
 	find_and_hang_on_wall()
+
+/obj/machinery/computer/security/telescreen/entertainment/update_overlays()
+	. = ..()
+	if(!is_on)
+		return
+
+	. += emissive_appearance(icon, "entertainment", src)
 
 // Bypass clickchain to allow humans to use the telescreen from a distance
 /obj/machinery/computer/security/telescreen/entertainment/proc/BigClick()
@@ -68,10 +75,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 
 ///Sets the monitor's icon to the selected state, and says an announcement
 /obj/machinery/computer/security/telescreen/entertainment/proc/notify(on, announcement)
-	if(on && icon_state == icon_state_off)
-		icon_state = icon_state_on
+	if(on && !is_on)
+		is_on = TRUE
+		update_appearance()
 	else
-		icon_state = icon_state_off
+		is_on = FALSE
+		update_appearance()
 	if(announcement)
 		say(announcement)
 

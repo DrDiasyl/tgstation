@@ -71,6 +71,37 @@ export const StatusDisplayControls = (props) => {
           content="Radiation"
           onClick={() => act('setStatusPicture', { picture: 'radiation' })}
         />
+
+      <Button
+          icon="mask-ventilator"
+          content="Internals"
+          onClick={() => act('setStatusPicture', { picture: 'internals' })}
+        />
+
+      <Button
+          icon="fire"
+          content="Fire"
+          onClick={() => act('setStatusPicture', { picture: 'fire' })}
+        />
+
+      <Button
+          icon="gun"
+          content="Fire at Will"
+          onClick={() => act('setStatusPicture', { picture: 'atwill' })}
+        />
+
+      <Button
+          icon="person-rifle"
+          content="Mobilization"
+          onClick={() => act('setStatusPicture', { picture: 'armup' })}
+        />
+
+      <Button
+          icon="skull-crossbones"
+          content="Crisis FFA"
+          onClick={() => act('setStatusPicture', { picture: 'crisis' })}
+        />
+
       </Section>
 
       <Section title="Message">

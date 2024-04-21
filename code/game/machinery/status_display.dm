@@ -215,12 +215,13 @@
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
-	if (message1_overlay || message2_overlay)
+	if(message1_overlay || message2_overlay)
 		. += "The display says:"
 		if (message1_overlay.message)
 			. += "\t<tt>[html_encode(message1_overlay.message)]</tt>"
 		if (message2_overlay.message)
 			. += "\t<tt>[html_encode(message2_overlay.message)]</tt>"
+	else if(current_mode = SD_PICTURE)
 
 // Helper procs for child display types.
 /obj/machinery/status_display/proc/display_shuttle_status(obj/docking_port/mobile/shuttle)
@@ -499,6 +500,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 		"Biohazard" = "biohazard",
 		"Lockdown" = "lockdown",
 		"Radiation" = "radiation",
+		"Internals" = "internals",
+		"Fire" = "fire",
+		"Fire at Will" = "atwill",
+		"Arm Up" = "armup",
+		"Crisis FFA" = "crisis",
 		"Happy" = "ai_happy",
 		"Neutral" = "ai_neutral",
 		"Very Happy" = "ai_veryhappy",
