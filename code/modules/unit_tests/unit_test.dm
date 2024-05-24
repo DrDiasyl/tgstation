@@ -294,6 +294,10 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	returnable_list += typesof(/obj/item/hilbertshotel)
 	//this boi spawns turf changing stuff, and it stacks and causes pain. Let's just not
 	returnable_list += typesof(/obj/effect/sliding_puzzle)
+	//these can explode and cause the turf to be destroyed at unexpected moments
+	returnable_list += typesof(/obj/effect/mine)
+	returnable_list += typesof(/obj/effect/spawner/random/contraband/landmine)
+	returnable_list += typesof(/obj/item/minespawner)
 	//Stacks baseturfs, can't be tested here
 	returnable_list += typesof(/obj/effect/temp_visual/lava_warning)
 	//Stacks baseturfs, can't be tested here
@@ -336,7 +340,7 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	if(length(focused_tests))
 		tests_to_run = focused_tests
 
-	tests_to_run = sortTim(tests_to_run, GLOBAL_PROC_REF(cmp_unit_test_priority))
+	sortTim(tests_to_run, GLOBAL_PROC_REF(cmp_unit_test_priority))
 
 	var/list/test_results = list()
 
