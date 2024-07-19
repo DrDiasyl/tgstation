@@ -14,7 +14,9 @@
 	anchored = TRUE
 	density = TRUE
 	max_integrity = 100
-	var/proj_pass_rate = 50 //How many projectiles will pass the cover. Lower means stronger cover
+	/// How many projectiles will pass the cover. Lower means stronger cover
+	var/proj_pass_rate = 50
+	/// Whats its made out of?
 	var/bar_material = METAL
 
 /obj/structure/barricade/atom_deconstruct(disassembled = TRUE)
@@ -26,22 +28,26 @@
 
 	return
 
-/obj/structure/barricade/attackby(obj/item/I, mob/living/user, params)
-	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode && bar_material == METAL)
+/obj/structure/barricade/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(attacking_item.tool_behaviour == TOOL_WELDER && !user.combat_mode && bar_material == METAL)
 		if(atom_integrity < max_integrity)
-			if(!I.tool_start_check(user, amount=1))
+			if(!attacking_item.tool_start_check(user, amount=1))
 				return
 
 			to_chat(user, span_notice("You begin repairing [src]..."))
-			if(I.use_tool(src, user, 40, volume=40))
+			if(attacking_item.use_tool(src, user, 40, volume=40))
 				atom_integrity = clamp(atom_integrity + 20, 0, max_integrity)
 	else
 		return ..()
 
-/obj/structure/barricade/CanAllowThrough(atom/movable/mover, border_dir)//So bullets will fly over and stuff.
+/obj/structure/barricade/CanAllowThrough(atom/movable/mover, border_dir) //So bullets will fly over and stuff.
 	. = ..()
 	if(locate(/obj/structure/barricade) in get_turf(mover))
 		return TRUE
+
+	else if(isgrenade(mover)) //FIRE IN THE HOLE
+		return TRUE
+
 	else if(isprojectile(mover))
 		if(!anchored)
 			return TRUE
@@ -52,7 +58,8 @@
 			return TRUE
 		return FALSE
 
-/////BARRICADE TYPES///////
+// BARRICADE TYPES
+
 /obj/structure/barricade/wooden
 	name = "wooden barricade"
 	desc = "This space is blocked off by a wooden barricade."
@@ -69,19 +76,19 @@
 	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
 	register_context()
 
-/obj/structure/barricade/wooden/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/stack/sheet/mineral/wood))
-		var/obj/item/stack/sheet/mineral/wood/W = I
-		if(W.amount < 5)
+/obj/structure/barricade/wooden/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item,/obj/item/stack/sheet/mineral/wood))
+		var/obj/item/stack/sheet/mineral/wood/wood = attacking_item
+		if(wood.amount < 5)
 			to_chat(user, span_warning("You need at least five wooden planks to make a wall!"))
 			return
 		else
-			to_chat(user, span_notice("You start adding [I] to [src]..."))
+			to_chat(user, span_notice("You start adding [attacking_item] to [src]..."))
 			playsound(src, 'sound/items/hammering_wood.ogg', 50, vary = TRUE)
 			if(do_after(user, 5 SECONDS, target=src))
-				W.use(5)
-				var/turf/T = get_turf(src)
-				T.place_on_top(/turf/closed/wall/mineral/wood/nonmetal)
+				wood.use(5)
+				var/turf/turf = get_turf(src)
+				turf.place_on_top(/turf/closed/wall/mineral/wood/nonmetal)
 				qdel(src)
 				return
 	return ..()
@@ -134,18 +141,21 @@
 
 /obj/structure/barricade/security
 	name = "security barrier"
-	desc = "A deployable barrier. Provides good cover in fire fights."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "barrier0"
-	density = FALSE
-	anchored = FALSE
+	desc = "A deployable security barrier. Provides good cover in fire fights."
+	icon = 'icons/obj/smooth_structures/sec_barricade.dmi'
+	icon_state = "sec_barricade-0"
+	base_icon_state = "sec_barricade"
 	max_integrity = 180
 	proj_pass_rate = 20
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_SECURITY_BARRICADE
+	canSmoothWith = SMOOTH_GROUP_SECURITY_BARRICADE + SMOOTH_GROUP_SANDBAGS + SMOOTH_GROUP_WALLS
+	req_access = ACCESS_SECURITY
 	armor_type = /datum/armor/barricade_security
-
-	var/deploy_time = 40
-	var/deploy_message = TRUE
-
+	///Can it be deployed/undeployed?
+	var/deployable = TRUE
+	///Is it deployed already?
+	var/deployed = TRUE
 
 /datum/armor/barricade_security
 	melee = 10
@@ -157,19 +167,76 @@
 
 /obj/structure/barricade/security/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(deploy)), deploy_time)
+	update_appearance()
+	AddElement(/datum/element/elevation, pixel_shift = 12)
 
+/obj/structure/barricade/security/examine(mob/user)
+	. = ..()
+	if(deployable)
+		if(obj_flags & EMAGGED)
+			. += span_warning("Its broken and cannot be deployed back!")
+			return
+		. += span_notice("It can be <b>[deployed ? "undeployed" : "deployed"]</b> with <b>[req_access]</b> access ID")
+
+/obj/structure/barricade/security/attackby(obj/item/attacking_item, mob/living/user, params)
+	var/obj/item/card/id/card = attacking_item.GetID()
+	if(card)
+		if(obj_flags & EMAGGED)
+			balloon_alert(user, "broken!")
+			return
+		if(!deployable)
+			return
+		if(!allowed(user))
+			balloon_alert(user, "no access")
+			return
+
+		if(deployed)
+			undeploy()
+		else
+			deploy()
+
+	return ..()
+
+/obj/structure/barricade/security/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(obj_flags & EMAGGED)
+		balloon_alert(user, "broken!")
+		return FALSE
+
+	obj_flags |= EMAGGED
+	undeploy()
+	return TRUE
+
+/// Deploys the barrier, making it anchored and dense
 /obj/structure/barricade/security/proc/deploy()
-	icon_state = "barrier1"
-	set_density(TRUE)
-	set_anchored(TRUE)
-	if(deploy_message)
-		visible_message(span_warning("[src] deploys!"))
+	if(deployed)
+		return
 
+	icon = 'icons/obj/smooth_structures/sec_barricade.dmi'
+	update_appearance()
+
+	set_density(TRUE)
+	deployed = TRUE
+
+	playsound(src, 'sound/machines/boltsdown.ogg', 30, TRUE)
+	visible_message(span_warning("[src] deploys!"))
+
+/// Un-deploys the barrier, making it unanchored and nondense
+/obj/structure/barricade/security/proc/undeploy()
+	if(!deployed)
+		return
+
+	icon = 'icons/obj/smooth_structures/sec_barricade_closed.dmi'
+	update_appearance()
+
+	set_density(FALSE)
+	deployed = FALSE
+
+	playsound(src, 'sound/machines/boltsup.ogg', 30, TRUE)
+	visible_message(span_warning("[src] undeploys!"))
 
 /obj/item/grenade/barrier
 	name = "barrier grenade"
-	desc = "Instant cover."
+	desc = "A grenade deploying up to 3 Security barriers."
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "wallbang"
 	inhand_icon_state = "flashbang"
@@ -193,7 +260,7 @@
 		if(HORIZONTAL)
 			mode = SINGLE
 
-	to_chat(user, span_notice("[src] is now in [mode] mode."))
+	balloon_alert(user, "[mode]")
 
 /obj/item/grenade/barrier/detonate(mob/living/lanced_by)
 	. = ..()
@@ -218,6 +285,7 @@
 			var/turf/target_turf2 = get_step(src, WEST)
 			if(!target_turf2.is_blocked_turf())
 				new /obj/structure/barricade/security(target_turf2)
+	playsound(src, 'sound/items/fultext_deploy.ogg', 100, TRUE)
 	qdel(src)
 
 /obj/item/grenade/barrier/ui_action_click(mob/user)

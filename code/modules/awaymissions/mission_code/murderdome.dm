@@ -29,8 +29,7 @@
 /obj/structure/barricade/security/murderdome
 	name = "respawnable barrier"
 	desc = "A barrier. Provides cover in firefights."
-	deploy_time = 0
-	deploy_message = 0
+	deployable = FALSE
 
 /obj/structure/barricade/security/murderdome/make_debris()
 	new /obj/effect/murderdome/dead_barricade(get_turf(src))
@@ -38,8 +37,6 @@
 /obj/effect/murderdome/dead_barricade
 	name = "dead barrier"
 	desc = "It provided cover in fire fights. And now it's gone."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "barrier0"
 	alpha = 100
 
 /obj/effect/murderdome/dead_barricade/Initialize(mapload)

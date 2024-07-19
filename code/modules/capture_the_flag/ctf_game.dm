@@ -433,8 +433,7 @@
 /obj/structure/barricade/security/ctf
 	name = "barrier"
 	desc = "A barrier. Provides cover in fire fights."
-	deploy_time = 0
-	deploy_message = 0
+	deployable = FALSE
 
 /obj/structure/barricade/security/ctf/make_debris()
 	new /obj/effect/ctf/dead_barricade(get_turf(src))
@@ -442,8 +441,6 @@
 /obj/effect/ctf/dead_barricade
 	name = "dead barrier"
 	desc = "It provided cover in fire fights. And now it's gone."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "barrier0"
 	var/game_id = CTF_GHOST_CTF_GAME_ID
 	var/datum/ctf_controller/ctf_game
 
