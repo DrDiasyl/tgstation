@@ -65,25 +65,21 @@
 	starting_title = "Engineering Textbook"
 	page_link = "Guide_to_engineering"
 
-/obj/item/book/manual/wiki/security_space_law
-	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
-	icon_state = "bookSpaceLaw"
-	inhand_icon_state = "book2"
+/obj/item/book/manual/wiki/authority
+	name = "Some Authority Book"
+	desc = "Very important book, parent sub-type of many Security and Command guides."
 	starting_author = "Nanotrasen"
-	starting_title = "Space Law"
-	page_link = "Space_Law"
 	attack_verb_continuous = list("prosecutes", "disciplines", "educates")
 	attack_verb_simple = list("prosecute", "discipline", "educate")
 
-/obj/item/book/manual/wiki/security_space_law/examine(mob/user)
+/obj/item/book/manual/wiki/authority/examine(mob/user)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_JUSTICE))
 		return
 
-	. += span_notice("You can use this as a weapon against Shitcurity and Criminals.")
+	. += span_notice("You can use this as a <b>disorientation weapon</b> against normal people, <b>stun weapon</b> against mindshielded. Won't work on Command members.")
 
-/obj/item/book/manual/wiki/security_space_law/attack(mob/living/target_mob, mob/living/user, params)
+/obj/item/book/manual/wiki/authority/attack(mob/living/target_mob, mob/living/user, params)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_JUSTICE))
 		return TRUE
@@ -107,53 +103,48 @@
 	playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
 	return FALSE
 
-/obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
+/obj/item/book/manual/wiki/authority/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
 	user.emote("laugh")
 	return OXYLOSS
 
-/obj/item/book/manual/wiki/guide_to_security
+/obj/item/book/manual/wiki/authority/authority/security_space_law
+	name = "Space Law"
+	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	icon_state = "bookSpaceLaw"
+	inhand_icon_state = "book2"
+	starting_title = "Space Law"
+	page_link = "Space_Law"
+
+/obj/item/book/manual/wiki/authority/guide_to_security
 	name = "Security Protocols"
 	desc = "A set of advanced information for the Security Department."
 	icon_state = "bookGuideToSecurity"
 	inhand_icon_state = "book2"
-	starting_author = "Nanotrasen"
 	starting_title = "Security Protocols"
 	page_link = "Guide_to_security"
 
-/obj/item/book/manual/wiki/standard_operating_procedure
+/obj/item/book/manual/wiki/authority/standard_operating_procedure
 	name = "Standard Operating Procedure"
 	desc = "A set of SOPs for various emergencies and Code levels."
 	icon_state = "bookStandardOperatingProcedure"
 	inhand_icon_state = "book4"
-	starting_author = "Nanotrasen"
 	starting_title = "Standard Operating Procedure"
 	page_link = "Standard_Operating_Procedure"
 
-/obj/item/book/manual/wiki/chain_of_command
+/obj/item/book/manual/wiki/authority/chain_of_command
 	name = "Chain of Command"
 	desc = "Who controls who, and why you can't just mutiny Captain."
 	icon_state = "bookChainOfCommand"
 	inhand_icon_state = "book4"
-	starting_author = "Nanotrasen"
 	starting_title = "Chain of Command"
 	page_link = "Chain_of_Command"
 
-/obj/item/book/manual/wiki/guide_to_paperwork
-	name = "Paper and Work"
-	desc = "Various forms and professional formating techniques for true bureaucrats."
-	icon_state = "bookGuideToPaperwork"
-	inhand_icon_state = "book4"
-	starting_author = "Nanotrasen"
-	starting_title = "Paper and Work"
-	page_link = "Paper_Markdown"
-
-/obj/item/book/manual/wiki/guide_to_trial
+/obj/item/book/manual/wiki/authority/guide_to_trial
 	name = "Trial Procedures"
 	desc = "How to hold a <i>proper</i> trial."
 	icon_state = "bookGuideToTrial"
 	inhand_icon_state = "book2"
-	starting_author = "Nanotrasen"
 	starting_title = "Trial Procedures"
 	page_link = "Guide_to_trials"
 
@@ -165,6 +156,15 @@
 	starting_author = "Nanotrasen"
 	starting_title = "Labor Camps - Justice through labor!"
 	page_link = "Guide_to_the_Labor_Camp"
+
+/obj/item/book/manual/wiki/guide_to_paperwork
+	name = "Paper and Work"
+	desc = "Various forms and professional formating techniques for true bureaucrats."
+	icon_state = "bookGuideToPaperwork"
+	inhand_icon_state = "book4"
+	starting_author = "Nanotrasen"
+	starting_title = "Paper and Work"
+	page_link = "Paper_Markdown"
 
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"
