@@ -46,6 +46,7 @@
 	l_hand = /obj/item/storage/briefcase/lawyer
 
 	chameleon_extras = /obj/item/stamp/law
+	skillchips = list(/obj/item/skillchip/job/hos/minor)
 
 /datum/outfit/job/lawyer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)

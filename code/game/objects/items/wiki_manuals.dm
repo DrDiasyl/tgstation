@@ -69,9 +69,43 @@
 	starting_author = "Nanotrasen"
 	starting_title = "Space Law"
 	page_link = "Space_Law"
+	attack_verb_continuous = list("prosecutes", "disciplines", "educates")
+	attack_verb_simple = list("prosecute", "discipline", "educate")
+
+/obj/item/book/manual/wiki/security_space_law/examine(mob/user)
+	. = ..()
+	if(!HAS_TRAIT(user, TRAIT_JUSTICE))
+		return
+
+	. += span_notice("You can use this as a weapon against Shitcurity and Criminals.")
+
+/obj/item/book/manual/wiki/security_space_law/attack(mob/living/target_mob, mob/living/user, params)
+	. = ..()
+	if(!HAS_TRAIT(user, TRAIT_JUSTICE))
+		return TRUE
+
+	if(!iscarbon(target_mob))
+		return TRUE
+
+	var/obj/item/organ/internal/liver/liver = target_mob.get_organ_slot(ORGAN_SLOT_LIVER)
+	if(HAS_TRAIT(liver, TRAIT_ROYAL_METABOLISM)) // You cannot outmatch the Heads or Captain
+		to_chat(user, span_warning("[target_mob] authority is too powerful for you!"))
+		return TRUE
+
+	if(HAS_TRAIT(target_mob, TRAIT_MINDSHIELD)) // Mindshielded are the Officers, Shitcurity should get it worse
+		target_mob.Knockdown(3 SECONDS)
+		to_chat(target_mob, span_bad("<b>You hear a voice:</b> <i>\"[pick(GLOB.space_law_mindshield_entries)]\"</i>"))
+	else
+		to_chat(target_mob, span_bad("<b>You hear a voice:</b> <i>\"[pick(GLOB.space_law_entries)]\"</i>"))
+
+	target_mob.set_confusion_if_lower(5 SECONDS)
+	target_mob.set_eye_blur_if_lower(5 SECONDS)
+	playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
+	return FALSE
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
+	user.emote("laugh")
 	return OXYLOSS
 
 /obj/item/book/manual/wiki/infections

@@ -20,6 +20,8 @@
 	var/unique = FALSE
 	/// whether or not we have been carved out
 	var/carved = FALSE
+	/// Is reading it silent?
+	var/silent = FALSE
 
 	/// The initial title, for use in var editing and such
 	var/starting_title
@@ -94,7 +96,8 @@
 	if(!can_read_book(user))
 		return
 
-	user.visible_message(span_notice("[user] opens a book titled \"[book_data.title]\" and begins reading intently."))
+	if(!silent)
+		user.visible_message(span_notice("[user] opens a book titled \"[book_data.title]\" and begins reading intently."))
 	display_content(user)
 
 /obj/item/book/attackby(obj/item/attacking_item, mob/living/user, params)
