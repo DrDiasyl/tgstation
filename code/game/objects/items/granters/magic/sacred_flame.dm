@@ -2,6 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/aoe/sacred_flame
 	action_name = "sacred flame"
 	icon_state ="booksacredflame"
+	inhand_icon_state = "book2"
 	desc = "Become one with the flames that burn within... and invite others to do so as well."
 	remarks = list(
 		"Well, it's one way to stop an attacker...",

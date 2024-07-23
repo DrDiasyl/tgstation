@@ -2,6 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/forcewall
 	action_name = "forcewall"
 	icon_state ="bookforcewall"
+	inhand_icon_state = "book4"
 	desc = "This book has a dedication to mimes everywhere inside the front cover."
 	remarks = list(
 		"I can go through the wall! Neat.",

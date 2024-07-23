@@ -3,6 +3,7 @@
 	name = "The Art of Origami"
 	desc = "A meticulously in-depth manual explaining the art of paper folding."
 	icon_state = "origamibook"
+	inhand_icon_state = "book5"
 	action_name = "origami"
 	remarks = list(
 		"Dead-stick stability...",

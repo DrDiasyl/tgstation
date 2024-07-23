@@ -2,6 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/pointed/mind_transfer
 	action_name = "mindswap"
 	icon_state ="bookmindswap"
+	inhand_icon_state = "book4"
 	desc = "This book's cover is pristine, though its pages look ragged and torn."
 	remarks = list(
 		"If you mindswap from a mouse, they will be helpless when you recover...",

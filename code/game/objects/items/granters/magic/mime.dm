@@ -2,6 +2,7 @@
 	name = "Guide to Mimery Vol 0"
 	desc = "The missing entry into the legendary saga. Unfortunately it doesn't teach you anything."
 	icon_state ="bookmime"
+	inhand_icon_state = "book8"
 	remarks = list("...")
 	book_sounds = list('sound/effects/space_wind.ogg')
 

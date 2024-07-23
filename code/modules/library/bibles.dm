@@ -71,8 +71,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	icon_state = "bible"
 	worn_icon_state = "bible"
 	inhand_icon_state = "bible"
-	lefthand_file = 'icons/mob/inhands/items/books_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/books_righthand.dmi'
 	force_string = "holy"
 	unique = TRUE
 	/// Deity this bible is related to

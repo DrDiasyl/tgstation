@@ -2,6 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/pointed/barnyardcurse
 	action_name = "barnyard"
 	icon_state ="bookhorses"
+	inhand_icon_state = "book3"
 	desc = "This book is more horse than your mind has room for."
 	remarks = list(
 		"Moooooooo!",

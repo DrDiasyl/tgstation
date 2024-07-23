@@ -2,6 +2,7 @@
 	name = "Lusty Xenomorph Maid vol. III - Cheese Bakery"
 	desc = "Wonderful! Time for a celebration... Cheese for everyone!"
 	icon_state = "bookcheese"
+	inhand_icon_state = "book3"
 	action_name = "summon cheese"
 	granted_action = /datum/action/cooldown/spell/conjure/cheese
 	remarks = list(

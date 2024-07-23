@@ -44,6 +44,7 @@
 /obj/item/book/manual/wiki/chemistry
 	name = "Chemistry Textbook"
 	icon_state ="chemistrybook"
+	inhand_icon_state = "book3"
 	starting_author = "Nanotrasen"
 	starting_title = "Chemistry Textbook"
 	page_link = "Guide_to_chemistry"
@@ -51,6 +52,7 @@
 /obj/item/book/manual/wiki/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"
+	inhand_icon_state = "book3"
 	starting_author = "Engineering Encyclopedia"
 	starting_title = "Station Repairs and Construction"
 	page_link = "Guide_to_construction"
@@ -58,6 +60,7 @@
 /obj/item/book/manual/wiki/engineering_guide
 	name = "Engineering Textbook"
 	icon_state ="bookEngineering2"
+	inhand_icon_state = "book4"
 	starting_author = "Engineering Encyclopedia"
 	starting_title = "Engineering Textbook"
 	page_link = "Guide_to_engineering"
@@ -66,6 +69,7 @@
 	name = "Space Law"
 	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
+	inhand_icon_state = "book2"
 	starting_author = "Nanotrasen"
 	starting_title = "Space Law"
 	page_link = "Space_Law"
@@ -112,6 +116,7 @@
 	name = "Security Protocols"
 	desc = "A set of advanced information for the Security Department."
 	icon_state = "bookGuideToSecurity"
+	inhand_icon_state = "book2"
 	starting_author = "Nanotrasen"
 	starting_title = "Security Protocols"
 	page_link = "Guide_to_security"
@@ -120,6 +125,7 @@
 	name = "Standard Operating Procedure"
 	desc = "A set of SOPs for various emergencies and Code levels."
 	icon_state = "bookStandardOperatingProcedure"
+	inhand_icon_state = "book4"
 	starting_author = "Nanotrasen"
 	starting_title = "Standard Operating Procedure"
 	page_link = "Standard_Operating_Procedure"
@@ -128,6 +134,7 @@
 	name = "Chain of Command"
 	desc = "Who controls who, and why you can't just mutiny Captain."
 	icon_state = "bookChainOfCommand"
+	inhand_icon_state = "book4"
 	starting_author = "Nanotrasen"
 	starting_title = "Chain of Command"
 	page_link = "Chain_of_Command"
@@ -136,6 +143,7 @@
 	name = "Paper and Work"
 	desc = "Various forms and professional formating techniques for true bureaucrats."
 	icon_state = "bookGuideToPaperwork"
+	inhand_icon_state = "book4"
 	starting_author = "Nanotrasen"
 	starting_title = "Paper and Work"
 	page_link = "Paper_Markdown"
@@ -144,6 +152,7 @@
 	name = "Trial Procedures"
 	desc = "How to hold a <i>proper</i> trial."
 	icon_state = "bookGuideToTrial"
+	inhand_icon_state = "book2"
 	starting_author = "Nanotrasen"
 	starting_title = "Trial Procedures"
 	page_link = "Guide_to_trials"
@@ -152,6 +161,7 @@
 	name = "Labor Camps - Justice through labor!"
 	desc = "How to utilize the Nanotrasen Labor Camp system, and its benefits."
 	icon_state = "bookGuideToGulag"
+	inhand_icon_state = "book2"
 	starting_author = "Nanotrasen"
 	starting_title = "Labor Camps - Justice through labor!"
 	page_link = "Guide_to_the_Labor_Camp"
@@ -159,6 +169,7 @@
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"
 	icon_state = "bookInfections"
+	inhand_icon_state = "book8"
 	starting_author = "Infections Encyclopedia"
 	starting_title = "Infections - Making your own pandemic!"
 	page_link = "Infections"
@@ -166,6 +177,7 @@
 /obj/item/book/manual/wiki/telescience
 	name = "Teleportation Science - Bluespace for dummies!"
 	icon_state = "book7"
+	inhand_icon_state = "book7"
 	starting_author = "University of Bluespace"
 	starting_title = "Teleportation Science - Bluespace for dummies!"
 	page_link = "Guide_to_telescience"
@@ -173,6 +185,7 @@
 /obj/item/book/manual/wiki/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
+	inhand_icon_state = "book2"
 	starting_author = "Engineering Encyclopedia"
 	starting_title = "Hacking"
 	page_link = "Hacking"
@@ -180,6 +193,7 @@
 /obj/item/book/manual/wiki/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
+	inhand_icon_state = "book2"
 	starting_author = "Nanotrasen"
 	starting_title = "The Film Noir: Proper Procedures for Investigations"
 	page_link = "Detective"
@@ -187,6 +201,7 @@
 /obj/item/book/manual/wiki/barman_recipes
 	name = "Barman Recipes: Mixing Drinks and Changing Lives"
 	icon_state = "barbook"
+	inhand_icon_state = "book4"
 	starting_author = "Sir John Rose"
 	starting_title = "Barman Recipes: Mixing Drinks and Changing Lives"
 	page_link = "Guide_to_drinks"
@@ -201,6 +216,7 @@
 /obj/item/book/manual/wiki/research_and_development
 	name = "Research and Development 101"
 	icon_state = "rdbook"
+	inhand_icon_state = "book4"
 	starting_author = "Dr. L. Ight"
 	starting_title = "Research and Development 101"
 	page_link = "Guide_to_Research_and_Development"
@@ -208,6 +224,7 @@
 /obj/item/book/manual/wiki/experimentor
 	name = "Mentoring your Experiments"
 	icon_state = "rdbook"
+	inhand_icon_state = "book4"
 	starting_author = "Dr. H.P. Kritz"
 	starting_title = "Mentoring your Experiments"
 	page_link = "Experimentor"
@@ -216,6 +233,7 @@
 	name = "To Serve Man"
 	desc = "It's a cookbook!"
 	icon_state ="cooked_book"
+	inhand_icon_state = "book8"
 	starting_author = "the Kanamitan Empire"
 	starting_title = "To Serve Man"
 	page_link = "Guide_to_food"
@@ -223,6 +241,7 @@
 /obj/item/book/manual/wiki/tcomms
 	name = "Subspace Telecommunications And You"
 	icon_state = "book3"
+	inhand_icon_state = "book3"
 	starting_author = "Engineering Encyclopedia"
 	starting_title = "Subspace Telecommunications And You"
 	page_link = "Guide_to_Telecommunications"
@@ -230,6 +249,7 @@
 /obj/item/book/manual/wiki/atmospherics
 	name = "Lexica Atmosia"
 	icon_state = "book5"
+	inhand_icon_state = "book5"
 	starting_author = "the City-state of Atmosia"
 	starting_title = "Lexica Atmosia"
 	page_link = "Guide_to_Atmospherics"
@@ -237,6 +257,7 @@
 /obj/item/book/manual/wiki/medicine
 	name = "Medical Space Compendium, Volume 638"
 	icon_state = "book8"
+	inhand_icon_state = "book8"
 	starting_author = "Medical Journal"
 	starting_title = "Medical Space Compendium, Volume 638"
 	page_link = "Guide_to_medicine"
@@ -244,6 +265,7 @@
 /obj/item/book/manual/wiki/surgery
 	name = "Brain Surgery for Dummies"
 	icon_state = "book4"
+	inhand_icon_state = "book4"
 	starting_author = "Dr. F. Fran"
 	starting_title = "Brain Surgery for Dummies"
 	page_link = "Surgery"
@@ -251,6 +273,7 @@
 /obj/item/book/manual/wiki/grenades
 	name = "DIY Chemical Grenades"
 	icon_state = "book2"
+	inhand_icon_state = "book2"
 	starting_author = "W. Powell"
 	starting_title = "DIY Chemical Grenades"
 	page_link = "Grenade"
@@ -258,6 +281,7 @@
 /obj/item/book/manual/wiki/ordnance
 	name = "Ordnance for Dummies or: How I Learned to Stop Worrying and Love the Maxcap"
 	icon_state = "book6"
+	inhand_icon_state = "book6"
 	starting_author = "Cuban Pete"
 	starting_title = "Ordnance for Dummies or: How I Learned to Stop Worrying and Love the Maxcap"
 	page_link = "Guide_to_toxins"
@@ -288,6 +312,7 @@
 /obj/item/book/manual/wiki/plumbing
 	name = "Chemical Factories Without Narcotics"
 	icon_state ="plumbingbook"
+	inhand_icon_state = "book4"
 	starting_author = "Nanotrasen"
 	starting_title = "Chemical Factories Without Narcotics"
 	page_link = "Guide_to_plumbing"
@@ -295,6 +320,7 @@
 /obj/item/book/manual/wiki/cytology
 	name = "Unethically Grown Organics"
 	icon_state ="cytologybook"
+	inhand_icon_state = "book6"
 	starting_author = "Kryson"
 	starting_title = "Unethically Grown Organics"
 	page_link = "Guide_to_cytology"
@@ -302,6 +328,7 @@
 /obj/item/book/manual/wiki/tgc
 	name = "Tactical Game Cards - Player's Handbook"
 	icon_state = "tgcbook"
+	inhand_icon_state = "book2"
 	starting_author = "Nanotrasen Edu-tainment Division"
 	starting_title = "Tactical Game Cards - Player's Handbook"
 	page_link = "Tactical_Game_Cards"

@@ -4,6 +4,9 @@
 	icon = 'icons/obj/service/library.dmi'
 	icon_state ="book"
 	worn_icon_state = "book"
+	inhand_icon_state = "book"
+	lefthand_file = 'icons/mob/inhands/items/books_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/books_righthand.dmi'
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL  //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
@@ -31,6 +34,13 @@
 	var/starting_content
 	/// The packet of information that describes this book
 	var/datum/book_info/book_data
+
+	/// The sounds played as the user's reading the book.
+	var/list/book_sounds = list(
+		'sound/effects/pageturn1.ogg',
+		'sound/effects/pageturn2.ogg',
+		'sound/effects/pageturn3.ogg',
+	)
 
 /obj/item/book/Initialize(mapload)
 	. = ..()
@@ -98,6 +108,7 @@
 
 	if(!silent)
 		user.visible_message(span_notice("[user] opens a book titled \"[book_data.title]\" and begins reading intently."))
+		playsound(user, pick(book_sounds), 30, TRUE)
 	display_content(user)
 
 /obj/item/book/attackby(obj/item/attacking_item, mob/living/user, params)
@@ -185,9 +196,24 @@
 		return
 	return ..()
 
-/// Generates a random icon state for the book
+/**
+ * Generates a random icon state for the book
+ *
+ * * book - black
+ * * book1 - black grim
+ * * book2 - red
+ * * book3 - yellow
+ * * book4 - blue
+ * * book5 - green
+ * * book6 - purple
+ * * book7 - white with blue dot
+ * * book8 - white
+ */
 /obj/item/book/proc/gen_random_icon_state()
-	icon_state = "book[rand(1, maximum_book_state)]"
+	var/new_icon_state
+	new_icon_state = "book[rand(1, maximum_book_state)]"
+	icon_state = new_icon_state
+	inhand_icon_state = new_icon_state
 
 /// Called when user attempts to carve the book with an item
 /obj/item/book/proc/try_carve(obj/item/carving_item, mob/living/user, params)

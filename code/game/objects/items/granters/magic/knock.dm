@@ -2,6 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/aoe/knock
 	action_name = "knock"
 	icon_state ="bookknock"
+	inhand_icon_state = "book5"
 	desc = "This book is hard to hold closed properly."
 	remarks = list(
 		"Open Sesame!",

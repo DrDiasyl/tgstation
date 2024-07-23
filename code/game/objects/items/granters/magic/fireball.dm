@@ -2,6 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/pointed/projectile/fireball
 	action_name = "fireball"
 	icon_state ="bookfireball"
+	inhand_icon_state = "book2"
 	desc = "This book feels warm to the touch."
 	remarks = list(
 		"Aim...AIM, FOOL!",

@@ -2,6 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/charge
 	action_name = "charge"
 	icon_state ="bookcharge"
+	inhand_icon_state = "book4"
 	desc = "This book is made of 100% postconsumer wizard."
 	remarks = list(
 		"I feel ALIVE!",

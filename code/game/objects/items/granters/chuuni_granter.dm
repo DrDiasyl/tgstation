@@ -4,7 +4,8 @@
 	starting_author = "Anonymous"
 	name = "I Found a Mysterious Book in the Library That Teaches Me How to Become a Chuunibyou, But It Turns Out It's Actually a Grimoire That Unlocks My Hidden Powers!"
 	desc = "I'd rather get caught holding a syndicate revolver, honestly."
-	icon_state ="chuuni_manga"
+	icon_state = "chuuni_manga"
+	inhand_icon_state = "book8"
 	remarks = list(
 		"How can anyone believe this stuff?",
 		"...Why am I wasting my time on this?",
