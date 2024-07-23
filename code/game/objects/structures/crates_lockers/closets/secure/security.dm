@@ -6,6 +6,7 @@
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
 
+	new /obj/item/book/manual/wiki/chain_of_command(src)
 	new /obj/item/storage/backpack/captain(src)
 	new /obj/item/storage/backpack/satchel/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
@@ -30,6 +31,8 @@
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
+
+	new /obj/item/book/manual/wiki/guide_to_paperwork(src)
 	new /obj/item/dog_bone(src)
 	new /obj/item/storage/bag/garment/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
@@ -86,6 +89,8 @@
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()
+
+	new /obj/item/book/manual/wiki/guide_to_gulag(src)
 	new /obj/item/dog_bone(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/holosign_creator/security(src)
@@ -103,6 +108,8 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
+
+	new /obj/item/book/manual/wiki/guide_to_security(src)
 	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
@@ -115,12 +122,14 @@
 
 /obj/structure/closet/secure_closet/security/sec/PopulateContents()
 	..()
+
 	new /obj/item/storage/belt/security/full(src)
 
 /obj/structure/closet/secure_closet/security/cargo
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
 	..()
+
 	new /obj/item/clothing/accessory/armband/cargo(src)
 	new /obj/item/encryptionkey/headset_cargo(src)
 
@@ -128,6 +137,7 @@
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
 	..()
+
 	new /obj/item/clothing/accessory/armband/engine(src)
 	new /obj/item/encryptionkey/headset_eng(src)
 
@@ -135,6 +145,7 @@
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
 	..()
+
 	new /obj/item/clothing/accessory/armband/science(src)
 	new /obj/item/encryptionkey/headset_sci(src)
 
@@ -142,6 +153,7 @@
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
 	..()
+
 	new /obj/item/clothing/accessory/armband/medblue(src)
 	new /obj/item/encryptionkey/headset_med(src)
 
@@ -157,6 +169,7 @@
 
 /obj/structure/closet/secure_closet/detective/PopulateContents()
 	..()
+
 	new /obj/item/storage/box/evidence(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/detective_scanner(src)
@@ -176,6 +189,7 @@
 
 /obj/structure/closet/secure_closet/injection/PopulateContents()
 	..()
+
 	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/syringe/lethal/execution(src)
 
@@ -239,6 +253,9 @@
 
 /obj/structure/closet/secure_closet/courtroom/PopulateContents()
 	..()
+
+	new /obj/item/book/manual/wiki/guide_to_trials(src)
+	new /obj/item/book/manual/wiki/security_space_law(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	for(var/i in 1 to 3)
 		new /obj/item/paper/fluff/jobs/security/court_judgement (src)
@@ -266,6 +283,7 @@
 
 /obj/structure/closet/secure_closet/armory1/PopulateContents()
 	..()
+
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/suit/armor/riot(src)
 	for(var/i in 1 to 3)
@@ -287,6 +305,7 @@
 
 /obj/structure/closet/secure_closet/armory2/PopulateContents()
 	..()
+
 	new /obj/item/storage/box/firingpins(src)
 	for(var/i in 1 to 3)
 		new /obj/item/storage/box/rubbershot(src)
@@ -303,6 +322,7 @@
 
 /obj/structure/closet/secure_closet/armory3/PopulateContents()
 	..()
+
 	new /obj/item/storage/box/firingpins(src)
 	new /obj/item/gun/energy/ionrifle(src)
 	for(var/i in 1 to 3)
@@ -321,6 +341,7 @@
 
 /obj/structure/closet/secure_closet/tac/PopulateContents()
 	..()
+
 	new /obj/item/gun/ballistic/automatic/wt550(src)
 	new /obj/item/clothing/head/helmet/alt(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
@@ -333,6 +354,8 @@
 
 /obj/structure/closet/secure_closet/labor_camp_security/PopulateContents()
 	..()
+
+	new /obj/item/book/manual/wiki/guide_to_gulag(src)
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/clothing/under/rank/security/officer(src)

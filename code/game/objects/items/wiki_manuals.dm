@@ -108,6 +108,54 @@
 	user.emote("laugh")
 	return OXYLOSS
 
+/obj/item/book/manual/wiki/guide_to_security
+	name = "Security Protocols"
+	desc = "A set of advanced information for the Security Department."
+	icon_state = "bookGuideToSecurity"
+	starting_author = "Nanotrasen"
+	starting_title = "Security Protocols"
+	page_link = "Guide_to_security"
+
+/obj/item/book/manual/wiki/standard_operating_procedure
+	name = "Standard Operating Procedure"
+	desc = "A set of SOPs for various emergencies and Code levels."
+	icon_state = "bookStandardOperatingProcedure"
+	starting_author = "Nanotrasen"
+	starting_title = "Standard Operating Procedure"
+	page_link = "Standard_Operating_Procedure"
+
+/obj/item/book/manual/wiki/chain_of_command
+	name = "Chain of Command"
+	desc = "Who controls who, and why you can't just mutiny Captain."
+	icon_state = "bookChainOfCommand"
+	starting_author = "Nanotrasen"
+	starting_title = "Chain of Command"
+	page_link = "Chain_of_Command"
+
+/obj/item/book/manual/wiki/guide_to_paperwork
+	name = "Paper and Work"
+	desc = "Various forms and professional formating techniques for true bureaucrats."
+	icon_state = "bookGuideToPaperwork"
+	starting_author = "Nanotrasen"
+	starting_title = "Paper and Work"
+	page_link = "Paper_Markdown"
+
+/obj/item/book/manual/wiki/guide_to_trial
+	name = "Trial Procedures"
+	desc = "How to hold a <i>proper</i> trial."
+	icon_state = "bookGuideToTrial"
+	starting_author = "Nanotrasen"
+	starting_title = "Trial Procedures"
+	page_link = "Guide_to_trials"
+
+/obj/item/book/manual/wiki/guide_to_gulag
+	name = "Labor Camps - Justice through labor!"
+	desc = "How to utilize the Nanotrasen Labor Camp system, and its benefits."
+	icon_state = "bookGuideToGulag"
+	starting_author = "Nanotrasen"
+	starting_title = "Labor Camps - Justice through labor!"
+	page_link = "Guide_to_the_Labor_Camp"
+
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"
 	icon_state = "bookInfections"

@@ -211,10 +211,11 @@
 
 /obj/structure/bookcase/manuals/engineering/Initialize(mapload)
 	. = ..()
+	new /obj/item/book/manual/wiki/atmospherics(src)
 	new /obj/item/book/manual/wiki/engineering_construction(src)
 	new /obj/item/book/manual/wiki/engineering_hacking(src)
 	new /obj/item/book/manual/wiki/engineering_guide(src)
-	new /obj/item/book/manual/wiki/robotics_cyborgs(src)
+	new /obj/item/book/manual/wiki/tcomms(src)
 	update_appearance()
 
 /obj/structure/bookcase/manuals/research_and_development
@@ -223,6 +224,53 @@
 /obj/structure/bookcase/manuals/research_and_development/Initialize(mapload)
 	. = ..()
 	new /obj/item/book/manual/wiki/research_and_development(src)
+	new /obj/item/book/manual/wiki/cytology(src)
+	new /obj/item/book/manual/wiki/experimentor(src)
+	new /obj/item/book/manual/wiki/ordnance(src)
+	new /obj/item/book/manual/wiki/robotics_cyborgs(src)
+	new /obj/item/book/manual/wiki/telescience(src)
+	new /obj/item/book/manual/ripley_build_and_repair(src)
+	update_appearance()
+
+/obj/structure/bookcase/manuals/security_and_command
+	name = "\improper security & command manuals bookcase"
+
+/obj/structure/bookcase/manuals/security_and_command/Initialize(mapload)
+	. = ..()
+	new /obj/item/book/manual/wiki/guide_to_security(src)
+	new /obj/item/book/manual/wiki/guide_to_trials(src)
+	new /obj/item/book/manual/wiki/guide_to_gulag(src)
+	new /obj/item/book/manual/wiki/detective(src)
+	new /obj/item/book/manual/wiki/security_space_law(src)
+	new /obj/item/book/manual/wiki/chain_of_command(src)
+	new /obj/item/book/manual/wiki/standard_operating_procedure(src)
+	new /obj/item/book/manual/wiki/guide_to_paperwork(src)
+	update_appearance()
+
+/obj/structure/bookcase/manuals/service
+	name = "service manuals bookcase"
+
+/obj/structure/bookcase/manuals/service/Initialize(mapload)
+	. = ..()
+	new /obj/item/book/manual/wiki/barman_recipes(src)
+	new /obj/item/book/manual/wiki/cooking_to_serve_man(src)
+	new /obj/item/book/manual/wiki/tgc(src)
+	new /obj/item/book/manual/chef_recipes(src)
+	new /obj/item/book/manual/fish_catalog(src)
+	new /obj/item/book/manual/hydroponics_pod_people(src)
+	update_appearance()
+
+/obj/structure/bookcase/manuals/medical
+	name = "medical manuals bookcase"
+
+/obj/structure/bookcase/manuals/medical/Initialize(mapload)
+	. = ..()
+	new /obj/item/book/manual/wiki/chemistry(src)
+	new /obj/item/book/manual/wiki/surgery(src)
+	new /obj/item/book/manual/wiki/grenades(src)
+	new /obj/item/book/manual/wiki/infections(src)
+	new /obj/item/book/manual/wiki/medicine(src)
+	new /obj/item/book/manual/wiki/plumbing(src)
 	update_appearance()
 
 #undef BOOKCASE_UNANCHORED
