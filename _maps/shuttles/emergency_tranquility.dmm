@@ -492,7 +492,7 @@
 /area/shuttle/escape)
 "jB" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_y = -1;
 	pixel_x = -4
 	},

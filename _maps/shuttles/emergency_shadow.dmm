@@ -1151,7 +1151,7 @@
 	pixel_x = 38;
 	pixel_y = 3
 	},
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 11;
 	pixel_y = 4
 	},

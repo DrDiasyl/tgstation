@@ -4062,7 +4062,7 @@
 /obj/structure/table/wood,
 /obj/structure/window/spawner/directional/north,
 /obj/structure/window/spawner/directional/west,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /turf/open/floor/wood/large,
 /area/awaymission/museum)
 "GU" = (

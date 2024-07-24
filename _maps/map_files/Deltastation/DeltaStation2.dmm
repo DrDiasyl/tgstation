@@ -21248,7 +21248,7 @@
 /obj/machinery/status_display/evac/directional/north,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/radio,
 /obj/machinery/button/door/directional/west{
 	id = "cardoor";
@@ -28113,7 +28113,7 @@
 "gTO" = (
 /obj/structure/table/wood,
 /obj/item/crowbar/red,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -29471,7 +29471,7 @@
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/crowbar/red,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
@@ -34974,7 +34974,7 @@
 /obj/structure/table/reinforced,
 /obj/item/folder/red,
 /obj/item/storage/briefcase/secure,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/taperecorder,
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
@@ -40783,7 +40783,7 @@
 "kdd" = (
 /obj/structure/cable,
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/radio,
 /obj/machinery/airalarm/directional/east,
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -46385,7 +46385,7 @@
 "lAg" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/toy/figure/dsquad,
 /turf/open/floor/wood,
 /area/station/command/meeting_room/council)
@@ -46595,8 +46595,8 @@
 /area/station/security/warden)
 "lCy" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/taperecorder{
 	pixel_x = 3
 	},
@@ -48416,7 +48416,7 @@
 /obj/structure/table/reinforced,
 /obj/item/radio/intercom/directional/north,
 /obj/item/folder/red,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/processing)
@@ -54537,7 +54537,7 @@
 /obj/structure/table/wood,
 /obj/machinery/newscaster/directional/east,
 /obj/item/storage/briefcase/secure,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/taperecorder{
 	pixel_x = 3;
 	pixel_y = 4
@@ -62097,7 +62097,7 @@
 /area/station/science/xenobiology)
 "pDS" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 9;
 	pixel_y = 4
 	},
@@ -62261,7 +62261,7 @@
 	},
 /obj/effect/mapping_helpers/requests_console/supplies,
 /obj/effect/mapping_helpers/requests_console/assistance,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/toy/figure/warden{
 	pixel_y = 3
 	},
@@ -65149,7 +65149,7 @@
 	pixel_x = 14;
 	pixel_y = 2
 	},
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = -1;
 	pixel_y = 3
 	},
@@ -87371,7 +87371,7 @@
 /area/station/service/library/artgallery)
 "vPl" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/radio,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 8
@@ -90595,11 +90595,11 @@
 	pixel_x = 10
 	},
 /obj/structure/rack,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 3
 	},
 /obj/effect/turf_decal/bot,

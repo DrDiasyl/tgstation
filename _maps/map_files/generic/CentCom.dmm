@@ -576,7 +576,7 @@
 "cD" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/restraints/handcuffs,
 /obj/item/assembly/flash/handheld,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -1087,7 +1087,7 @@
 /area/centcom/central_command_areas/courtroom)
 "eV" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/taperecorder,
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/briefing)
@@ -1537,7 +1537,7 @@
 "ho" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/restraints/handcuffs,
 /obj/item/assembly/flash/handheld,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -3473,7 +3473,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/centcom/central_command_areas/evacuation/ship)
 "qc" = (
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/taperecorder,
 /obj/structure/table/wood,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -5551,7 +5551,7 @@
 /area/centcom/central_command_areas/courtroom)
 "zf" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/taperecorder,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -8816,7 +8816,7 @@
 "Qb" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/restraints/handcuffs,
 /obj/item/assembly/flash/handheld,
 /obj/machinery/airalarm/directional/south,
@@ -9063,7 +9063,7 @@
 /area/centcom/tdome/observation)
 "Ri" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/taperecorder,
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -9914,7 +9914,7 @@
 /turf/open/floor/iron/white,
 /area/centcom/central_command_areas/evacuation/ship)
 "Vi" = (
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/structure/table/wood,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,

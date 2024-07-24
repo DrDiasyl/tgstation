@@ -166,7 +166,7 @@
 /area/shuttle/escape/brig)
 "aV" = (
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape/brig)
 "aZ" = (
@@ -912,7 +912,7 @@
 /area/shuttle/escape)
 "qy" = (
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)

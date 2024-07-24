@@ -6501,7 +6501,7 @@
 /area/awaymission/moonoutpost19/arrivals)
 "Rl" = (
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/machinery/computer/security/telescreen/entertainment/directional/west,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 8

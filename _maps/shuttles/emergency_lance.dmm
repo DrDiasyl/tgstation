@@ -1098,7 +1098,7 @@
 /area/shuttle/escape)
 "JS" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 1;
 	pixel_y = 9
 	},

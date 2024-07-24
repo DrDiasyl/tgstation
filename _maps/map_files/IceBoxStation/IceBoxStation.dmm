@@ -8943,7 +8943,7 @@
 /area/station/maintenance/disposal/incinerator)
 "cAz" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /turf/open/floor/wood,
 /area/station/security/courtroom)
 "cAB" = (
@@ -9788,8 +9788,8 @@
 /area/station/service/janitor)
 "cNq" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/pen/red,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
@@ -11050,7 +11050,7 @@
 	dir = 9;
 	network = list("ss13","medbay")
 	},
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 3;
 	pixel_y = 4
 	},
@@ -18205,7 +18205,7 @@
 	pixel_y = 14
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_y = 5
 	},
 /turf/open/floor/wood,
@@ -29116,7 +29116,7 @@
 	pixel_y = 8
 	},
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = -7;
 	pixel_y = 5
 	},
@@ -29324,7 +29324,7 @@
 "iOS" = (
 /obj/machinery/airalarm/directional/east,
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 4
 	},
@@ -44574,11 +44574,11 @@
 /turf/open/floor/iron/smooth,
 /area/station/security/execution/transfer)
 "nrG" = (
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = -7;
 	pixel_y = 5
 	},
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -44661,7 +44661,7 @@
 /area/station/science/ordnance/office)
 "nta" = (
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/radio/off,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 4
@@ -72240,7 +72240,7 @@
 /area/station/maintenance/department/medical/morgue)
 "vAt" = (
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 9;
 	pixel_y = 5
 	},
@@ -75943,8 +75943,8 @@
 /area/station/commons/lounge)
 "wGW" = (
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 1
 	},
@@ -76787,7 +76787,7 @@
 	},
 /obj/effect/mapping_helpers/requests_console/information,
 /obj/effect/mapping_helpers/requests_console/assistance,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/machinery/newscaster/directional/west,
 /obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
@@ -77781,7 +77781,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/science/cytology)
 "xit" = (
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
 /area/station/command/meeting_room)

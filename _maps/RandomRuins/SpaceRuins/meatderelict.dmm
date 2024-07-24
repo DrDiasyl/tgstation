@@ -2061,7 +2061,7 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /turf/open/indestructible,
 /area/ruin/space/has_grav/powered/biooutpost)
 "Oo" = (

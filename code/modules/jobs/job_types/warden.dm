@@ -29,7 +29,7 @@
 		/datum/job_department/security,
 		)
 
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
+	family_heirlooms = list(/obj/item/book/manual/wiki/authority/security_space_law)
 
 	mail_goodies = list(
 		/obj/item/storage/fancy/cigarettes = 15,

@@ -622,15 +622,15 @@
 
 /datum/objective_item/steal/traitor/space_law
 	name = "a book on space law"
-	targetitem = /obj/item/book/manual/wiki/security_space_law
+	targetitem = /obj/item/book/manual/wiki/authority/security_space_law
 	excludefromjob = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_LAWYER, JOB_DETECTIVE)
 	exists_on_map = TRUE
 	difficulty = 1
 	steal_hint = "Sometimes found in the possession of members of Security and Lawyers. \
 		The courtroom and the library are also good places to look."
 
-/obj/item/book/manual/wiki/security_space_law/add_stealing_item_objective()
-	return add_item_to_steal(src, /obj/item/book/manual/wiki/security_space_law)
+/obj/item/book/manual/wiki/authority/security_space_law/add_stealing_item_objective()
+	return add_item_to_steal(src, /obj/item/book/manual/wiki/authority/security_space_law)
 
 /datum/objective_item/steal/traitor/rpd
 	name = "a rapid pipe dispenser"

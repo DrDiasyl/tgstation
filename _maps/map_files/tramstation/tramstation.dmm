@@ -3547,7 +3547,7 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /turf/open/floor/iron,
 /area/station/security/processing)
 "avz" = (
@@ -4616,7 +4616,7 @@
 /area/station/hallway/primary/tram/left)
 "aGK" = (
 /obj/structure/filingcabinet,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
 	},
@@ -5957,7 +5957,7 @@
 /area/station/solars/starboard/fore)
 "aUa" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = -5
 	},
 /obj/item/taperecorder{
@@ -6308,7 +6308,7 @@
 "bde" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/trimline/red/filled/line,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 9;
 	pixel_y = 4
 	},
@@ -13791,7 +13791,7 @@
 "dIZ" = (
 /obj/structure/table/wood,
 /obj/structure/sign/flag/nanotrasen/directional/north,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	name = "space law";
 	pixel_y = 2
 	},
@@ -15899,7 +15899,7 @@
 	pixel_x = -6;
 	pixel_y = -3
 	},
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 9;
 	pixel_y = 4
 	},
@@ -23827,7 +23827,7 @@
 /area/station/maintenance/tram/mid)
 "hyE" = (
 /obj/structure/table/glass,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_y = 3
 	},
 /turf/open/floor/glass,
@@ -27462,7 +27462,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/radio,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/arrivals)
@@ -48084,7 +48084,7 @@
 /area/station/service/hydroponics/garden)
 "pYt" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/clothing/glasses/sunglasses/big{
 	pixel_x = 3;
 	pixel_y = 3
@@ -62708,7 +62708,7 @@
 /area/station/cargo/miningdock)
 "uYx" = (
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = 7;
 	pixel_y = 1
 	},
@@ -63341,7 +63341,7 @@
 /area/station/commons/dorms)
 "vjq" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/authority/security_space_law,
 /obj/item/coin/plasma,
 /obj/item/paper/fluff/gateway,
 /obj/item/melee/chainofcommand,

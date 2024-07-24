@@ -119,7 +119,7 @@
 /area/shuttle/escape)
 "gX" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law{
+/obj/item/book/manual/wiki/authority/security_space_law{
 	pixel_x = -5;
 	pixel_y = 2
 	},
