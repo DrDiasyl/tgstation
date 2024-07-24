@@ -237,13 +237,13 @@
 
 /obj/structure/bookcase/manuals/security_and_command/Initialize(mapload)
 	. = ..()
-	new /obj/item/book/manual/wiki/guide_to_security(src)
-	new /obj/item/book/manual/wiki/guide_to_trials(src)
+	new /obj/item/book/manual/wiki/authority/guide_to_security(src)
+	new /obj/item/book/manual/wiki/authority/guide_to_trials(src)
 	new /obj/item/book/manual/wiki/guide_to_gulag(src)
 	new /obj/item/book/manual/wiki/detective(src)
-	new /obj/item/book/manual/wiki/security_space_law(src)
-	new /obj/item/book/manual/wiki/chain_of_command(src)
-	new /obj/item/book/manual/wiki/standard_operating_procedure(src)
+	new /obj/item/book/manual/wiki/authority/security_space_law(src)
+	new /obj/item/book/manual/wiki/authority/chain_of_command(src)
+	new /obj/item/book/manual/wiki/authority/standard_operating_procedure(src)
 	new /obj/item/book/manual/wiki/guide_to_paperwork(src)
 	update_appearance()
 

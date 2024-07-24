@@ -5,7 +5,7 @@
 	button_icon_state = "bookSpaceLaw"
 	desc = "Access the Space Law at any place, any time!"
 	/// The virtual Space Law book
-	var/obj/item/book/manual/wiki/security_space_law/space_law
+	var/obj/item/book/manual/wiki/authroity/security_space_law/space_law
 
 /datum/action/item_action/justice/Grant(mob/grant_to)
 	. = ..()

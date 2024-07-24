@@ -108,7 +108,7 @@
 	user.emote("laugh")
 	return OXYLOSS
 
-/obj/item/book/manual/wiki/authority/authority/security_space_law
+/obj/item/book/manual/wiki/authority/security_space_law
 	name = "Space Law"
 	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
@@ -140,7 +140,7 @@
 	starting_title = "Chain of Command"
 	page_link = "Chain_of_Command"
 
-/obj/item/book/manual/wiki/authority/guide_to_trial
+/obj/item/book/manual/wiki/authority/guide_to_trials
 	name = "Trial Procedures"
 	desc = "How to hold a <i>proper</i> trial."
 	icon_state = "bookGuideToTrial"

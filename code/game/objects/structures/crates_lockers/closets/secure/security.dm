@@ -6,7 +6,7 @@
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
 
-	new /obj/item/book/manual/wiki/chain_of_command(src)
+	new /obj/item/book/manual/wiki/authority/chain_of_command(src)
 	new /obj/item/storage/backpack/captain(src)
 	new /obj/item/storage/backpack/satchel/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
@@ -109,7 +109,7 @@
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
 
-	new /obj/item/book/manual/wiki/guide_to_security(src)
+	new /obj/item/book/manual/wiki/authority/guide_to_security(src)
 	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
@@ -254,8 +254,8 @@
 /obj/structure/closet/secure_closet/courtroom/PopulateContents()
 	..()
 
-	new /obj/item/book/manual/wiki/guide_to_trials(src)
-	new /obj/item/book/manual/wiki/security_space_law(src)
+	new /obj/item/book/manual/wiki/authority/guide_to_trials(src)
+	new /obj/item/book/manual/wiki/authority/security_space_law(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	for(var/i in 1 to 3)
 		new /obj/item/paper/fluff/jobs/security/court_judgement (src)
