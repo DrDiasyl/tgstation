@@ -116,3 +116,9 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/under/rank/rnd/assistant
+	name = "research assistant's jumpsuit"
+	desc = "It's made of a special fiber that provides minor protection against explosives. It has markings that denote the wearer as a research assistant"
+	icon_state = "assistant"
+	inhand_icon_state = "w_suit"

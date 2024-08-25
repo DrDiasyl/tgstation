@@ -380,3 +380,8 @@
 /datum/mood_event/prophat
 	description = "This hat fills me with whimsical joy!"
 	mood_change = 2
+
+/datum/mood_event/unemployed
+	description = "No job - no problems!"
+	mood_change = 3
+	timeout = 3 MINUTES

@@ -1712,3 +1712,12 @@
 	req_components = list(
 		/datum/stock_part/servo = 1,
 		)
+
+/obj/item/circuitboard/machine/jobvendor
+	name = "JobVendor"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
+	build_path = /obj/machinery/jobvendor
+	req_components = list(
+		/datum/stock_part/matter_bin = 5,
+		/datum/stock_part/servo = 2,
+		/datum/stock_part/scanning_module = 1)

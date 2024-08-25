@@ -69,3 +69,11 @@
 	desc = "It's a leathery jumpsuit worn by a bitrunner. Tacky, but comfortable to wear if sitting for prolonged periods of time."
 	icon_state = "bitrunner"
 	inhand_icon_state = "w_suit"
+
+/obj/item/clothing/under/rank/cargo/assistant
+	name = "cargo assistant's shorts"
+	desc = "Comfortable shorts and plain brown shirt with \"ASSISTANT\" tag on it."
+	icon_state = "assistant"
+	inhand_icon_state = "lb_suit"
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION

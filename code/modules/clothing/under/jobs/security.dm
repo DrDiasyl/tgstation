@@ -284,3 +284,9 @@
 	icon_state = "aerostatic_suit"
 	inhand_icon_state = null
 	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/security/officer/cadet
+	name = "cadet uniform"
+	desc = "Pair of red pants and grey shirt with big emblem on its back will make sure your rank is distinghused."
+	icon_state = "cadet"
+	inhand_icon_state = "gy_suit"
