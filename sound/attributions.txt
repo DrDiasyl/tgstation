@@ -98,6 +98,9 @@ mountedgun.ogg and mountedgunend.ogg are a combination of the cannon, cqc grab, 
 glockenspiel_ping.ogg is adapted from FunWithSound's "Short Success Sound Glockenspiel Treasure Video Game", which is public domain (CC 0):
 https://freesound.org/people/FunWithSound/sounds/456965/
 
+grenade_launch.ogg is by LeMudCrab under CC 0:
+https://freesound.org/people/LeMudCrab/sounds/163458/
+
 beeps_jingle.ogg is adapted from Eponn's "Achievement happy Beeps Jingle", which is public domain (CC 0):
 https://freesound.org/people/Eponn/sounds/619838/
 
