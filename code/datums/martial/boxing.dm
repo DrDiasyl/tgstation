@@ -107,7 +107,7 @@
 	if(honor_check(defender))
 		var/strength_bonus = HAS_TRAIT(attacker, TRAIT_STRENGTH) ? 2 : 0 //Investing into genetic strength improvements makes you a better boxer
 
-		var/obj/item/organ/internal/cyberimp/chest/spine/potential_spine = attacker.get_organ_slot(ORGAN_SLOT_SPINE) //Getting a cyberspine also pushes you further than just mere meat
+		var/obj/item/organ/cyberimp/chest/spine/potential_spine = attacker.get_organ_slot(ORGAN_SLOT_SPINE) //Getting a cyberspine also pushes you further than just mere meat
 		if(istype(potential_spine))
 			strength_bonus *= potential_spine.strength_bonus
 
@@ -232,7 +232,7 @@
 /datum/martial_art/boxing/proc/check_block(mob/living/boxer, atom/movable/hitby, damage, attack_text, attack_type, ...)
 	SIGNAL_HANDLER
 
-	if(!can_use(boxer) || !boxer.throw_mode || boxer.incapacitated(IGNORE_GRAB))
+	if(!can_use(boxer) || !boxer.throw_mode || INCAPACITATED_IGNORING(boxer, INCAPABLE_GRAB))
 		return NONE
 
 	if(attack_type != UNARMED_ATTACK)

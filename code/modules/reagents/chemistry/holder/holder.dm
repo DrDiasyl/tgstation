@@ -204,11 +204,12 @@
  *
  * * [list_reagents][list] - list to add. Format it like this: list(/datum/reagent/toxin = 10, "beer" = 15)
  * * [data][list] - additional data to add
+ * * [added_purity][number] - an override to the default purity for each reagent to add.
  */
-/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data = null)
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data = null, added_purity = null)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
-		add_reagent(r_id, amt, data)
+		add_reagent(r_id, amt, data, added_purity = added_purity)
 
 /**
  * Removes a specific reagent. can supress reactions if needed
@@ -256,14 +257,14 @@
 		if(!include_subtypes)
 			break
 
-	//inform others about our reagents being removed
-	for(var/datum/reagent/removed_reagent as anything in removed_reagents)
-		SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, removed_reagent, removed_reagents[removed_reagent])
-
 	//update the holder & handle reactions
 	update_total()
 	if(!safety)
 		handle_reactions()
+
+	//inform others about our reagents being removed
+	for(var/datum/reagent/removed_reagent as anything in removed_reagents)
+		SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, removed_reagent, removed_reagents[removed_reagent])
 
 	return round(total_removed_amount, CHEMICAL_VOLUME_ROUNDING)
 
@@ -343,27 +344,41 @@
 	if(!ispath(source_reagent_typepath))
 		stack_trace("invalid reagent path passed to convert reagent [source_reagent_typepath]")
 		return FALSE
+	if(!ispath(target_reagent_typepath))
+		stack_trace("invalid reagent path passed to convert reagent [target_reagent_typepath]")
+		return FALSE
 
-	var/reagent_amount
-	var/reagent_purity
-	var/reagent_ph
-	if(include_source_subtypes)
-		reagent_ph = ph
-		var/weighted_purity
-		var/list/reagent_type_list = typecacheof(source_reagent_typepath)
-		for(var/datum/reagent/reagent as anything in reagent_list)
-			if(reagent.type in reagent_type_list)
-				weighted_purity += reagent.volume * reagent.purity
-				reagent_amount += reagent.volume
-				remove_reagent(reagent.type, reagent.volume * multiplier)
-		reagent_purity = weighted_purity / reagent_amount
-	else
-		var/datum/reagent/source_reagent = has_reagent(source_reagent_typepath)
-		reagent_amount = source_reagent.volume
-		reagent_purity = source_reagent.purity
-		reagent_ph = source_reagent.ph
-		remove_reagent(source_reagent_typepath, reagent_amount)
-	add_reagent(target_reagent_typepath, reagent_amount * multiplier, reagtemp = chem_temp, added_purity = reagent_purity, added_ph = reagent_ph)
+	var/weighted_volume = 0
+	var/weighted_purity = 0
+	var/weighted_ph = 0
+	var/reagent_volume = 0
+
+	var/list/cached_reagents = reagent_list
+	for(var/datum/reagent/cached_reagent as anything in cached_reagents)
+		//check for specific type or subtypes
+		if(!include_source_subtypes)
+			if(cached_reagent.type != source_reagent_typepath)
+				continue
+		else if(!istype(cached_reagent, source_reagent_typepath))
+			continue
+
+		//compute average of everything
+		reagent_volume = cached_reagent.volume
+		weighted_purity += cached_reagent.purity * reagent_volume
+		weighted_ph += cached_reagent.ph * reagent_volume
+		weighted_volume += reagent_volume
+
+		//zero the volume out so it gets removed
+		cached_reagent.volume = 0
+
+		//if we reached here means we have found our specific reagent type so break
+		if(!include_source_subtypes)
+			break
+
+	//add the new target reagent with the averaged values from the source reagents
+	if(weighted_volume > 0)
+		update_total()
+		add_reagent(target_reagent_typepath, weighted_volume * multiplier, reagtemp = chem_temp, added_purity = (weighted_purity / weighted_volume), override_base_ph = TRUE, added_ph = (weighted_ph / weighted_volume))
 
 /// Removes all reagents
 /datum/reagents/proc/clear_reagents()
@@ -426,7 +441,7 @@
 	else
 		if(!ignore_stomach && (methods & INGEST) && iscarbon(target))
 			var/mob/living/carbon/eater = target
-			var/obj/item/organ/internal/stomach/belly = eater.get_organ_slot(ORGAN_SLOT_STOMACH)
+			var/obj/item/organ/stomach/belly = eater.get_organ_slot(ORGAN_SLOT_STOMACH)
 			if(!belly)
 				var/expel_amount = round(amount, CHEMICAL_QUANTISATION_LEVEL)
 				if(expel_amount > 0 )
@@ -586,10 +601,11 @@
  */
 /datum/reagents/proc/multiply_reagents(multiplier = 1)
 	var/list/cached_reagents = reagent_list
-	if(!total_volume)
+	if(!total_volume || multiplier == 1)
 		return
 	var/change = (multiplier - 1) //Get the % change
 	for(var/datum/reagent/reagent as anything in cached_reagents)
+		_multiply_reagent(reagent, change)
 		if(change > 0)
 			add_reagent(reagent.type, reagent.volume * change, added_purity = reagent.purity, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
 		else
@@ -597,6 +613,28 @@
 
 	update_total()
 	handle_reactions()
+
+/**
+ * Multiplies a single inside this holder by a specific amount
+ * Arguments
+ * * reagent_path - The path of the reagent we want to multiply the volume of.
+ * * multiplier - the amount to multiply each reagent by
+ */
+/datum/reagents/proc/multiply_single_reagent(reagent_path, multiplier = 1)
+	var/datum/reagent/reagent = locate(reagent_path) in reagent_list
+	if(!reagent || multiplier == 1)
+		return
+	var/change = (multiplier - 1) //Get the % change
+	_multiply_reagent(reagent, change)
+	update_total()
+	handle_reactions()
+
+///Proc containing the operations called by both multiply_reagents() and multiply_single_reagent()
+/datum/reagents/proc/_multiply_reagent(datum/reagent/reagent, change)
+	if(change > 0)
+		add_reagent(reagent.type, reagent.volume * change, added_purity = reagent.purity, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
+	else
+		remove_reagent(reagent.type, abs(reagent.volume * change)) //absolute value to prevent a double negative situation (removing -50% would be adding 50%)
 
 /// Updates [/datum/reagents/var/total_volume]
 /datum/reagents/proc/update_total()
@@ -752,7 +790,7 @@
  *
  * Arguments
  * - Atom/target: What mob/turf/object is being exposed to reagents? This is your reaction target.
- * - Methods: What reaction type is the reagent itself going to call on the reaction target? Types are TOUCH, INGEST, VAPOR, PATCH, and INJECT.
+ * - Methods: What reaction type is the reagent itself going to call on the reaction target? Types are TOUCH, INGEST, VAPOR, PATCH, INJECT and INHALE.
  * - Volume_modifier: What is the reagent volume multiplied by when exposed? Note that this is called on the volume of EVERY reagent in the base body, so factor in your Maximum_Volume if necessary!
  * - Show_message: Whether to display anything to mobs when they are exposed.
  * - list/datum/reagent/r_to_expose: list of reagents to expose. if null will expose the reagents present in this holder instead

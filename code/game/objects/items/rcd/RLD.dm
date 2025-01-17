@@ -36,9 +36,9 @@
 	///reference to thr original icons
 	var/static/list/original_options = list(
 		"Color Pick" = icon(icon = 'icons/hud/radial.dmi', icon_state = "omni"),
-		"Glow Stick" = icon(icon = 'icons/obj/toys/toy.dmi', icon_state = "glowstick"),
+		"Glow Stick" = icon(icon = 'icons/obj/lighting.dmi', icon_state = "glowstick"),
 		"Deconstruct" = icon(icon = 'icons/obj/tools.dmi', icon_state = "wrench"),
-		"Light Fixture" = icon(icon = 'icons/obj/service/janitor.dmi', icon_state = "tube"),
+		"Light Fixture" = icon(icon = 'icons/obj/lighting.dmi', icon_state = "ltube"),
 	)
 	///will contain the original icons modified with the color choice
 	var/list/display_options = list()
@@ -99,7 +99,18 @@
 		return .
 	return try_lighting(interacting_with, user)
 
+/**
+ * Try to place/remove a light or throw a glowstick
+ * Arguments
+ *
+ * * atom/interacting_with - the target atom to light or throw glowsticks at
+ * * mob/user - the player doing this action
+ */
 /obj/item/construction/rld/proc/try_lighting(atom/interacting_with, mob/user)
+	PRIVATE_PROC(TRUE)
+
+	if(HAS_TRAIT(interacting_with, TRAIT_COMBAT_MODE_SKIP_INTERACTION))
+		return NONE
 
 	var/turf/start = get_turf(src)
 	switch(mode)
@@ -166,7 +177,7 @@
 					return ITEM_INTERACT_BLOCKING
 				activate()
 				var/obj/machinery/light/L = new /obj/machinery/light(get_turf(winner))
-				L.setDir(get_dir(interacting_with, winner))
+				L.setDir(get_dir(winner, interacting_with))
 				L.color = color_choice
 				L.set_light_color(color_choice)
 				return ITEM_INTERACT_SUCCESS

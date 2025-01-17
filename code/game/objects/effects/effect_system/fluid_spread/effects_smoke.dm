@@ -8,6 +8,7 @@
 	pixel_x = -32
 	pixel_y = -32
 	opacity = TRUE
+	plane = ABOVE_GAME_PLANE
 	layer = FLY_LAYER
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -390,7 +391,7 @@
 
 	var/fraction = (seconds_per_tick SECONDS) / initial(lifetime)
 	reagents.copy_to(smoker, reagents.total_volume, fraction)
-	reagents.expose(smoker, INGEST, fraction)
+	reagents.expose(smoker, INHALE, fraction)
 	return TRUE
 
 /// Helper to quickly create a cloud of reagent smoke

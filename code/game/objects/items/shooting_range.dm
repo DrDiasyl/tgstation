@@ -1,8 +1,7 @@
 /obj/item/target
-	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "shooting target"
 	desc = "A shooting target."
-	icon = 'icons/obj/art/cardboard_cutout.dmi'
+	icon = 'icons/obj/structures.dmi'
 	icon_state = "target_h"
 	density = FALSE
 	max_integrity = 1800
@@ -83,6 +82,6 @@
 	desc = "A shooting target that looks like a useless clown."
 	max_integrity = 2000
 
-/obj/item/target/clown/bullet_act(obj/projectile/P)
+/obj/item/target/clown/bullet_act(obj/projectile/proj)
 	. = ..()
 	playsound(src, 'sound/items/bikehorn.ogg', 50, TRUE)

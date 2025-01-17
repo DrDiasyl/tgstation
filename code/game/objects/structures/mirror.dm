@@ -18,7 +18,7 @@
 /obj/structure/mirror
 	name = "mirror"
 	desc = "Mirror mirror on the wall, who's the most robust of them all?"
-	icon = 'icons/obj/structures/watercloset.dmi'
+	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	movement_type = FLOATING
 	density = FALSE
@@ -31,20 +31,10 @@
 	var/race_flags = MIRROR_MAGIC
 	///List of all Races that can be chosen, decided by its Initialize.
 	var/list/selectable_races = list()
-	///Per-dir reflection filters
-	var/static/list/list/reflection_filters
 
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
-	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
-	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
-	var/list/update_signals = list(COMSIG_ATOM_BREAK)
-	if (isnull(reflection_filters))
-		reflection_filters = list()
-		for (var/car_dir in GLOB.cardinals)
-			reflection_filters["[car_dir]"] = alpha_mask_filter(icon = icon('icons/obj/structures/watercloset.dmi', "mirror_mask", dir = car_dir))
-	AddComponent(/datum/component/reflection, reflection_filter = reflection_filters["[dir]"], reflection_matrix = reflection_matrix, can_reflect = can_reflect, update_signals = update_signals)
-	AddComponent(/datum/component/examine_balloon)
+	update_choices()
 
 /obj/structure/mirror/Destroy()
 	mirror_options = null
@@ -55,11 +45,9 @@
 	for(var/i in mirror_options)
 		mirror_options[i] = icon('icons/hud/radial.dmi', i)
 
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror)
-
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
-	var/static/list/reflection_filter = alpha_mask_filter(icon = icon('icons/obj/structures/watercloset.dmi', "mirror_mask"))
+	var/static/list/reflection_filter = alpha_mask_filter(icon = icon('icons/obj/watercloset.dmi', "mirror_mask"))
 	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
 	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
 	var/list/update_signals = list(COMSIG_ATOM_BREAK)
@@ -73,9 +61,11 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror)
 		return FALSE
 	return TRUE
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
+
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
-	find_and_hang_on_wall(wall_layer = FLAT_ON_WALL_LAYER)
+	find_and_hang_on_wall()
 
 /obj/structure/mirror/broken
 	icon_state = "mirror_broke"
@@ -84,7 +74,7 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror)
 	. = ..()
 	atom_break(null, mapload)
 
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/structure/mirror/attack_hand(mob/living/carbon/human/user)
 	. = ..()
@@ -98,7 +88,7 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken)
 	return display_radial_menu(user)
 
 /obj/structure/mirror/proc/display_radial_menu(mob/living/carbon/human/user)
-	var/pick = show_radial_menu(user, src, mirror_options, user, radius = 36, require_near = TRUE)
+	var/pick = show_radial_menu(user, src, mirror_options, user, radius = 36, require_near = TRUE, tooltips = TRUE)
 	if(!pick)
 		return TRUE //get out
 
@@ -258,13 +248,13 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken)
 		to_chat(user, span_warning("A chill runs down your spine as [src] shatters..."))
 		user.AddComponent(/datum/component/omen, incidents_left = 7)
 
-/obj/structure/mirror/bullet_act(obj/projectile/P)
-	if(broken || !isliving(P.firer) || !P.damage)
+/obj/structure/mirror/bullet_act(obj/projectile/proj)
+	if(broken || !isliving(proj.firer) || !proj.damage)
 		return ..()
 
 	. = ..()
 	if(broken) // breaking a mirror truly gets you bad luck!
-		var/mob/living/unlucky_dude = P.firer
+		var/mob/living/unlucky_dude = proj.firer
 		to_chat(unlucky_dude, span_warning("A chill runs down your spine as [src] shatters..."))
 		unlucky_dude.AddComponent(/datum/component/omen, incidents_left = 7)
 
@@ -315,21 +305,20 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken)
 /obj/item/wallframe/mirror
 	name = "mirror"
 	desc = "An unmounted mirror. Attach it to a wall to use."
-	icon = 'icons/obj/structures/watercloset.dmi'
+	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	custom_materials = list(
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
 	)
 	result_path = /obj/structure/mirror
+	pixel_shift = 28
 
 /obj/structure/mirror/magic
 	name = "magic mirror"
 	desc = "Turn and face the strange... face."
 	icon_state = "magic_mirror"
 	mirror_options = MAGIC_MIRROR_OPTIONS
-
-WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror/magic)
 
 /obj/structure/mirror/magic/Initialize(mapload)
 	. = ..()
@@ -357,14 +346,13 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror/magic)
 	var/new_hair_color = input(user, "Choose your hair color", "Hair Color", user.hair_color) as color|null
 
 	if(new_hair_color)
-		user.set_haircolor(sanitize_hexcolor(new_hair_color), update = FALSE)
+		user.set_haircolor(sanitize_hexcolor(new_hair_color))
 		user.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 	if(user.physique == MALE)
 		var/new_face_color = input(user, "Choose your facial hair color", "Hair Color", user.facial_hair_color) as color|null
 		if(new_face_color)
-			user.set_facial_haircolor(sanitize_hexcolor(new_face_color), update = FALSE)
+			user.set_facial_haircolor(sanitize_hexcolor(new_face_color))
 			user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-	user.update_body_parts()
 
 /obj/structure/mirror/magic/attack_hand(mob/living/carbon/human/user)
 	. = ..()
@@ -393,12 +381,36 @@ WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/structure/mirror/magic)
 	desc = "Pride cometh before the..."
 	race_flags = MIRROR_PRIDE
 	mirror_options = PRIDE_MIRROR_OPTIONS
+	/// If the last user has altered anything about themselves
+	var/changed = FALSE
+
+/obj/structure/mirror/magic/pride/display_radial_menu(mob/living/carbon/human/user)
+	var/pick = show_radial_menu(user, src, mirror_options, user, radius = 36, require_near = TRUE, tooltips = TRUE)
+	if(!pick)
+		return TRUE //get out
+
+	changed = TRUE
+	switch(pick)
+		if(CHANGE_HAIR)
+			change_hair(user)
+		if(CHANGE_BEARD)
+			change_beard(user)
+		if(CHANGE_RACE)
+			change_race(user)
+		if(CHANGE_SEX) // sex: yes
+			change_sex(user)
+		if(CHANGE_NAME)
+			change_name(user)
+		if(CHANGE_EYES)
+			change_eyes(user)
+
+	return display_radial_menu(user)
 
 /obj/structure/mirror/magic/pride/attack_hand(mob/living/carbon/human/user)
+	changed = FALSE
 	. = ..()
-	if(.)
-		return TRUE
-
+	if (!changed)
+		return
 	user.visible_message(
 		span_bolddanger("The ground splits beneath [user] as [user.p_their()] hand leaves the mirror!"),
 		span_notice("Perfect. Much better! Now <i>nobody</i> will be able to resist yo-"),

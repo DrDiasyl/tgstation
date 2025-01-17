@@ -6,8 +6,6 @@
 #define CHANGETURF_RECALC_ADJACENT (1<<5) //Immediately recalc adjacent atmos turfs instead of queuing.
 #define CHANGETURF_TRAPDOOR_INDUCED (1<<6) // Caused by a trapdoor, for trapdoor to know that this changeturf was caused by itself
 
-#define WINDOW_FRAME_BASE_MATERIAL_AMOUNT 2000
-
 #define IS_OPAQUE_TURF(turf) (turf.directional_opacity == ALL_CARDINALS)
 
 //supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
@@ -125,3 +123,13 @@
 #define BASALT_LIGHT_RANGE_BRIGHT 2
 /// Defines a consistent light range for basalt turfs that have a smaller area of lava
 #define BASALT_LIGHT_RANGE_DIM 1.4
+
+/// Makes the set turf transparent
+#define ADD_TURF_TRANSPARENCY(modturf, source) \
+	if(!HAS_TRAIT(modturf, TURF_Z_TRANSPARENT_TRAIT)) { modturf.AddElement(/datum/element/turf_z_transparency) }; \
+	ADD_TRAIT(modturf, TURF_Z_TRANSPARENT_TRAIT, (source))
+
+/// Removes the transparency from the set turf
+#define REMOVE_TURF_TRANSPARENCY(modturf, source) \
+	REMOVE_TRAIT(modturf, TURF_Z_TRANSPARENT_TRAIT, (source)); \
+	if(!HAS_TRAIT(modturf, TURF_Z_TRANSPARENT_TRAIT)) { modturf.RemoveElement(/datum/element/turf_z_transparency) }

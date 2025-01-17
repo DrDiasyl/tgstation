@@ -39,7 +39,7 @@
 /mob/living/basic/pet/gondola/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_MUTE, INNATE_TRAIT)
-	AddElement(/datum/element/pet_bonus, "smiles!")
+	AddElement(/datum/element/pet_bonus, "smile")
 	if(LAZYLEN(loot))
 		loot = string_list(loot)
 		AddElement(/datum/element/death_drops, loot)
@@ -67,7 +67,6 @@
 	add_overlay(body_overlay)
 	add_overlay(eyes_overlay)
 	add_overlay(moustache_overlay)
-	update_appearance(UPDATE_OVERLAYS)
 
 /datum/ai_controller/basic_controller/gondola
 	blackboard = list(

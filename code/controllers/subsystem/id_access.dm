@@ -291,7 +291,7 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access["[ACCESS_VIROLOGY]"] = "Virology"
 	desc_by_access["[ACCESS_PSYCHOLOGY]"] = "Psychology"
 	desc_by_access["[ACCESS_CMO]"] = "CMO Office"
-	desc_by_access["[ACCESS_QM]"] = "Quartermaster"
+	desc_by_access["[ACCESS_QM]"] = "QM Office"
 	desc_by_access["[ACCESS_SURGERY]"] = "Surgery"
 	desc_by_access["[ACCESS_THEATRE]"] = "Theatre"
 	desc_by_access["[ACCESS_RESEARCH]"] = "Science"
@@ -409,6 +409,12 @@ SUBSYSTEM_DEF(id_access)
 	if(trim.assignment)
 		id_card.assignment = trim.assignment
 
+	var/datum/job/trim_job = trim.find_job()
+	if (!isnull(id_card.registered_account))
+		var/datum/job/old_job = id_card.registered_account.account_job
+		id_card.registered_account.account_job = trim_job
+		id_card.registered_account.update_account_job_lists(trim_job, old_job)
+
 	id_card.update_label()
 	id_card.update_icon()
 
@@ -446,8 +452,12 @@ SUBSYSTEM_DEF(id_access)
 	id_card.big_pointer = trim.big_pointer
 	id_card.pointer_color = trim.pointer_color
 
-	if(!check_forged || !id_card.forged)
+	if (!check_forged || !id_card.forged)
 		id_card.assignment = trim.assignment
+
+	if (ishuman(id_card.loc))
+		var/mob/living/carbon/human/owner = id_card.loc
+		owner.sec_hud_set_ID()
 
 	// We'll let the chameleon action update the card's label as necessary instead of doing it here.
 
@@ -467,6 +477,10 @@ SUBSYSTEM_DEF(id_access)
 	id_card.subdepartment_color_override = null
 	id_card.big_pointer = id_card.trim.big_pointer
 	id_card.pointer_color = id_card.trim.pointer_color
+
+	if (ishuman(id_card.loc))
+		var/mob/living/carbon/human/owner = id_card.loc
+		owner.sec_hud_set_ID()
 
 /**
  * Adds the accesses associated with a trim to an ID card.
