@@ -182,6 +182,20 @@
 		)
 	job = /datum/job/pun_pun
 
+/datum/id_trim/job/bartender/service_steward
+	assignment = JOB_SERVICE_STEWARD
+	trim_state = "trim_assistant"
+	department_color = COLOR_SERVICE_LIME
+	subdepartment_color = COLOR_ASSISTANT_GRAY
+	sechud_icon_state = SECHUD_SERVICE_STEWARD
+	minimal_access = list(
+		ACCESS_BAR,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_SERVICE,
+		ACCESS_HYDROPONICS,
+		ACCESS_KITCHEN,
+		)
+
 /datum/id_trim/job/bitrunner
 	assignment = JOB_BITRUNNER
 	trim_state = "trim_bitrunner"
@@ -233,7 +247,7 @@
 	assignment = JOB_BRIDGE_ASSISTANT
 	trim_state = "trim_assistant"
 	department_color = COLOR_COMMAND_BLUE
-	subdepartment_color = COLOR_COMMAND_BLUE
+	subdepartment_color = COLOR_ASSISTANT_GRAY
 	sechud_icon_state = SECHUD_BRIDGE_ASSISTANT
 	minimal_access = list(
 		ACCESS_COMMAND,
@@ -300,6 +314,13 @@
 		ACCESS_QM,
 		)
 	job = /datum/job/cargo_technician
+
+/datum/id_trim/job/cargo_technician/cargo_assistant
+	assignment = JOB_CARGO_ASSISTANT
+	trim_state = "trim_assistant"
+	department_color = COLOR_CARGO_BROWN
+	subdepartment_color = COLOR_ASSISTANT_GRAY
+	sechud_icon_state = SECHUD_CARGO_ASSISTANT
 
 /datum/id_trim/job/chaplain
 	assignment = JOB_CHAPLAIN
@@ -774,6 +795,13 @@
 		)
 	job = /datum/job/doctor
 
+/datum/id_trim/job/medical_doctor/medical_nurse
+	assignment = JOB_MEDICAL_NURSE
+	trim_state = "trim_assistant"
+	department_color = COLOR_MEDICAL_BLUE
+	subdepartment_color = COLOR_ASSISTANT_GRAY
+	sechud_icon_state = SECHUD_MEDICAL_NURSE
+
 /datum/id_trim/job/mime
 	assignment = JOB_MIME
 	trim_state = "trim_mime"
@@ -1039,6 +1067,13 @@
 		)
 	job = /datum/job/scientist
 
+/datum/id_trim/job/scientist/research_assistant
+	assignment = JOB_RESEARCH_ASSISTANT
+	trim_state = "trim_assistant"
+	department_color = COLOR_SCIENCE_PINK
+	subdepartment_color = COLOR_ASSISTANT_GRAY
+	sechud_icon_state = SECHUD_RESEARCH_ASSISTANT
+
 /// Sec officers have departmental variants. They each have their own trims with bonus departmental accesses.
 /datum/id_trim/job/security_officer
 	assignment = JOB_SECURITY_OFFICER
@@ -1161,6 +1196,13 @@
 		ACCESS_XENOBIOLOGY,
 	)
 
+/datum/id_trim/job/security_officer/security_cadet
+	assignment = JOB_SECURITY_CADET
+	trim_state = "trim_assistant"
+	department_color = COLOR_SECURITY_RED
+	subdepartment_color = COLOR_ASSISTANT_GRAY
+	sechud_icon_state = SECHUD_SECURITY_CADET
+
 /datum/id_trim/job/shaft_miner
 	assignment = JOB_SHAFT_MINER
 	trim_state = "trim_shaftminer"
@@ -1226,6 +1268,13 @@
 		ACCESS_CE,
 		)
 	job = /datum/job/station_engineer
+
+/datum/id_trim/job/station_engineer/engineering_assistant
+	assignment = JOB_ENGINEERING_ASSISTANT
+	trim_state = "trim_assistant"
+	department_color = COLOR_ENGINEERING_ORANGE
+	subdepartment_color = COLOR_ASSISTANT_GRAY
+	sechud_icon_state = SECHUD_ENGINEERING_ASSISTANT
 
 /datum/id_trim/job/veteran_advisor
 	assignment = JOB_VETERAN_ADVISOR

@@ -12,6 +12,7 @@
 	new /obj/item/clothing/shoes/jackboots/sec(src)
 	new /obj/item/clothing/gloves/color/black/security(src)
 	new /obj/item/clothing/under/rank/security/officer/cadet(src)
+	new /obj/item/clothing/neck/tie/red(src)
 	new /obj/item/clothing/head/beret/sec(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
@@ -20,6 +21,7 @@
 	new /obj/item/restraints/handcuffs(src)
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/book/manual/wiki/security_space_law(src)
+	new /obj/item/implanter/mindshield(src)
 	new /obj/item/computer_disk/security(src)
 
 /obj/item/storage/box/assistant/medical
