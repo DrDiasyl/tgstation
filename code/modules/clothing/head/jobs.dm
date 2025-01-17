@@ -589,6 +589,13 @@
 	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
 	greyscale_colors = "#638799#a52f29"
 
+/obj/item/clothing/head/hats/garrison
+	name = "security garrison cap"
+	desc = "A garrison cap with a NT logo on the side. Uses reinforced fabric to offer sufficient protection."
+	icon_state = "secgarrison"
+	armor_type = /datum/armor/cosmetic_sec
+	strip_delay = 60
+
 //Science
 /obj/item/clothing/head/beret/science
 	name = "science beret"

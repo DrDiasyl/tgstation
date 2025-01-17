@@ -9,12 +9,11 @@
 	color = COLOR_SECURITY_RED
 
 /obj/item/storage/box/assistant/security/PopulateContents()
-	new /obj/item/clothing/shoes/jackboots/sec(src)
-	new /obj/item/clothing/gloves/color/black/security(src)
+	new /obj/item/clothing/shoes/sneakers/red(src)
 	new /obj/item/clothing/under/rank/security/officer/cadet(src)
 	new /obj/item/clothing/neck/tie/red(src)
-	new /obj/item/clothing/head/beret/sec(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
+	new /obj/item/clothing/head/hats/garrison(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/reagent_containers/spray/pepper(src)
@@ -85,16 +84,13 @@
 
 /obj/item/storage/box/assistant/cargo/PopulateContents()
 	new /obj/item/clothing/under/rank/cargo/assistant(src)
-	new /obj/item/clothing/gloves/fingerless(src)
 	new /obj/item/radio/headset/headset_cargo(src)
-	new /obj/item/boxcutter(src)
 	new /obj/item/universal_scanner(src)
 	new /obj/item/flashlight(src)
 	new /obj/item/stack/sheet/cardboard/fifty(src)
 	new /obj/item/stack/wrapping_paper(src)
 	new /obj/item/stack/package_wrap(src)
 	new /obj/item/clipboard(src)
-	new /obj/item/crowbar(src)
 
 /obj/item/storage/box/assistant/engineering
 	name = "Engineering Assistant Gear"
@@ -102,17 +98,13 @@
 	color = COLOR_ENGINEERING_ORANGE
 
 /obj/item/storage/box/assistant/engineering/PopulateContents()
-	new /obj/item/clothing/shoes/workboots(src)
+	new /obj/item/clothing/shoes/sneakers/yellow(src)
 	new /obj/item/clothing/gloves/color/black(src)
 	new /obj/item/clothing/under/rank/engineering/assistant(src)
-	new /obj/item/clothing/glasses/meson(src)
 	new /obj/item/radio/headset/headset_eng(src)
 	new /obj/item/storage/toolbox/mechanical(src)
-	new /obj/item/multitool(src)
 	new /obj/item/holosign_creator/engineering(src)
 	new /obj/item/flashlight(src)
-	new /obj/item/extinguisher(src)
+	new /obj/item/extinguisher/mini(src)
 	new /obj/item/stock_parts/power_store/cell/high(src)
-	new /obj/item/stack/sheet/iron/fifty(src)
-	new /obj/item/stack/sheet/glass/fifty(src)
 	new /obj/item/computer_disk/engineering(src)

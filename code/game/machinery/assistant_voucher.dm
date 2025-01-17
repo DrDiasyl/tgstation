@@ -1,6 +1,6 @@
 // ASSISTANT VOUCHER
 // Given to Assistants so they can give it to HoP to receive basic equipment for the Department they want to assist. Good for newbies and such
-// Can be ripped into pieces to get 200 credits to show how hard-ass you are
+// Can be ripped into pieces to get 200 credits and show how hard-ass you are
 /obj/item/assistant_voucher
 	name = "assistant voucher"
 	desc = "A voucher redeemable for specialized gear to support a specific department from a JobVendor. <b>Present it to the Head of Personnel</b>."
