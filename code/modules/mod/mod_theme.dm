@@ -199,6 +199,8 @@
 				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
 				UNSEALED_MESSAGE = HELMET_UNSEAL_MESSAGE,
 				SEALED_MESSAGE = HELMET_SEAL_MESSAGE,
+				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEEARS|HIDEEYES|HIDEHAIR|HIDESNOUT,
+				SEALED_COVER = HEADCOVERSEYES,
 			),
 			/obj/item/clothing/suit/mod = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
@@ -314,6 +316,7 @@
 	slowdown_active = 1
 	allowed_suit_storage = list(
 		/obj/item/analyzer,
+		/obj/item/extinguisher,
 		/obj/item/fireaxe/metal_h2_axe,
 		/obj/item/pipe_dispenser,
 		/obj/item/t_scanner,
@@ -1367,7 +1370,7 @@
 			/obj/item/clothing/head/mod = list(
 				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
 				UNSEALED_INVISIBILITY = HIDEEARS|HIDEHAIR,
-				SEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEMASK|HIDEEYES|HIDEFACE|HIDESNOUT,
+				SEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEMASK|HIDEEYES|HIDEFACE|HIDESNOUT|HIDEANTENNAE,
 				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
 				CAN_OVERSLOT = TRUE,
 				UNSEALED_MESSAGE = HELMET_UNSEAL_MESSAGE,
@@ -1375,7 +1378,7 @@
 			),
 			/obj/item/clothing/suit/mod = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_INVISIBILITY = HIDEJUMPSUIT,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT|HIDEMUTWINGS,
 				CAN_OVERSLOT = TRUE,
 				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
 				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
@@ -1415,7 +1418,7 @@
 		Already light, when powered on, this MODsuit injects the wearer seemlessly with muscle-enhancing supplements, while adding piston strength \
 		to their legs. The combination of these mechanisms is very energy draining - but results in next to no speed reduction for the wearer.\
 		Over the years, many a rich person, including Nanotrasen officials with premium subscriptions, had their life or genes rescued thanks to the \
-		unrivaled speed of this suit. Equally as many, however, mysteriously dissapeared in the flash of these white suits after they forgot \
+		unrivaled speed of this suit. Equally as many, however, mysteriously disappeared in the flash of these white suits after they forgot \
 		to pay off said subscriptions in due time or publicly communicated unfavourable opinions on Interdyne's gene-modding tech and ethics. "
 	default_skin = "interdyne"
 	armor_type = /datum/armor/mod_theme_interdyne
@@ -1571,7 +1574,7 @@
 		suits two or three times as thick. The nanomachines making up the outermost layer of armor \
 		are capable of shifting their form into almost-microscopic radiating fins, rendering the suit itself \
 		nigh-immune to even volcanic heat. It's entirely sealed against even the strongest acids, \
-		and the myoelectric artifical muscles of the suit leave it light as a feather during movement."
+		and the myoelectric artificial muscles of the suit leave it light as a feather during movement."
 	default_skin = "ninja"
 	armor_type = /datum/armor/mod_theme_ninja
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|ACID_PROOF

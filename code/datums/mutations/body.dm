@@ -226,12 +226,10 @@
 				owner.emote("twitch")
 			if(2 to 3)
 				owner.say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]", forced=name)
-		var/x_offset_old = owner.pixel_x
-		var/y_offset_old = owner.pixel_y
-		var/x_offset = owner.pixel_x + rand(-2,2)
-		var/y_offset = owner.pixel_y + rand(-1,1)
-		animate(owner, pixel_x = x_offset, pixel_y = y_offset, time = 1)
-		animate(owner, pixel_x = x_offset_old, pixel_y = y_offset_old, time = 1)
+		var/w_offset =  rand(-2, 2)
+		var/z_offset = rand(-1, 1)
+		animate(owner, pixel_w = w_offset, pixel_z = z_offset, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+		animate(owner, pixel_w = -w_offset, pixel_z = -z_offset, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
 
 
 //Deafness makes you deaf.
@@ -474,7 +472,7 @@
 		if(prob(15))
 			owner.acid_act(rand(30, 50), 10)
 			owner.visible_message(span_warning("[owner]'s skin bubbles and pops."), span_userdanger("Your bubbling flesh pops! It burns!"))
-			playsound(owner,'sound/weapons/sear.ogg', 50, TRUE)
+			playsound(owner,'sound/items/weapons/sear.ogg', 50, TRUE)
 
 /datum/mutation/human/spastic
 	name = "Spastic"
@@ -560,7 +558,7 @@
 
 	explosion(owner, light_impact_range = 2, adminlog = TRUE, explosion_cause = src)
 	for(var/mob/living/carbon/human/splashed in view(2, owner))
-		var/obj/item/organ/internal/eyes/eyes = splashed.get_organ_slot(ORGAN_SLOT_EYES)
+		var/obj/item/organ/eyes/eyes = splashed.get_organ_slot(ORGAN_SLOT_EYES)
 		if(eyes)
 			to_chat(splashed, span_userdanger("You are blinded by a shower of blood!"))
 			eyes.apply_organ_damage(5)
@@ -588,7 +586,7 @@
 	if(.)//cant add
 		return TRUE
 
-	var/obj/item/organ/internal/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(brain)
 		brain.Remove(owner, special = TRUE, movement_flags = NO_ID_TRANSFER)
 		brain.zone = BODY_ZONE_CHEST
@@ -613,7 +611,7 @@
 	if(!successful)
 		stack_trace("HARS mutation head regeneration failed! (usually caused by headless syndrome having a head)")
 		return TRUE
-	var/obj/item/organ/internal/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(brain)
 		brain.Remove(owner, special = TRUE, movement_flags = NO_ID_TRANSFER)
 		brain.zone = initial(brain.zone)

@@ -23,8 +23,12 @@
 #define STATIC_TO_DYNAMIC_CHANNEL(static_channel) (static_channel - (AREA_USAGE_STATIC_START - AREA_USAGE_DYNAMIC_START))
 
 //Power use
+
+/// dont use power
 #define NO_POWER_USE 0
+/// use idle_power_usage i.e. the power needed just to keep the machine on
 #define IDLE_POWER_USE 1
+/// use active_power_usage i.e. the power the machine consumes to perform a specific task
 #define ACTIVE_POWER_USE 2
 
 ///Base global power consumption for idling machines
@@ -143,3 +147,5 @@
 #define SD_MESSAGE 2
 /// Shows an alert picture (e.g. red alert, radiation, etc.)
 #define SD_PICTURE 3
+/// Shows whoever or whatever is on the green screen in the captain's office
+#define SD_GREENSCREEN 4

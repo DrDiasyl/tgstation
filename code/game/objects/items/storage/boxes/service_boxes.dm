@@ -47,7 +47,7 @@
 
 /obj/item/storage/box/mousetraps
 	name = "box of Pest-B-Gon mousetraps"
-	desc = "<span class='alert'>Keep out of reach of children.</span>"
+	desc = span_alert("Keep out of reach of children.")
 	illustration = "mousetrap"
 
 /obj/item/storage/box/mousetraps/PopulateContents()
@@ -91,13 +91,7 @@
 	. = ..()
 	atom_storage.max_slots = 10
 	atom_storage.set_holdable(/obj/item/match)
-
-/obj/item/storage/box/matches/tool_act(mob/living/user, obj/item/tool, list/modifiers)
-	if(istype(tool, /obj/item/match))
-		var/obj/item/match/match = tool
-		match.matchignite()
-		return ITEM_INTERACT_SUCCESS
-	return ..()
+	AddElement(/datum/element/ignites_matches)
 
 /obj/item/storage/box/matches/PopulateContents()
 	for(var/i in 1 to 10)

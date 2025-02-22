@@ -293,7 +293,7 @@
 	if(!QDELETED(beaker))
 		beaker_data = list()
 		beaker_data["maxVolume"] = beaker.volume
-		beaker_data["currentVolume"] = round(beaker.reagents.total_volume, CHEMICAL_VOLUME_ROUNDING)
+		beaker_data["currentVolume"] = beaker.reagents.total_volume
 		var/list/beakerContents = list()
 		if(length(beaker.reagents.reagent_list))
 			for(var/datum/reagent/reagent as anything in beaker.reagents.reagent_list)
@@ -315,7 +315,7 @@
 	//contents of buffer
 	beaker_data = list()
 	beaker_data["maxVolume"] = reagents.maximum_volume
-	beaker_data["currentVolume"] = round(reagents.total_volume, CHEMICAL_VOLUME_ROUNDING)
+	beaker_data["currentVolume"] = reagents.total_volume
 	var/list/beakerContents = list()
 	if(length(reagents.reagent_list))
 		for(var/datum/reagent/reagent as anything in reagents.reagent_list)
@@ -393,7 +393,6 @@
 		. = TRUE
 	if(. && !QDELETED(src)) //transferring volatile reagents can cause a explosion & destory us
 		update_appearance(UPDATE_OVERLAYS)
-	return .
 
 /obj/machinery/chem_master/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -416,7 +415,7 @@
 
 			if(amount == -1) // Set custom amount
 				var/mob/user = ui.user //Hold a reference of the user if the UI is closed
-				amount = tgui_input_number(user, "Enter amount to transfer", "Transfer amount")
+				amount = round(tgui_input_number(user, "Enter amount to transfer", "Transfer amount", round_value = FALSE), CHEMICAL_VOLUME_ROUNDING)
 				if(!amount || !user.can_perform_action(src))
 					return FALSE
 
@@ -447,9 +446,27 @@
 
 		if("selectContainer")
 			var/obj/item/reagent_containers/target = locate(params["ref"])
+
+			//is this even a valid type path
 			if(!ispath(target))
 				return FALSE
 
+			//are we printing a valid container
+			var/container_found = FALSE
+			for(var/category in printable_containers)
+				//container found in previous iteration
+				if(container_found)
+					break
+
+				//find for matching typepath
+				for(var/obj/item/reagent_containers/container as anything in printable_containers[category])
+					if(target == container)
+						container_found = TRUE
+						break
+			if(!container_found)
+				return FALSE
+
+			//set the container
 			selected_container = target
 			return TRUE
 
@@ -465,7 +482,7 @@
 			if(isnull(item_count) || item_count <= 0)
 				return FALSE
 			item_count = min(item_count, MAX_CONTAINER_PRINT_AMOUNT)
-			var/volume_in_each = round(reagents.total_volume / item_count, CHEMICAL_VOLUME_ROUNDING)
+			var/volume_in_each = min(round(reagents.total_volume / item_count, CHEMICAL_VOLUME_ROUNDING), initial(selected_container.volume))
 
 			// Generate item name
 			var/item_name_default = initial(selected_container.name)
@@ -474,11 +491,13 @@
 				item_name_default = "[master_reagent.name] [item_name_default]"
 			if(!(initial(selected_container.reagent_flags) & OPENCONTAINER)) // Closed containers get both reagent name and units in the name
 				item_name_default = "[master_reagent.name] [item_name_default] ([volume_in_each]u)"
-			var/item_name = tgui_input_text(usr,
+			var/item_name = tgui_input_text(
+				usr,
 				"Container name",
 				"Name",
 				item_name_default,
-				MAX_NAME_LEN)
+				max_length = MAX_NAME_LEN,
+			)
 			if(!item_name)
 				return FALSE
 

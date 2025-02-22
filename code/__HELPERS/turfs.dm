@@ -237,9 +237,9 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/icon_dimensions = get_icon_dimensions(checked_atom.icon)
 	var/checked_atom_icon_height = icon_dimensions["height"]
 	var/checked_atom_icon_width = icon_dimensions["width"]
-	if(checked_atom_icon_height != world.icon_size || checked_atom_icon_width != world.icon_size)
-		pixel_x_offset += ((checked_atom_icon_width / world.icon_size) - 1) * (world.icon_size * 0.5)
-		pixel_y_offset += ((checked_atom_icon_height / world.icon_size) - 1) * (world.icon_size * 0.5)
+	if(checked_atom_icon_height != ICON_SIZE_Y || checked_atom_icon_width != ICON_SIZE_X)
+		pixel_x_offset += ((checked_atom_icon_width / ICON_SIZE_X) - 1) * (ICON_SIZE_X * 0.5)
+		pixel_y_offset += ((checked_atom_icon_height / ICON_SIZE_Y) - 1) * (ICON_SIZE_Y * 0.5)
 
 	return list(pixel_x_offset, pixel_y_offset)
 
@@ -248,8 +248,8 @@ Turf and target are separate in case you want to teleport some distance from a t
 **/
 /proc/pixel_offset_turf(turf/offset_from, list/offsets)
 	//DY and DX
-	var/rough_x = round(round(offsets[1], world.icon_size) / world.icon_size)
-	var/rough_y = round(round(offsets[2], world.icon_size) / world.icon_size)
+	var/rough_x = round(round(offsets[1], ICON_SIZE_X) / ICON_SIZE_X)
+	var/rough_y = round(round(offsets[2], ICON_SIZE_Y) / ICON_SIZE_Y)
 
 	var/final_x = clamp(offset_from.x + rough_x, 1, world.maxx)
 	var/final_y = clamp(offset_from.y + rough_y, 1, world.maxy)
@@ -275,8 +275,8 @@ Turf and target are separate in case you want to teleport some distance from a t
 	click_turf_y = origin.y + text2num(click_turf_y[1]) - round(actual_view[2] / 2) - 1
 
 	var/turf/click_turf = locate(clamp(click_turf_x, 1, world.maxx), clamp(click_turf_y, 1, world.maxy), click_turf_z)
-	LAZYSET(modifiers, ICON_X, "[(click_turf_px - click_turf.pixel_x) + ((click_turf_x - click_turf.x) * world.icon_size)]")
-	LAZYSET(modifiers, ICON_Y, "[(click_turf_py - click_turf.pixel_y) + ((click_turf_y - click_turf.y) * world.icon_size)]")
+	LAZYSET(modifiers, ICON_X, "[(click_turf_px - click_turf.pixel_x) + ((click_turf_x - click_turf.x) * ICON_SIZE_X)]")
+	LAZYSET(modifiers, ICON_Y, "[(click_turf_py - click_turf.pixel_y) + ((click_turf_y - click_turf.y) * ICON_SIZE_Y)]")
 	return click_turf
 
 ///Almost identical to the params_to_turf(), but unused (remove?)
@@ -375,6 +375,35 @@ Turf and target are separate in case you want to teleport some distance from a t
 				turf_list.Cut(I, I + 1)
 		if (target)
 			return target
+
+///Returns a random department of areas to pass into get_safe_random_station_turf() for more equal spawning.
+/proc/get_safe_random_station_turf_equal_weight()
+	// Big list of departments, each with lists of each area subtype.
+	var/static/list/department_areas
+	if(isnull(department_areas))
+		department_areas = list(
+				subtypesof(/area/station/engineering), \
+				subtypesof(/area/station/medical), \
+				subtypesof(/area/station/science), \
+				subtypesof(/area/station/security), \
+				subtypesof(/area/station/service), \
+				subtypesof(/area/station/command), \
+				subtypesof(/area/station/hallway), \
+				subtypesof(/area/station/ai_monitored), \
+				subtypesof(/area/station/cargo)
+			)
+
+	var/list/area/final_department = pick(department_areas) // Pick a department
+	var/list/area/final_area_list = list()
+
+	for(var/area/checked_area as anything in final_department) // Check each area to make sure it exists on the station
+		if(checked_area in GLOB.the_station_areas)
+			final_area_list += checked_area
+
+	if(!final_area_list.len) // Failsafe
+		return get_safe_random_station_turf()
+
+	return get_safe_random_station_turf(final_area_list)
 
 /**
  * Checks whether the target turf is in a valid state to accept a directional construction
